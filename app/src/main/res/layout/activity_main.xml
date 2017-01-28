@@ -15,7 +15,6 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_gravity="center_vertical"
         android:layout_weight="15">
 
     </LinearLayout>
@@ -37,56 +36,83 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:weightSum="6">
+        android:weightSum="6"
+        android:layout_marginBottom="10dp">
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="Chow"
             android:id="@+id/chowButton"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="#449616"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="Pong"
             android:id="@+id/pongButton"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="#449616"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"
+            android:textSize="24dp" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="Kong"
             android:id="@+id/kongButton"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="#449616"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"
+            android:textSize="24dp" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="Discard"
             android:id="@+id/discardButton"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="#449616"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"
+            android:textSize="24dp" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="Emote"
             android:id="@+id/emoteButton"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="#449616"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"
+            android:textSize="24dp" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="Sort"
             android:id="@+id/sortButton"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="#449616"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"
+            android:textSize="24dp" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="Quit"
             android:id="@+id/quitButton"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="#449616"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
 
 
     </LinearLayout>
@@ -95,6 +121,129 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="20"></LinearLayout>
+        android:layout_weight="10"
+        android:weightSum="7"
+        android:layout_marginBottom="5dp">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile1"
+            android:background="@drawable/mahjong1"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile2"
+            android:background="@drawable/mahjong2"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile3"
+            android:background="@drawable/mahjong3"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile4"
+            android:background="@drawable/mahjong5"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile5"
+            android:background="@drawable/mahjong6"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile6"
+            android:background="@drawable/mahjong7"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile7"
+            android:background="@drawable/mahjong8"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:layout_marginTop="5dp">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile8"
+            android:background="@drawable/mahjong9"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile9"
+            android:background="@drawable/mahjong9"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile10"
+            android:background="@drawable/mahjong1"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile11"
+            android:background="@drawable/mahjongbamboo1"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile12"
+            android:background="@drawable/mahjongbamboo1"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile13"
+            android:background="@drawable/mahjong5"/>
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tile14"
+            android:background="@drawable/mahjong5"/>
+
+    </LinearLayout>
 
 </LinearLayout>
