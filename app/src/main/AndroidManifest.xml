@@ -7,8 +7,22 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        android:theme="@style/Theme.AppCompat">
+        <activity
+            android:name=".MainActivity">
+            <!--
+            1/29/2017
+            Tried to start project with no activity, and when we created our activity and later
+            attempted to load it onto our tablet, it did not work. So we found this section of code
+            at http://stackoverflow.com/questions/15825081/error-default-activity-not-found to fix
+            the problem.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>
