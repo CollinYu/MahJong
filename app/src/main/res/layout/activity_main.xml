@@ -189,6 +189,21 @@
             android:layout_weight="1"
             android:gravity="right"
             android:textSize="16sp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ScoreSpinner"
+                android:entries="@array/score_set"
+                android:layout_weight="1"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -601,7 +616,6 @@
                             android:id="@+id/EmoteSpinner"
                             android:layout_weight="1"
                             android:entries="@array/emote_choices"
-                            android:prompt="@array/emote_prompt"
                             android:spinnerMode="dropdown" />
                     </LinearLayout>
 

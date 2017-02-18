@@ -8,4 +8,8 @@
         <item>Bad Move</item>
         <item>Atleast Make it a Challenge for Me</item>
     </string-array>
+    <string-array name="score_set">
+        <item>HideScore</item>
+        <item>ShowScore</item>
+    </string-array>
 </resources>

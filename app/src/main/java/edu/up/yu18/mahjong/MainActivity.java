@@ -12,16 +12,9 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 
-import org.w3c.dom.Text;
-
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-
-import static android.graphics.PorterDuff.Mode.MULTIPLY;
-import static android.graphics.PorterDuff.Mode.SRC;
-import static android.graphics.PorterDuff.Mode.SRC_ATOP;
-import static android.graphics.PorterDuff.Mode.SRC_OVER;
 
 public class MainActivity extends AppCompatActivity{
     private ImageButton tile1;
@@ -39,6 +32,7 @@ public class MainActivity extends AppCompatActivity{
     private Button discardButton;
     private Button emoteButton;
     private Spinner emoteSpinner;
+    private Spinner scoreSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +60,11 @@ public class MainActivity extends AppCompatActivity{
         emoteButton = (Button)findViewById(R.id.emoteButton);
         emoteButton.setOnClickListener(new emoteButtonListener());
         emoteSpinner = (Spinner)findViewById(R.id.EmoteSpinner);
+        scoreSpinner = (Spinner)findViewById(R.id.ScoreSpinner);
+        String[] emoteSpinner = getResources().getStringArray(R.array.emote_choices);
+        String[] scoreSpinner = getResources().getStringArray(R.array.emote_choices);
+
+
     }
         private class yourTileListener implements View.OnClickListener {
             public void onClick(View v) {
@@ -135,15 +134,23 @@ public class MainActivity extends AppCompatActivity{
             {
                 public void onClick(View v)
                 {
-                    displayTextBox.setText("Invalid Move: Failed Discard");
+                    if(tile1IsPressed == true)
+                    {
+                        tile1.setVisibility(View.GONE);
+                        tile1IsPressed = false;
+                    }
+                    else
+                    {
+                        displayTextBox.setText("Invalid Move: Failed Discard");
+                    }
                 }
             }
         private class emoteButtonListener implements View.OnClickListener
              {
                  public void onClick(View v)
                  {
-                     String text =
-                             displayTextBox.setText("Invalid Move: Failed Discard");
+                     String text = emoteSpinner.getSelectedItem().toString();
+                     displayTextBox.setText(text);
                  }
              }
     }
