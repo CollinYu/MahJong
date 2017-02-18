@@ -10,11 +10,13 @@ import android.media.Image;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 import static android.graphics.PorterDuff.Mode.MULTIPLY;
 import static android.graphics.PorterDuff.Mode.SRC;
@@ -30,6 +32,14 @@ public class MainActivity extends AppCompatActivity{
     private boolean tile2IsPressed;
     private boolean tile3IsPressed;
     private boolean tile4IsPressed;
+    private TextView displayTextBox;
+    private Button chowButton;
+    private Button pongButton;
+    private Button kongButton;
+    private Button discardButton;
+    private Button emoteButton;
+    private Spinner emoteSpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +54,18 @@ public class MainActivity extends AppCompatActivity{
         tile3.setOnClickListener(new yourTileListener());
         tile4 = (ImageButton)findViewById(R.id.tile4);
         tile4.setOnClickListener(new yourTileListener());
+        displayTextBox =(TextView)findViewById(R.id.DisplayTextBox);
+        chowButton = (Button)findViewById(R.id.chowButton);
+        chowButton.setOnClickListener(new chowButtonListener());
+        pongButton = (Button)findViewById(R.id.pongButton);
+        pongButton.setOnClickListener(new pongButtonListener());
+        kongButton = (Button)findViewById(R.id.kongButton);
+        kongButton.setOnClickListener(new kongButtonListener());
+        discardButton = (Button)findViewById(R.id.discardButton);
+        discardButton.setOnClickListener(new discardButtonListener());
+        emoteButton = (Button)findViewById(R.id.emoteButton);
+        emoteButton.setOnClickListener(new emoteButtonListener());
+        emoteSpinner = (Spinner)findViewById(R.id.EmoteSpinner);
     }
         private class yourTileListener implements View.OnClickListener {
             public void onClick(View v) {
@@ -51,35 +73,34 @@ public class MainActivity extends AppCompatActivity{
                     if (!tile1IsPressed) {
                         tile1.setBackgroundColor(0xFF0000B2);
                         tile1IsPressed = true;
-                    }
-                    else {
+                    } else {
                         tile1.setBackgroundColor(0xFF00B200);
                         tile1IsPressed = false;
                     }
-                }if (v == tile2) {
+                }
+                if (v == tile2) {
                     if (!tile2IsPressed) {
                         tile2.setBackgroundColor(0xFF0000B2);
                         tile2IsPressed = true;
-                    }
-                    else {
+                    } else {
                         tile2.setBackgroundColor(0xFF00B200);
                         tile2IsPressed = false;
                     }
-                }if (v == tile3) {
+                }
+                if (v == tile3) {
                     if (!tile3IsPressed) {
                         tile3.setBackgroundColor(0xFF0000B2);
                         tile3IsPressed = true;
-                    }
-                    else {
+                    } else {
                         tile3.setBackgroundColor(0xFF00B200);
                         tile3IsPressed = false;
                     }
-                }if (v == tile4) {
+                }
+                if (v == tile4) {
                     if (!tile4IsPressed) {
                         tile4.setBackgroundColor(0xFF0000B2);
                         tile4IsPressed = true;
-                    }
-                    else {
+                    } else {
                         tile4.setBackgroundColor(0xFF00B200);
                         tile4IsPressed = false;
                     }
@@ -87,8 +108,44 @@ public class MainActivity extends AppCompatActivity{
 
 
             }
+        }
 
-
+        private class chowButtonListener implements View.OnClickListener
+            {
+                public void onClick(View v)
+                {
+                    displayTextBox.setText("Invalid Move: Failed Chow");
+                }
+            }
+        private class pongButtonListener implements View.OnClickListener
+            {
+                public void onClick(View v)
+                {
+                    displayTextBox.setText("Invalid Move: Failed Pong");
+                }
+            }
+        private class kongButtonListener implements View.OnClickListener
+            {
+                public void onClick(View v)
+                {
+                    displayTextBox.setText("Invalid Move: Failed Kong");
+                }
+            }
+        private class discardButtonListener implements View.OnClickListener
+            {
+                public void onClick(View v)
+                {
+                    displayTextBox.setText("Invalid Move: Failed Discard");
+                }
+            }
+        private class emoteButtonListener implements View.OnClickListener
+             {
+                 public void onClick(View v)
+                 {
+                     String text =
+                             displayTextBox.setText("Invalid Move: Failed Discard");
+                 }
+             }
     }
 
-}
+

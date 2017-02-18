@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MahJong</string>
+    <string name="emote_prompt">Choose a emote</string>
+
+    <string-array name="emote_choices">
+        <item>Nice Move</item>
+        <item>Thanks</item>
+        <item>Bad Move</item>
+        <item>Atleast Make it a Challenge for Me</item>
+    </string-array>
 </resources>
