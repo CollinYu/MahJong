@@ -67,12 +67,11 @@ public class MainActivity extends AppCompatActivity{
 
     }
     private class mahJongGameState{
-        // Tiles and players will be referenced by id
-        private int[] deck;
+        private ArrayList<Tile> deck; // Tile class does not exist (yet), sorry Parmenides
+        private int[] wall;
         private int[] discardPile;
         private int[] players;
         private String[] playerNames;
-        private int[] playerScores;
         // Note that the int arrays below are [playerID][tileID]
         private int[][] playerClosedHands;
         private int[][] playerOpenHands;
@@ -90,8 +89,11 @@ public class MainActivity extends AppCompatActivity{
         // Deep Copier
         private mahJongGameState cloneGameState(mahJongGameState game){
 
+            return null;
 
         }
+
+        // Need getters and setter methods
 
 
     }
