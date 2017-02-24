@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity{
 
     }
     private class mahJongGameState{
-        // Tiles and players will be referenced by id
+        private ArrayList<Tile> deck;
         private int[] wall;
         private int[] discardPile;
         private int[] players;
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity{
         // whose turn it is will be expressed in stages, player 1's turn will be stage 1, player 1's post-discard phase will be stage 2,
         // player 2's turn will be stage 3, her discard phase will be stage 4, and so forth, resulting in the game being split up into stages 1 through 8
         private int gameStage;
-
+        
 
         //Constructor
         private mahJongGameState(){
@@ -136,6 +136,8 @@ public class MainActivity extends AppCompatActivity{
             gameStage = game.gameStage; // pretty obvious how this one works
 
         }
+
+        // Need getters and setter methods
 
 
     }
