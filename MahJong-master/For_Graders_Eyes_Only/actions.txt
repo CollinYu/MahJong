@@ -1,0 +1,15 @@
+Actions
+
+Wyatt Collin Tristan Dylan
+
+Select/Deselect will allow you to select a tile or multiple tiles which when
+	in the proper combonations can be used to Chow, Pont, Kong, or Discard
+Chow A run as in a three of bamboo a four of bamboo and a five of bamboo when 
+	selected can be played
+Pong A set of three as in three eight of dots when selected can be played
+Kong A set of four as in four eight of charecters when selected can be played
+Discard Select one tile and discard to end the turn
+Emote will give options for interaction with others
+Sort will sort the tiles
+Quit will return to start screen
+
