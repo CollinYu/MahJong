@@ -1,3 +1,5 @@
+package edu.up.yu18.mahjong;
+
 private class mahJongGameState{
     private ArrayList<Tile> deck;
     private int[] wall;
