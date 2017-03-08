@@ -473,14 +473,28 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:id="@+id/Wall2">
-                    <ImageView
+
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:id="@+id/Wall2Tile1"
-                        android:background="@drawable/back_tile"/>
+                        android:id="@+id/Frame1Tile1"
+                        android:layout_weight="1">
+
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/Wall2Tile1"
+                            android:background="@drawable/back_tile"/>
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/Wall2Tile1Set2" />
+                    </FrameLayout>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -536,32 +550,6 @@
                         android:id="@+id/Wall2Tile7"
                         android:background="@drawable/back_tile"/>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:id="@+id/Wall2Tile8"
-                        android:background="@drawable/back_tile"/>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:id="@+id/Wall2Tile9"
-                        android:background="@drawable/back_tile"/>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:id="@+id/Wall2Tile10"
-                        android:background="@drawable/back_tile"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -643,7 +631,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:weightSum="10"
+                    android:weightSum="7"
                     android:id="@+id/Wall4">
                     <ImageView
                         android:layout_width="match_parent"
@@ -708,32 +696,6 @@
                         android:id="@+id/Wall4Tile7"
                         android:background="@drawable/back_tile"/>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:id="@+id/Wall4Tile8"
-                        android:background="@drawable/back_tile"/>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:id="@+id/Wall4Tile9"
-                        android:background="@drawable/back_tile"/>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:id="@+id/Wall4Tile10"
-                        android:background="@drawable/back_tile"/>
                 </LinearLayout>
             </LinearLayout>
 
