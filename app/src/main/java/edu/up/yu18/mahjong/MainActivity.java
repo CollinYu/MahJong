@@ -156,5 +156,5 @@ public class MainActivity extends AppCompatActivity{
             displayTextBox.setText(text);
         }
     }
+    public void setGameOver(boolean b){}
 }
-

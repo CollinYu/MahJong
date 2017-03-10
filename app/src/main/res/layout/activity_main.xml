@@ -44,7 +44,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile2"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -53,7 +53,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile3"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -62,7 +62,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile4"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -71,7 +71,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile5"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -80,7 +80,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile6"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -89,7 +89,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile7"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -98,7 +98,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile8"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -107,7 +107,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile9"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -116,7 +116,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile10"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -125,7 +125,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile11"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -134,7 +134,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile12"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -143,7 +143,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile13"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -152,7 +152,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:id="@+id/player4Tile14"
-            android:background="@drawable/back_tile"/>
+            android:background="@mipmap/mahjongtile_back"/>
 
     </LinearLayout>
 
@@ -230,7 +230,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile1"
-                android:background="@drawable/mahjong3"/>
+                android:background="@drawable/mahjongtile_direction-east"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -257,7 +257,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile4"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -266,7 +266,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile5"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -275,7 +275,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile6"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -284,7 +284,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile7"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -293,7 +293,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile8"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -302,7 +302,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile9"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -311,7 +311,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile10"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -320,7 +320,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile11"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -329,7 +329,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile12"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -338,7 +338,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile13"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -393,7 +393,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall1Tile3"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -402,7 +402,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall1Tile4"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -411,7 +411,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall1Tile5"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -420,7 +420,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall1Tile6"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -429,7 +429,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall1Tile7"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -438,7 +438,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall1Tile8"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -447,7 +447,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall1Tile9"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -456,7 +456,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall1Tile10"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
             </LinearLayout>
 
@@ -488,7 +488,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginBottom="5dp"
                             android:id="@+id/Wall2Tile1"
-                            android:background="@drawable/back_tile"/>
+                            android:background="@mipmap/mahjongtile_back"/>
 
                         <ImageView
                             android:layout_width="match_parent"
@@ -503,7 +503,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall2Tile2"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -512,7 +512,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall2Tile3"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -521,7 +521,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall2Tile4"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -530,7 +530,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall2Tile5"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -539,7 +539,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall2Tile6"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -548,7 +548,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall2Tile7"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                 </LinearLayout>
 
@@ -640,7 +640,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall4Tile1"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -649,7 +649,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall4Tile2"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -658,7 +658,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall4Tile3"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -667,7 +667,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall4Tile4"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -676,7 +676,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall4Tile5"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -685,7 +685,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall4Tile6"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -694,7 +694,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/Wall4Tile7"
-                        android:background="@drawable/back_tile"/>
+                        android:background="@mipmap/mahjongtile_back"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -712,7 +712,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall3Tile1"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
 
                 <ImageView
@@ -722,7 +722,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall3Tile2"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -731,7 +731,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall3Tile3"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -740,7 +740,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall3Tile4"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -749,7 +749,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall3Tile5"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -758,7 +758,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall3Tile6"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -767,7 +767,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall3Tile7"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -776,7 +776,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall3Tile8"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -785,7 +785,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall3Tile9"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -794,7 +794,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall3Tile10"
-                    android:background="@drawable/back_tile"/>
+                    android:background="@mipmap/mahjongtile_back"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -820,7 +820,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile2"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -829,7 +829,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile3"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -838,7 +838,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile4"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -847,7 +847,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile5"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -856,7 +856,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile6"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -865,7 +865,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile7"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -874,7 +874,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile8"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -883,7 +883,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile9"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -892,7 +892,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile10"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -901,7 +901,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile11"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -910,7 +910,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile12"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -919,7 +919,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile13"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -928,7 +928,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player3Tile14"
-                android:background="@drawable/back_tile"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
         </LinearLayout>
 
