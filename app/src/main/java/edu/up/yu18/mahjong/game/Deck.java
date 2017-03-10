@@ -5,10 +5,8 @@ package edu.up.yu18.mahjong.game;
  */
 public class Deck {
 
-    private int val;
-    private boolean image;
-    private int suit;
     private int curNum;
+    private boolean image;
     private int location;
 
     private Deck(){

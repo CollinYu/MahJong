@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity{
         {
             if(tile1IsPressed == true)
             {
-                tile1.setVisibility(View.GONE);
+                tile1.setVisibility(View.INVISIBLE);
                 tile1IsPressed = false;
             }
             else

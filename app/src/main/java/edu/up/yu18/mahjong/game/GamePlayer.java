@@ -13,7 +13,7 @@ import edu.up.yu18.mahjong.MainActivity;
  */
 
 public interface GamePlayer {
-	
+
 	// sets this player as the GUI player (implemented as final in the
 	// major player classes)
 	public abstract void gameSetAsGui(MainActivity activity);
