@@ -212,13 +212,12 @@
         android:layout_height="0dp"
         android:layout_weight="60"
         android:id="@+id/Board"
-        android:weightSum="16">
+        android:weightSum="10">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:weightSum="14"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:id="@+id/Player2Hand">
@@ -230,7 +229,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile1"
-                android:background="@drawable/mahjongtile_direction-east"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -239,7 +238,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile2"
-                android:background="@drawable/mahjong3"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -248,7 +247,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/player2Tile3"
-                android:background="@drawable/mahjong3"/>
+                android:background="@mipmap/mahjongtile_back"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -354,7 +353,7 @@
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="14"
+            android:layout_weight="8"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="50dp"
@@ -374,7 +373,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall1Tile1"
-                    />
+                    android:background="@mipmap/mahjongtile_back"/>
 
 
                 <ImageView
@@ -384,7 +383,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall1Tile2"
-                    />
+                    android:background="@mipmap/mahjongtile_back"/>
 
                 <ImageView
                     android:layout_width="0dp"
