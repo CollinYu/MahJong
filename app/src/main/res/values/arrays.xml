@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- The two arrays below should always be of the same size. The ordering
+     of their elements should be such that the first elements of each correspond,
+     second elements of each correspond, etc. -->
+
+    <array name="imageIdArray">
+        <item>@drawable/back_tile</item>
+        <item>@drawable/mahjong1</item>
+        <item>@drawable/mahjong3</item>
+        <item>@drawable/mahjong4</item>
+        <item>@drawable/mahjong5</item>
+        <item>@drawable/mahjong6</item>
+        <item>@drawable/mahjong7</item>
+        <item>@drawable/mahjong8</item>
+        <item>@drawable/mahjong9</item>
+        <item>@drawable/mahjongbamboo1</item>
+
+    </array>
+
+</resources>
