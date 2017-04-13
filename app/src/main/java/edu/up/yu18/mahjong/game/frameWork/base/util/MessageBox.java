@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game.util;
+package edu.up.yu18.mahjong.game.frameWork.base.util;
 
 import android.app.Activity;
 import android.app.AlertDialog;

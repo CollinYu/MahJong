@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game.infoMsg;
+package edu.up.yu18.mahjong.game.frameWork.base.infoMsg;
 
 /**
  * A message from the game to a player that tells the player that

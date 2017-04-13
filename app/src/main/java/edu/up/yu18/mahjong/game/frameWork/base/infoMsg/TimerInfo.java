@@ -1,6 +1,6 @@
-package edu.up.yu18.mahjong.game.infoMsg;
+package edu.up.yu18.mahjong.game.frameWork.base.infoMsg;
 
-import edu.up.yu18.mahjong.game.util.GameTimer;
+import edu.up.yu18.mahjong.game.frameWork.base.util.GameTimer;
 
 /**
  * The a message from to a player (typically sent by a timer) that the timer's

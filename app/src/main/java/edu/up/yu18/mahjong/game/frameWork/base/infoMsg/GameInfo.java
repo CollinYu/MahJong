@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game.infoMsg;
+package edu.up.yu18.mahjong.game.frameWork.base.infoMsg;
 
 import java.io.Serializable;
 

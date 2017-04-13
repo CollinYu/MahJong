@@ -3,10 +3,10 @@ package edu.up.yu18.mahjong.game;
 import java.util.LinkedList;
 import java.util.Queue;
 import android.util.Log;
-import edu.up.yu18.mahjong.game.actionMsg.GameAction;
-import edu.up.yu18.mahjong.game.infoMsg.GameInfo;
-import edu.up.yu18.mahjong.game.util.IPCoder;
-import edu.up.yu18.mahjong.game.util.NetworkObjectPasser;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
+import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
+import edu.up.yu18.mahjong.game.frameWork.base.util.IPCoder;
+import edu.up.yu18.mahjong.game.frameWork.base.util.NetworkObjectPasser;
 
 /**
  * A Game object that is used as a proxy for the real game that is on another

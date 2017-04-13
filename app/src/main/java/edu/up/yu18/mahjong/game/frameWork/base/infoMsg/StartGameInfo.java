@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game.infoMsg;
+package edu.up.yu18.mahjong.game.frameWork.base.infoMsg;
 
 /**
  * The a message from the game to a player that game is ready to start.

@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game.actionMsg;
+package edu.up.yu18.mahjong.game.frameWork.base.actionMessage;
 
 import java.io.Serializable;
 

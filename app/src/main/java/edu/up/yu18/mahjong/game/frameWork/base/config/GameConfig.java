@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game.config;
+package edu.up.yu18.mahjong.game.frameWork.base.config;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

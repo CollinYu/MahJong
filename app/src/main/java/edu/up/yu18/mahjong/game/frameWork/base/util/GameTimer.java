@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game.util;
+package edu.up.yu18.mahjong.game.frameWork.base.util;
 
 /**
  * A GameTimer is an object that sends a GameTimerAction to a Game or a

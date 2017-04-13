@@ -1,17 +1,17 @@
 package edu.up.yu18.mahjong.game;
 
-import edu.up.yu18.mahjong.game.actionMsg.GameAction;
-import edu.up.yu18.mahjong.game.actionMsg.GameOverAckAction;
-import edu.up.yu18.mahjong.game.actionMsg.MyNameIsAction;
-import edu.up.yu18.mahjong.game.actionMsg.ReadyAction;
-import edu.up.yu18.mahjong.game.actionMsg.TimerAction;
-import edu.up.yu18.mahjong.game.infoMsg.BindGameInfo;
-import edu.up.yu18.mahjong.game.infoMsg.GameOverInfo;
-import edu.up.yu18.mahjong.game.infoMsg.IllegalMoveInfo;
-import edu.up.yu18.mahjong.game.infoMsg.NotYourTurnInfo;
-import edu.up.yu18.mahjong.game.infoMsg.StartGameInfo;
-import edu.up.yu18.mahjong.game.util.GameTimer;
-import edu.up.yu18.mahjong.game.util.Tickable;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameOverAckAction;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.MyNameIsAction;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.ReadyAction;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.TimerAction;
+import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.BindGameInfo;
+import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameOverInfo;
+import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.IllegalMoveInfo;
+import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.NotYourTurnInfo;
+import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.StartGameInfo;
+import edu.up.yu18.mahjong.game.frameWork.base.util.GameTimer;
+import edu.up.yu18.mahjong.game.frameWork.base.util.Tickable;
 
 import android.os.Handler;
 import android.os.Looper;

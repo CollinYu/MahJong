@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game.util;
+package edu.up.yu18.mahjong.game.frameWork.base.util;
 
 /**
  * An inteface that defines an object that can respond to a GameTimer "tick".

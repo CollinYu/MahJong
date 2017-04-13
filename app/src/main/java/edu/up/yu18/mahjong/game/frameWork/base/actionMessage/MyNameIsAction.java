@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game.actionMsg;
+package edu.up.yu18.mahjong.game.frameWork.base.actionMessage;
 
 import edu.up.yu18.mahjong.game.GamePlayer;
 

@@ -1,6 +1,6 @@
 package edu.up.yu18.mahjong.game;
 
-import edu.up.yu18.mahjong.game.actionMsg.GameAction;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 
 
 /**

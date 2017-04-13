@@ -25,10 +25,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import edu.up.yu18.mahjong.game.config.GameConfig;
-import edu.up.yu18.mahjong.game.config.GamePlayerType;
-import edu.up.yu18.mahjong.game.util.IPCoder;
-import edu.up.yu18.mahjong.game.util.MessageBox;
+import edu.up.yu18.mahjong.game.frameWork.base.config.GameConfig;
+import edu.up.yu18.mahjong.game.frameWork.base.config.GamePlayerType;
+import edu.up.yu18.mahjong.game.frameWork.base.util.IPCoder;
+import edu.up.yu18.mahjong.game.frameWork.base.util.MessageBox;
 import edu.up.yu18.mahjong.R;
 
 /**

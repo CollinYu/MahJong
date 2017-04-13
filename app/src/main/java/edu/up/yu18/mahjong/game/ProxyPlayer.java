@@ -1,9 +1,9 @@
 package edu.up.yu18.mahjong.game;
 
-import edu.up.yu18.mahjong.game.actionMsg.GameAction;
-import edu.up.yu18.mahjong.game.infoMsg.BindGameInfo;
-import edu.up.yu18.mahjong.game.infoMsg.GameInfo;
-import edu.up.yu18.mahjong.game.util.NetworkObjectPasser;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
+import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.BindGameInfo;
+import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
+import edu.up.yu18.mahjong.game.frameWork.base.util.NetworkObjectPasser;
 import edu.up.yu18.mahjong.MainActivity;
 import android.util.Log;
 
