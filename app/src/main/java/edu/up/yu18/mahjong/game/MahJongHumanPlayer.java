@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong;
+package edu.up.yu18.mahjong.game;
 
 import android.content.DialogInterface;
 import android.graphics.PorterDuff;
@@ -15,10 +15,11 @@ import android.widget.TextView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+import edu.up.yu18.mahjong.R;
+import edu.up.yu18.mahjong.game.GameHumanPlayer;
 
 
-
-public class MainActivity extends AppCompatActivity{
+public class MahJongHumanPlayer extends GameHumanPlayer{
     private ImageButton tile1;
     private ImageButton tile2;
     private ImageButton tile3;
