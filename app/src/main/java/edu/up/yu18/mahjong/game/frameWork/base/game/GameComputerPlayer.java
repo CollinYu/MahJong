@@ -11,7 +11,7 @@ import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.TimerInfo;
 import edu.up.yu18.mahjong.game.frameWork.base.util.GameTimer;
 import edu.up.yu18.mahjong.game.frameWork.base.util.MessageBox;
 import edu.up.yu18.mahjong.game.frameWork.base.util.Tickable;
-import edu.up.yu18.mahjong.MainActivity;
+import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -36,7 +36,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable {
 	private Handler myHandler; // the handler for this player's thread
 	private boolean running; // whether the player's thread is running
 	private boolean gameOver = false; // whether the game is over
-	private MainActivity myActivity; // the game's main activity, set only
+	private GameMainActivity myActivity; // the game's main activity, set only
 			// this game is connected to the GUI
 	private GameTimer myTimer = new GameTimer(this); // my timer
 	
@@ -89,7 +89,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable {
 	 * @param a
 	 * 			the activity that is being run
 	 */
-	public final void gameSetAsGui(MainActivity a) {
+	public final void gameSetAsGui(GameMainActivity a) {
 		myActivity = a;
 		setAsGui(a);
 	}
@@ -103,7 +103,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable {
 	 * @param activity
 	 * 			the activity that is being run
 	 */
-	public void setAsGui(MainActivity activity) {
+	public void setAsGui(GameMainActivity activity) {
 		// default behavior is to do nothing
 	}
 	

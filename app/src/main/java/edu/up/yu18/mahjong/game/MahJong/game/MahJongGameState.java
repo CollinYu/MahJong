@@ -2,10 +2,10 @@ package edu.up.yu18.mahjong.game.MahJong.game;
 import java.util.ArrayList;
 
 import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
-import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.Pong;
-import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.Chow;
-import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.Kong;
-import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.Discard;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Pong;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Chow;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Kong;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameState;
 
 

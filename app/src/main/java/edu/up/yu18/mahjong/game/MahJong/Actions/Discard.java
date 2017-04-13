@@ -1,5 +1,6 @@
-package edu.up.yu18.mahjong.game.frameWork.base.actionMessage;
+package edu.up.yu18.mahjong.game.MahJong.Actions;
 
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
 import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
 
@@ -8,7 +9,7 @@ import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
  */
 
 
-public class Discard extends GameAction{
+public class Discard extends GameAction {
     // Instance Variables
     private Tile tile;
     private int playerID;

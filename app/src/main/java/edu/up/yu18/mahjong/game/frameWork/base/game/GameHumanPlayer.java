@@ -11,7 +11,7 @@ import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.TimerInfo;
 import edu.up.yu18.mahjong.game.frameWork.base.util.GameTimer;
 import edu.up.yu18.mahjong.game.frameWork.base.util.MessageBox;
 import edu.up.yu18.mahjong.game.frameWork.base.util.Tickable;
-import edu.up.yu18.mahjong.MainActivity;
+import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -41,7 +41,7 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
 	protected String name; // my player's name
 	protected String[] allPlayerNames; // the names of all the player
 	private Handler myHandler; // my thread's handler
-	private MainActivity myActivity; // the current activity
+	private GameMainActivity myActivity; // the current activity
 	private GameTimer myTimer = new GameTimer(this); // my player's timer
 	private boolean gameOver; // whether the game is over
 
@@ -108,7 +108,7 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
 	 * Sets this player as the one attached to the GUI. Saves the
 	 * activity, then invokes subclass-specific method.
 	 */
-	public final void gameSetAsGui(MainActivity a) {
+	public final void gameSetAsGui(GameMainActivity a) {
 
 			myActivity = a;
 			setAsGui(a);

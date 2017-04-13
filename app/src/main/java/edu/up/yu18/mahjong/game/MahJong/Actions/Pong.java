@@ -1,5 +1,6 @@
-package edu.up.yu18.mahjong.game.frameWork.base.actionMessage;
+package edu.up.yu18.mahjong.game.MahJong.Actions;
 
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
 import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
 
@@ -8,7 +9,7 @@ import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
  * This game action takes 3 tiles, and the player that played them,
  * other game actions are of this form, and inherit from it
  */
-public class Pong extends GameAction{
+public class Pong extends GameAction {
     private int playerID;
     private Tile tile1;
     private Tile tile2;
