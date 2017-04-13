@@ -22,7 +22,7 @@ public class Deck {
             }//k
         }//j
         for (int j = 0; j < 4; j++) {
-            for (int l =0;l < 4; l++) {
+            for (int l =0;l < 3; l++) {
                 deckTiles.add(new Tile(3, l, i));
                 i++;//4 is dragon
             }
