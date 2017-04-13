@@ -573,13 +573,13 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile1"
-                            android:background="@drawable/mahjong1"/>
+                            android:background="@drawable/mahjongtiledots1"/>
                         <ImageButton
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile2"
-                            android:background="@drawable/mahjong4"/>
+                            android:background="@drawable/mahjongtiledots4"/>
 
                     </LinearLayout>
 
@@ -948,7 +948,7 @@
             android:layout_weight="1"
             android:layout_marginStart="5dp"
             android:id="@+id/openTile1"
-            android:background="@drawable/mahjongbamboo3"/>
+            android:background="@drawable/mahjongtilebamboo3"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -956,7 +956,7 @@
             android:layout_weight="1"
             android:layout_marginStart="5dp"
             android:id="@+id/openTile2"
-            android:background="@drawable/mahjongbamboo3"/>
+            android:background="@drawable/mahjongtilebamboo3"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -964,7 +964,7 @@
             android:layout_weight="1"
             android:layout_marginStart="5dp"
             android:id="@+id/openTile3"
-            android:background="@drawable/mahjongbamboo3"/>
+            android:background="@drawable/mahjongtilebamboo3"/>
 
         <ImageView
             android:layout_width="0dp"
@@ -1076,7 +1076,8 @@
             android:background="#449616"
             android:textColor="#FFFFFF"
             android:layout_marginStart="10dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:clickable="true" />
 
         <Button
             android:layout_width="0dp"
@@ -1088,7 +1089,8 @@
             android:background="#449616"
             android:textColor="#FFFFFF"
             android:layout_marginStart="10dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:clickable="true" />
 
         <Button
             android:layout_width="0dp"
@@ -1100,7 +1102,8 @@
             android:background="#449616"
             android:textColor="#FFFFFF"
             android:layout_marginStart="10dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:clickable="true" />
 
         <Button
             android:layout_width="0dp"
@@ -1112,7 +1115,8 @@
             android:textColor="#FFFFFF"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:clickable="true" />
 
         <Button
             android:layout_width="0dp"
@@ -1124,7 +1128,8 @@
             android:textColor="#FFFFFF"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:clickable="true" />
 
         <Button
             android:layout_marginStart="10dp"
@@ -1136,7 +1141,8 @@
             android:background="#449616"
             android:textColor="#FFFFFF"
             android:layout_marginTop="10dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:clickable="true" />
 
 
     </LinearLayout>
@@ -1152,11 +1158,10 @@
 
         <ImageButton
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/tile1"
-            android:src="@drawable/mahjong1"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtiledots1" />
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1164,8 +1169,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile2"
-            android:src="@drawable/mahjong2"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtiledots2"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1173,8 +1177,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile3"
-            android:src="@drawable/mahjong3"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtiledots3"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1182,8 +1185,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile4"
-            android:src="@drawable/mahjong5"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtiledots4"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1191,8 +1193,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile5"
-            android:src="@drawable/mahjong6"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtilebamboo3"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1200,8 +1201,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile6"
-            android:src="@drawable/mahjong7"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtilebamboo8"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1209,8 +1209,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile7"
-            android:src="@drawable/mahjong8"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtilecharacter8"/>
 
     </LinearLayout>
 
@@ -1227,8 +1226,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile8"
-            android:src="@drawable/mahjong9"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtilecharacter4"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1236,8 +1234,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile9"
-            android:src="@drawable/mahjong9"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtilecharacter5"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1245,8 +1242,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile10"
-            android:src="@drawable/mahjong1"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtilecharacter8"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1254,7 +1250,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile11"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtilebamboo9"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1262,7 +1258,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile12"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtiledots9"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1270,7 +1266,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile13"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtiledirectionnorth"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1278,8 +1274,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile14"
-            android:src="@drawable/mahjong5"
-            android:background="#00B200"/>
+            android:background="@drawable/mahjongtiledragonred"/>
 
 </LinearLayout>
 </LinearLayout>
