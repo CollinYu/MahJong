@@ -1,10 +1,10 @@
-package edu.up.yu18.mahjong.game;
+package edu.up.yu18.mahjong.game.frameWork.base.game;
 
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.BindGameInfo;
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 import edu.up.yu18.mahjong.game.frameWork.base.util.NetworkObjectPasser;
-import edu.up.yu18.mahjong.MainActivity;
+import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
 import android.util.Log;
 
 /**
@@ -13,15 +13,15 @@ import android.util.Log;
  * it serializes the message and sends it across the network; when
  * the ProxyPlayer object receives a message from the network, it
  * unserializes the message and sends it to its game.
- * 
+ *
  * @author Steven R. Vegdahl
  * @version July 2013
  */
 public class ProxyPlayer implements GamePlayer {
-    
+
     // the game object
     private Game game;
-    
+
     // the object that connects us to the network
     private NetworkObjectPasser networkPasser;
 
@@ -32,34 +32,34 @@ public class ProxyPlayer implements GamePlayer {
 
     /**
      * ProxyPlayer constructor.
-     * 
+     *
      * @param portNum
      * 		the port number through which we connect to our client
      */
     public ProxyPlayer(int portNum) {
-    	
-    	Log.i("ProxyPlayer", "creating Proxy Player");
-        
+
+        Log.i("ProxyPlayer", "creating Proxy Player");
+
         // set instance variables to their initial values
         game = null; // the game
         isReady = false; // whether we are ready
 
         // create our network-connection object, connecting as a server
         networkPasser =
-        		new NetworkObjectPasser(null, portNum) {
-        	
-        	// callback method, called whenever we receive an object
-        	// that has come across the network
-        	public void onReceiveObject(Object obj) {
-        		if (obj instanceof GameAction) {
-        			// if it's a game action (which it should be), send
-        			// the action to the game        			
-        			GameAction action = (GameAction)obj;
-        			action.setPlayer(ProxyPlayer.this);
-        			game.sendAction(action);
-        		}
-        	}
-        };
+                new NetworkObjectPasser(null, portNum) {
+
+                    // callback method, called whenever we receive an object
+                    // that has come across the network
+                    public void onReceiveObject(Object obj) {
+                        if (obj instanceof GameAction) {
+                            // if it's a game action (which it should be), send
+                            // the action to the game
+                            GameAction action = (GameAction)obj;
+                            action.setPlayer(ProxyPlayer.this);
+                            game.sendAction(action);
+                        }
+                    }
+                };
     }
 
     /**
@@ -73,7 +73,7 @@ public class ProxyPlayer implements GamePlayer {
         return isReady;
     }
 
-    
+
     /**
      * Starts the game. (In this case the constructor has already done
      * all the work.)
@@ -83,62 +83,62 @@ public class ProxyPlayer implements GamePlayer {
 
     /**
      * Used by the game to send a GameInfo object to this player
-     * 
+     *
      * @param state
      * 		The state to send
      */
     public void sendInfo(GameInfo state) {
-    	if (game == null && state instanceof BindGameInfo) {
-    		// If we're just starting (so we don't know who
-    		// game is), then it had better be a BindGameInfo
-    		// message. Get the game from the BindGameInfo
-    		// object so that we have the connection for
-    		// future messages.
-    		game = ((BindGameInfo)state).getGame();
-    	}
-    	
-    	// Null out the game from the GameInfo object (if present),
-    	// so that the entire game does not get passed across the
-    	// network
-    	state.setGame(null);
-    	
-    	// send the state across the network
-    	networkPasser.sendObject(state);
-	}
-    
-    
+        if (game == null && state instanceof BindGameInfo) {
+            // If we're just starting (so we don't know who
+            // game is), then it had better be a BindGameInfo
+            // message. Get the game from the BindGameInfo
+            // object so that we have the connection for
+            // future messages.
+            game = ((BindGameInfo)state).getGame();
+        }
+
+        // Null out the game from the GameInfo object (if present),
+        // so that the entire game does not get passed across the
+        // network
+        state.setGame(null);
+
+        // send the state across the network
+        networkPasser.sendObject(state);
+    }
+
+
     /**
      * Set this game as a GUI. (Should never be called because the
      * 'supportsGui' method returns false.)
      */
-    public final void gameSetAsGui(MainActivity a) {
+    public final void gameSetAsGui(GameMainActivity a) {
     }
-    
+
     /**
      * Set this game as a GUI. (Should never be called because the
      * 'supportsGui' method returns false.)
      */
-    public void setAsGui(MainActivity a) {
+    public void setAsGui(GameMainActivity a) {
     }
-    
+
     /**
      * Tells whether the this player requires a GUI.
-     * 
+     *
      * @return
      * 		false, since this player does not require a GUI
      */
     public boolean requiresGui() {
-    	return false;
+        return false;
     }
-    
+
     /**
      * Tells whether the this player support a GUI.
-     * 
+     *
      * @return
      * 		false, since this player does not support a GUI
      */
     public boolean supportsGui() {
-    	return false;
+        return false;
     }
 }
 

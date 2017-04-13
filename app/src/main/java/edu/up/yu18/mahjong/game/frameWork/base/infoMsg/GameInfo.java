@@ -2,7 +2,7 @@ package edu.up.yu18.mahjong.game.frameWork.base.infoMsg;
 
 import java.io.Serializable;
 
-import edu.up.yu18.mahjong.game.Game;
+import edu.up.yu18.mahjong.game.frameWork.base.game.Game;
 
 /**
  * An informational message that is sent from the game to a player.  The

@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.util.Log;
 
-import edu.up.yu18.mahjong.MainActivity;
-import edu.up.yu18.mahjong.game.GamePlayer;
-import edu.up.yu18.mahjong.game.ProxyPlayer;
+import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
+import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
+import edu.up.yu18.mahjong.game.frameWork.base.game.ProxyPlayer;
 
 /**
  * GameConfig class
@@ -28,7 +28,7 @@ import edu.up.yu18.mahjong.game.ProxyPlayer;
  * @author Andrew Nuxoll
  * @author Steven R. Vegdahl
  * @version July 2013
- * @see MainActivity
+ * @see GameMainActivity
  */
 public class GameConfig {
 
@@ -243,7 +243,7 @@ public class GameConfig {
 	 * @return
 	 * 		a boolean that denotes whether the operation was successful
 	 */
-	public boolean saveConfig(String fileName, MainActivity activity) {
+	public boolean saveConfig(String fileName, GameMainActivity activity) {
 		
 		// if the player-name and player-type arrays are of different sizes, something
 		// is terribly wrong: give up
@@ -295,7 +295,7 @@ public class GameConfig {
 	 * @return
 	 * 		a boolean that denotes whether the operation was successful
 	 */
-	public boolean restoreSavedConfig(String fileName, MainActivity activity) {
+	public boolean restoreSavedConfig(String fileName, GameMainActivity activity) {
 		
 		// the input stream from which we will read the objects
 		ObjectInputStream ois = null;

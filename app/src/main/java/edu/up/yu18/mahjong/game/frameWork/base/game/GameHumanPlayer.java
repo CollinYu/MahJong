@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game;
+package edu.up.yu18.mahjong.game.frameWork.base.game;
 
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameOverAckAction;
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.MyNameIsAction;

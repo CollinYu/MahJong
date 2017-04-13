@@ -1,6 +1,6 @@
 package edu.up.yu18.mahjong.game.frameWork.base.infoMsg;
 
-import edu.up.yu18.mahjong.game.Game;
+import edu.up.yu18.mahjong.game.frameWork.base.game.Game;
 
 /**
  * A message from the game to a player that tells the player:

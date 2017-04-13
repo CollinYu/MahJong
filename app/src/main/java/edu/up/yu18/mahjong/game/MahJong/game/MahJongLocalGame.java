@@ -1,12 +1,14 @@
-package edu.up.yu18.mahjong.game;
+package edu.up.yu18.mahjong.game.MahJong.game;
 
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
+import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
+import edu.up.yu18.mahjong.game.frameWork.base.game.LocalGame;
 
 /**
  * Created by CollinYu on 4/12/17.
  */
 
-public class MahJongLocalGame extends LocalGame{
+public class MahJongLocalGame extends LocalGame {
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
 

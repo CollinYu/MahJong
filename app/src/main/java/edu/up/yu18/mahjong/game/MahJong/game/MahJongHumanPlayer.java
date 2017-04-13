@@ -1,22 +1,14 @@
-package edu.up.yu18.mahjong.game;
+package edu.up.yu18.mahjong.game.MahJong.game;
 
-import android.content.DialogInterface;
-import android.graphics.PorterDuff;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.media.Image;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 import edu.up.yu18.mahjong.R;
-import edu.up.yu18.mahjong.game.GameHumanPlayer;
+import edu.up.yu18.mahjong.game.frameWork.base.game.GameHumanPlayer;
 
 
 public class MahJongHumanPlayer extends GameHumanPlayer{

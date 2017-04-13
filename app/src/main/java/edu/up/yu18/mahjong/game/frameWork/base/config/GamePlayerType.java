@@ -1,6 +1,6 @@
 package edu.up.yu18.mahjong.game.frameWork.base.config;
 
-import edu.up.yu18.mahjong.game.GamePlayer;
+import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
 
 /**
  * class GamePlayerType

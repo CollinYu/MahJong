@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game;
+package edu.up.yu18.mahjong.game.MahJong.Objects;
 
 /**
  * Created by CollinYu on 3/9/17.

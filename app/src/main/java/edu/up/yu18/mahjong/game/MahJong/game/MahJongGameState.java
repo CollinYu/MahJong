@@ -1,13 +1,15 @@
-package edu.up.yu18.mahjong.game;
+package edu.up.yu18.mahjong.game.MahJong.game;
 import java.util.ArrayList;
-import edu.up.yu18.mahjong.game.actionMsg.Pong;
-import edu.up.yu18.mahjong.game.actionMsg.Chow;
-import edu.up.yu18.mahjong.game.actionMsg.Kong;
-import edu.up.yu18.mahjong.game.actionMsg.Discard;
-import edu.up.yu18.mahjong.game.infoMsg.GameState;
+
+import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.Pong;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.Chow;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.Kong;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.Discard;
+import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameState;
 
 
-public class mahJongGameState extends GameState {
+public class MahJongGameState extends GameState {
     private ArrayList<Tile> deck;
     private int[] wall;
     private int[] discardPile;
@@ -24,7 +26,7 @@ public class mahJongGameState extends GameState {
 
 
     //Constructor
-    private mahJongGameState() {
+    private MahJongGameState() {
         wall = new int[84]; // 136 - 52 Tiles initially (hands dealt before deck is made)
         discardPile = new int[84]; // at least 52 Tiles in all 4 players hands, thus max size is 84
         players = new int[4]; // 4 players
@@ -84,7 +86,7 @@ public class mahJongGameState extends GameState {
 
     // Takes an existing mahJongGameState object as a parameter to
     // initialize a new object with the same attributes
-    public mahJongGameState(mahJongGameState game) {
+    public MahJongGameState(MahJongGameState game) {
 
         // Goes through each element of int[] wall and makes it individually
         // a copy of the equivalent element of the parameter

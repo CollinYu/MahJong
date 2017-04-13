@@ -1,7 +1,7 @@
-package edu.up.yu18.mahjong.game;
+package edu.up.yu18.mahjong.game.frameWork.base.game;
 
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
-import edu.up.yu18.mahjong.MainActivity;
+import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
 
 /**
  * A player who plays a (generic) game. Each class that implements a player for
@@ -16,10 +16,10 @@ public interface GamePlayer {
 
 	// sets this player as the GUI player (implemented as final in the
 	// major player classes)
-	public abstract void gameSetAsGui(MainActivity activity);
+	public abstract void gameSetAsGui(GameMainActivity activity);
 	
 	// sets this player as the GUI player (overrideable)
-	public abstract void setAsGui(MainActivity activity);
+	public abstract void setAsGui(GameMainActivity activity);
 	
 	// sends a message to the player
 	public abstract void sendInfo(GameInfo info);

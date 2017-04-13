@@ -1,4 +1,4 @@
-package edu.up.yu18.mahjong.game;
+package edu.up.yu18.mahjong.game.MahJong.Objects;
 
 import java.util.ArrayList;
 

@@ -2,7 +2,7 @@ package edu.up.yu18.mahjong.game.frameWork.base.actionMessage;
 
 import java.io.Serializable;
 
-import edu.up.yu18.mahjong.game.GamePlayer;
+import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
 
 /**
  * An action for a generic game.  A game action is something that a player
