@@ -7,10 +7,41 @@
 
     <array name="imageIdArray">
         <item>@drawable/back_tile</item>
-        <item>@drawable/mahjong1</item>
-        <item>@drawable/mahjong3</item>
-        <item>@drawable/mahjong4</item>
-        <item>@drawable/mahjong5</item>
+        <item>@drawable/mahjongtilebamboo1</item>
+        <item>@drawable/mahjongtilebamboo2</item>
+        <item>@drawable/mahjongtilebamboo3</item>
+        <item>@drawable/mahjongtilebamboo4</item>
+        <item>@drawable/mahjongtilebamboo5</item>
+        <item>@drawable/mahjongtilebamboo6</item>
+        <item>@drawable/mahjongtilebamboo7</item>
+        <item>@drawable/mahjongtilebamboo8</item>
+        <item>@drawable/mahjongtilebamboo9</item>
+        <item>@drawable/mahjongtilecharacter1</item>
+        <item>@drawable/mahjongtilecharacter2</item>
+        <item>@drawable/mahjongtilecharacter3</item>
+        <item>@drawable/mahjongtilecharacter4</item>
+        <item>@drawable/mahjongtilecharacter5</item>
+        <item>@drawable/mahjongtilecharacter6</item>
+        <item>@drawable/mahjongtilecharacter7</item>
+        <item>@drawable/mahjongtilecharacter8</item>
+        <item>@drawable/mahjongtilecharacter9</item>
+        <item>@drawable/mahjongtiledots1</item>
+        <item>@drawable/mahjongtiledots2</item>
+        <item>@drawable/mahjongtiledots3</item>
+        <item>@drawable/mahjongtiledots4</item>
+        <item>@drawable/mahjongtiledots5</item>
+        <item>@drawable/mahjongtiledots6</item>
+        <item>@drawable/mahjongtiledots7</item>
+        <item>@drawable/mahjongtiledots8</item>
+        <item>@drawable/mahjongtiledots9</item>
+        <item>@drawable/mahjongtiledirectioneast</item>
+        <item>@drawable/mahjongtiledirectionnorth</item>
+        <item>@drawable/mahjongtiledirectionsouth</item>
+        <item>@drawable/mahjongtiledirectionwest</item>
+        <item>@drawable/mahjongtiledragongreen</item>
+        <item>@drawable/mahjongtiledragonred</item>
+        <item>@drawable/mahjongtiledragonwhite</item>
+
         <item>@drawable/mahjong6</item>
         <item>@drawable/mahjong7</item>
         <item>@drawable/mahjong8</item>
