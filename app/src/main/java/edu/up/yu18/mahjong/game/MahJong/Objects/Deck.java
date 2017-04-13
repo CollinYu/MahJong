@@ -1,17 +1,14 @@
 package edu.up.yu18.mahjong.game.MahJong.Objects;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by boylan19 on 3/8/2017.
  */
 public class Deck {
 
-    private int curNum;
-    private boolean image;
-    private int location;
     private ArrayList<Tile> deckTiles;
-    private String suit;
 
     private Deck(){
         deckTiles = new ArrayList<Tile>();
@@ -25,13 +22,19 @@ public class Deck {
             }//k
         }//j
         for (int j = 0; j < 4; j++) {
-            deckTiles.add(new Tile(4, 1, i));
-            i++;//4 is dragon
+            for (int l =0;l < 3; l++) {
+                deckTiles.add(new Tile(3, l, i));
+                i++;//4 is dragon
+            }
         }
         for (int j = 0; j < 4; j++) {
-            deckTiles.add(new Tile(5, 1, i));
-            i++;//5 is wind
+            for (int l =0;l < 4; l++) {
+                deckTiles.add(new Tile(4, l, i));
+                i++;//5 is wind
+            }
         }
+
+        Collections.shuffle(deckTiles);
 
     }
 }
