@@ -10,7 +10,7 @@ public class Tile {
     private int ID;
 
     // Constructor
-    public Tile(char s, int v, int ego){
+    public Tile(int s, int v, int ego){
         this.suit = s;
         this.val = v;
         this.ID = ego;
@@ -47,4 +47,5 @@ public class Tile {
     }
     // Gets tileID
     public int getID(){return this.ID;}
+
 }
