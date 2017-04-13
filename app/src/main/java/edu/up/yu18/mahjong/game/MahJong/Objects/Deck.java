@@ -22,12 +22,16 @@ public class Deck {
             }//k
         }//j
         for (int j = 0; j < 4; j++) {
-            deckTiles.add(new Tile(3, j, i));
-            i++;//4 is dragon
+            for (int l =0;l < 4; l++) {
+                deckTiles.add(new Tile(3, l, i));
+                i++;//4 is dragon
+            }
         }
         for (int j = 0; j < 4; j++) {
-            deckTiles.add(new Tile(4, 1, i));
-            i++;//5 is wind
+            for (int l =0;l < 4; l++) {
+                deckTiles.add(new Tile(4, l, i));
+                i++;//5 is wind
+            }
         }
 
         Collections.shuffle(deckTiles);
