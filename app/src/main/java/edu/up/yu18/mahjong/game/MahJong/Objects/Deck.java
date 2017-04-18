@@ -10,7 +10,7 @@ public class Deck {
 
     private ArrayList<Tile> deckTiles;
 
-    private Deck(){
+    public Deck(){
         deckTiles = new ArrayList<Tile>();
         int i = 0;
         for(int j = 0; j < 4; j++){
@@ -36,5 +36,8 @@ public class Deck {
 
         Collections.shuffle(deckTiles);
 
+    }
+    public ArrayList<Tile> getDeckTiles(){
+        return this.deckTiles;
     }
 }

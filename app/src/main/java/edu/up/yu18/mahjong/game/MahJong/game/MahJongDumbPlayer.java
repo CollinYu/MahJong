@@ -9,6 +9,7 @@ import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 
 public class MahJongDumbPlayer extends GameComputerPlayer {
 
+    private int myID;
     public MahJongDumbPlayer(String name){
         super(name);
     }

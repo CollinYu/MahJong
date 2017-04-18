@@ -7,21 +7,23 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import edu.up.yu18.mahjong.R;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Chow;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Kong;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Pong;
+import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
+import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameHumanPlayer;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 
 
-public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener{
-    private ImageButton tile1;
-    private ImageButton tile2;
-    private ImageButton tile3;
-    private ImageButton tile4;
-    private boolean tile1IsPressed = false;
-    private boolean tile2IsPressed;
-    private boolean tile3IsPressed;
-    private boolean tile4IsPressed;
+public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
+    private ImageButton[] tiles;
+    private boolean[] tilePressed;
     private TextView displayTextBox;
     private Button chowButton;
     private Button pongButton;
@@ -33,7 +35,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
     private GameMainActivity myActivity;
     private MahJongGameState state;
 
-    public MahJongHumanPlayer(String name){
+    public MahJongHumanPlayer(String name) {
         super(name);
     }
 
@@ -42,9 +44,24 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         return null;
     }
 
+
+    /**
+     * This is where we manipulate the gui objects in response to the gamestate having changed
+     */
+    public void updateDisplay() {
+
+    }
+
+    /**
+     * We only receive new gamestates, basically just calls updateDisplay()
+     */
     @Override
     public void receiveInfo(GameInfo info) {
+        if (!(info instanceof MahJongGameState)) return;
 
+        // update our state; then update the display
+        state = (MahJongGameState) info;
+        updateDisplay();
     }
 
 
@@ -63,15 +80,26 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             receiveInfo(state);
         }
 
-
-        tile1 = (ImageButton) activity.findViewById(R.id.tile1);
-        tile1.setOnClickListener(this);
-        tile2 = (ImageButton) activity.findViewById(R.id.tile2);
-        tile2.setOnClickListener(this);
-        tile3 = (ImageButton) activity.findViewById(R.id.tile3);
-        tile3.setOnClickListener(this);
-        tile4 = (ImageButton) activity.findViewById(R.id.tile4);
-        tile4.setOnClickListener(this);
+        tiles[0] = (ImageButton) activity.findViewById(R.id.tile1);
+        tiles[1] = (ImageButton) activity.findViewById(R.id.tile2);
+        tiles[2] = (ImageButton) activity.findViewById(R.id.tile3);
+        tiles[3] = (ImageButton) activity.findViewById(R.id.tile4);
+        tiles[4] = (ImageButton) activity.findViewById(R.id.tile5);
+        tiles[5] = (ImageButton) activity.findViewById(R.id.tile6);
+        tiles[6] = (ImageButton) activity.findViewById(R.id.tile7);
+        tiles[7] = (ImageButton) activity.findViewById(R.id.tile8);
+        tiles[8] = (ImageButton) activity.findViewById(R.id.tile9);
+        tiles[9] = (ImageButton) activity.findViewById(R.id.tile10);
+        tiles[10] = (ImageButton) activity.findViewById(R.id.tile11);
+        tiles[11] = (ImageButton) activity.findViewById(R.id.tile12);
+        tiles[12] = (ImageButton) activity.findViewById(R.id.tile13);
+        tiles[13] = (ImageButton) activity.findViewById(R.id.tile14);
+        for (int i = 0; i < tiles.length; i++) {
+            tiles[i].setOnClickListener(this);
+        }
+        for (int i = 0; i < tilePressed.length; i++) {
+            tilePressed[i] = false;
+        }
         displayTextBox = (TextView) activity.findViewById(R.id.DisplayTextBox);
         chowButton = (Button) activity.findViewById(R.id.chowButton);
         chowButton.setOnClickListener(this);
@@ -93,65 +121,96 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        if (v == chowButton){displayTextBox.setText("Invalid Move: Failed Chow");}
-        if (v == pongButton){displayTextBox.setText("Invalid Move: Failed Pong");}
-        if (v == kongButton){displayTextBox.setText("Invalid Move: Failed Kong");}
-        if (v == emoteButton){
-            String text = emoteSpinner.getSelectedItem().toString();
-            displayTextBox.setText(text);
-        }
-        if (v == discardButton){
-            if(tile1IsPressed == true)
-           {
-               tile1.setVisibility(View.INVISIBLE);
-               tile1IsPressed = false;
-          }
-        else
-        {
-            displayTextBox.setText("Invalid Move: Failed Discard");
-        }}
-        if (v == tile1) {
-            if (!tile1IsPressed) {
-                tile1.setBackgroundColor(0xFF0000B2);
-                tile1IsPressed = true;
-            } else {
-                tile1.setBackgroundColor(0xFF00B200);
-                tile1IsPressed = false;
+        // if we are not yet connected to a game, ignore
+        if (game == null) return;
+
+        // Construct the action and send it to the game
+        GameAction action = null;
+
+        if (v == chowButton) {
+            int counter = 0;
+            ArrayList<Tile> tiles = new ArrayList<>(0);
+            for (int i = 0; i < tilePressed.length; i++) {
+                if (tilePressed[i]) {
+                    tiles.add(state.getPlayerOpenHandTile(playerNum, i));
+                    counter++;
+                }
+                if (counter != 3) {
+                    displayTextBox.setText("Invalid Move!");
+                    return;
+                } else {
+                    action = new Chow(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2));
+                }
             }
         }
-        if (v == tile2) {
-            if (!tile2IsPressed) {
-                tile2.setBackgroundColor(0xFF0000B2);
-                tile2IsPressed = true;
-            } else {
-                tile2.setBackgroundColor(0xFF00B200);
-                tile2IsPressed = false;
+        if (v == pongButton) {
+            int counter = 0;
+            ArrayList<Tile> tiles = new ArrayList<>(0);
+            for (int i = 0; i < tilePressed.length; i++) {
+                if (tilePressed[i]) {
+                    tiles.add(state.getPlayerOpenHandTile(playerNum, i));
+                    counter++;
+                }
+                if (counter != 3) {
+                    displayTextBox.setText("Invalid Move!");
+                    return;
+                } else {
+                    action = new Pong(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2));
+                }
             }
         }
-        if (v == tile3) {
-            if (!tile3IsPressed) {
-                tile3.setBackgroundColor(0xFF0000B2);
-                tile3IsPressed = true;
-            } else {
-                tile3.setBackgroundColor(0xFF00B200);
-                tile3IsPressed = false;
+        if (v == kongButton) {
+            int counter = 0;
+            ArrayList<Tile> tiles = new ArrayList<>(0);
+            for (int i = 0; i < tilePressed.length; i++) {
+                if (tilePressed[i]) {
+                    tiles.add(state.getPlayerOpenHandTile(playerNum, i));
+                    counter++;
+                }
+                if (counter != 4) {
+                    displayTextBox.setText("Invalid Move!");
+                    return;
+                } else {
+                    action = new Kong(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2), tiles.get(3));
+                }
             }
         }
-        if (v == tile4) {
-            if (!tile4IsPressed) {
-                tile4.setBackgroundColor(0xFF0000B2);
-                tile4IsPressed = true;
-            } else {
-                tile4.setBackgroundColor(0xFF00B200);
-                tile4IsPressed = false;
+        /**
+         if (v == emoteButton){
+         String text = emoteSpinner.getSelectedItem().toString();
+         displayTextBox.setText(text);
+         }
+         */
+        if (v == discardButton) {
+            int counter = 0;
+            Tile tile = null;
+            for (int i = 0; i < tilePressed.length; i++) {
+                if (tilePressed[i]) {
+                    tile = state.getPlayerOpenHandTile(playerNum, i);
+                    counter++;
+                }
+                if (counter != 1) {
+                    displayTextBox.setText("Invalid Move!");
+                    return;
+                } else {
+                    action = new Discard(this, playerNum, tile);
+                }
             }
         }
-
-
-
+        for (int i = 0; i < tiles.length; i++) {
+            if (v == tiles[i]) {
+                if (!tilePressed[i]) {
+                    tiles[i].setBackgroundColor(0xFF0000B2);
+                    tilePressed[i] = true;
+                } else {
+                    tiles[i].setBackgroundColor(0xFF00B200);
+                    tilePressed[i] = false;
+                }
+                return;
+            }
         }
+        game.sendAction(action);
+    }
 
 
-
-    public void setGameOver(boolean b){}
 }
