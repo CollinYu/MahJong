@@ -1,7 +1,5 @@
 package edu.up.yu18.mahjong.game.MahJong.game;
 
-import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -12,6 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.up.yu18.mahjong.R;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Pass;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Chow;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Kong;
@@ -24,9 +23,10 @@ import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 
 
 public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
-    private ImageButton[] myTiles;
-    private boolean[] tilePressed;
-    private ImageView[][] playerClosedHand;
+    private Button passButton;
+    private ImageButton[] myTiles = new ImageButton[14];
+    private boolean[] tilePressed = new boolean[14];
+    private ImageView[][] playerClosedHand = new ImageView[3][14];
     private ImageButton[][] playerOpenHand;
     private TextView displayTextBox;
     private Button chowButton;
@@ -171,13 +171,23 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
             }
         }
+
         for (int i = 0; i < 14; i++){
+            if (state.getPlayerClosedHandTile(playerNum, i) != null) {
+                playerClosedHand[0][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
+            }
             playerClosedHand[0][i].setImageResource(R.mipmap.mahjongtile_back2);
         }
         for (int i = 0; i < 14; i++){
+            if (state.getPlayerClosedHandTile(playerNum, i) != null) {
+                playerClosedHand[1][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
+            }
             playerClosedHand[1][i].setImageResource(R.mipmap.mahjongtile_back2);
         }
         for (int i = 0; i < 14; i++){
+            if (state.getPlayerClosedHandTile(playerNum, i) != null) {
+                playerClosedHand[2][i].setBackgroundResource(R.mipmap.mahjongtile_back);
+            }
             playerClosedHand[2][i].setImageResource(R.mipmap.mahjongtile_back);
         }
 
@@ -329,7 +339,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             receiveInfo(state);
         }
 
-
+        passButton = (Button) activity.findViewById((R.id.PassButton));
         playerClosedHand[0][0] = (ImageView) activity.findViewById(R.id.player2Tile1);
         playerClosedHand[0][1] = (ImageView) activity.findViewById(R.id.player2Tile2);
         playerClosedHand[0][2] = (ImageView) activity.findViewById(R.id.player2Tile3);
@@ -498,6 +508,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 }
                 return;
             }
+        }
+        if (v == passButton){
+            action = new Pass();
         }
         game.sendAction(action);
     }
