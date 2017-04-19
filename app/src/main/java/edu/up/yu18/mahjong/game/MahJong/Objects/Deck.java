@@ -35,6 +35,9 @@ public class Deck {
         }
 
         Collections.shuffle(deckTiles);
+        for(int p = 0; p < deckTiles.size(); p++){
+            deckTiles.get(p).setID(p);
+        }
 
     }
     public ArrayList<Tile> getDeckTiles(){

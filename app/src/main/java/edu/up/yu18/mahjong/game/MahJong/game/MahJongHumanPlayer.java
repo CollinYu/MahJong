@@ -26,7 +26,7 @@ import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
     private ImageButton[] myTiles;
     private boolean[] tilePressed;
-    private ImageButton[][] playerClosedHand;
+    private ImageView[][] playerClosedHand;
     private ImageButton[][] playerOpenHand;
     private TextView displayTextBox;
     private Button chowButton;
@@ -180,7 +180,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         for (int i = 0; i < 14; i++){
             playerClosedHand[2][i].setBackgroundResource(R.mipmap.mahjongtile_back);
         }
-        
+
        /* for (int k = 0; k < 4; k++) {
             for (int i = 0; i < 14; i++) {
                 if (state.getPlayerClosedHandTile(playerNum, i) != null) {
@@ -350,7 +350,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         playerClosedHand[1][1] = (ImageView) activity.findViewById(R.id.player3Tile2);
         playerClosedHand[1][2] = (ImageView) activity.findViewById(R.id.player3Tile3);
         playerClosedHand[1][3] = (ImageView) activity.findViewById(R.id.player3Tile4);
-        playerClosedHand[1][4] = (ImageView) activity.findViewById(R.id.playerT3ile5);
+        playerClosedHand[1][4] = (ImageView) activity.findViewById(R.id.player3Tile5);
         playerClosedHand[1][5] = (ImageView) activity.findViewById(R.id.player3Tile6);
         playerClosedHand[1][6] = (ImageView) activity.findViewById(R.id.player3Tile7);
         playerClosedHand[1][7] = (ImageView) activity.findViewById(R.id.player3Tile8);
@@ -424,50 +424,44 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         GameAction action = null;
 
         if (v == chowButton) {
-            int counter = 0;
             ArrayList<Tile> tiles = new ArrayList<>(0);
             for (int i = 0; i < tilePressed.length; i++) {
                 if (tilePressed[i]) {
                     tiles.add(state.getPlayerOpenHandTile(playerNum, i));
-                    counter++;
                 }
-                if (counter != 3) {
+                if (tiles.size() != 2) {
                     displayTextBox.setText("Invalid Move!");
                     return;
                 } else {
-                    action = new Chow(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2));
+                    action = new Chow(this, playerNum, tiles.get(0), tiles.get(1), state.getCurrDiscard());
                 }
             }
         }
         if (v == pongButton) {
-            int counter = 0;
             ArrayList<Tile> tiles = new ArrayList<>(0);
             for (int i = 0; i < tilePressed.length; i++) {
                 if (tilePressed[i]) {
                     tiles.add(state.getPlayerOpenHandTile(playerNum, i));
-                    counter++;
                 }
-                if (counter != 3) {
+                if (tiles.size() != 2) {
                     displayTextBox.setText("Invalid Move!");
                     return;
                 } else {
-                    action = new Pong(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2));
+                    action = new Pong(this, playerNum, tiles.get(0), tiles.get(1), state.getCurrDiscard());
                 }
             }
         }
         if (v == kongButton) {
-            int counter = 0;
             ArrayList<Tile> tiles = new ArrayList<>(0);
             for (int i = 0; i < tilePressed.length; i++) {
                 if (tilePressed[i]) {
                     tiles.add(state.getPlayerOpenHandTile(playerNum, i));
-                    counter++;
                 }
-                if (counter != 4) {
+                if (tiles.size() != 3) {
                     displayTextBox.setText("Invalid Move!");
                     return;
                 } else {
-                    action = new Kong(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2), tiles.get(3));
+                    action = new Kong(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2), state.getCurrDiscard());
                 }
             }
         }

@@ -1,7 +1,10 @@
 package edu.up.yu18.mahjong.game.MahJong.game;
 
+import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameComputerPlayer;
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
+import java.lang.Math;
+import java.util.Random;
 
 /**
  * Created by CollinYu on 4/12/17.
@@ -9,12 +12,19 @@ import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 
 public class MahJongDumbPlayer extends GameComputerPlayer {
 
-    private int myID;
+    private MahJongGameState state;
+
     public MahJongDumbPlayer(String name){
         super(name);
     }
     @Override
     protected void receiveInfo(GameInfo info) {
-
+        if(info instanceof MahJongGameState){
+            state = new MahJongGameState((MahJongGameState) info);
+        }
+        if(state.getGameStage() == this.playerNum*2 -1){
+            Discard d = new Discard(this, playerNum, state.getPlayerOpenHandTile(playerNum,0));
+            game.sendAction(d);
+        }
     }
 }

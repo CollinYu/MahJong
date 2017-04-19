@@ -55,7 +55,7 @@ public class MahJongMainActivity extends GameMainActivity{
             // - from 1 to 2 players
             // - name of game is "MahJong Game"
             // - port number as defined above
-            GameConfig defaultConfig = new GameConfig(playerTypes, 1, 2, "MahJong Game",
+            GameConfig defaultConfig = new GameConfig(playerTypes, 4, 4, "MahJong Game",
                     PORT_NUMBER);
 
             // Add the default players to the configuration

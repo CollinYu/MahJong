@@ -18,9 +18,11 @@ public class Tile {
 
     // Checks if this tile is "above" another tile
     public boolean isAbove(Tile t){
-        if (this.suit == t.suit){
-            if(this.val - t.val == 1){
-                return true;
+        if(this.suit < 3) {
+            if (this.suit == t.suit) {
+                if (this.val - t.val == 1) {
+                    return true;
+                }
             }
         }
         return false;
@@ -28,9 +30,11 @@ public class Tile {
 
     // Checks if this tile is "below" another tile
     public boolean isBelow(Tile t){
-        if (this.suit == t.suit){
-            if(this.val - t.val == -1){
-                return true;
+        if(this.suit < 3) {
+            if (this.suit == t.suit) {
+                if (this.val - t.val == -1) {
+                    return true;
+                }
             }
         }
         return false;
@@ -49,5 +53,7 @@ public class Tile {
     public int getID(){return this.ID;}
     public int getSuit(){return this.suit;}
     public int getVal(){return this.val;}
+
+    public void setID(int id){this.ID = id;}
 
 }
