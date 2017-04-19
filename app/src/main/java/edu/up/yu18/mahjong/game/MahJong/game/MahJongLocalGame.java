@@ -3,6 +3,7 @@ package edu.up.yu18.mahjong.game.MahJong.game;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Chow;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Kong;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Pass;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Pong;
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.TimerAction;
@@ -68,23 +69,13 @@ public class MahJongLocalGame extends LocalGame {
         if (action instanceof Discard){
             Discard d = (Discard) action;
             state.Discard(d);
-            timer.start();
             return true;
         }
-        if (action instanceof TimerAction){
-           if(((TimerAction) action).getTimer().getTicks() >= 5){
-               if (state.getGameStage() != 8) {
-                   state.setGameStage(state.getGameStage() + 1);
-               }
-               else {
-                   state.setGameStage(1);
-               }
-               state.pass();
-               timer.stop();
-               timer.reset();
-           }
-
+        if (action instanceof Pass){
+            state.pass();
+            return true;
         }
+
         return false;
     }
 }

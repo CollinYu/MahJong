@@ -16,27 +16,27 @@ public class Deck {
         for(int j = 0; j < 4; j++){
             for(int k = 0; k < 3; k++){
                 for(int l = 0; l < 9; l++) {
-                    deckTiles.add(new Tile(k,l,i));
+                    deckTiles.add(new Tile(k,l,i,0));
                     i++;
                 }//l
             }//k
         }//j
         for (int j = 0; j < 4; j++) {
             for (int l =0;l < 3; l++) {
-                deckTiles.add(new Tile(3, l, i));
+                deckTiles.add(new Tile(3, l, i,0));
                 i++;//3 is dragon
             }
         }
         for (int j = 0; j < 4; j++) {
             for (int l =0;l < 4; l++) {
-                deckTiles.add(new Tile(4, l, i));
+                deckTiles.add(new Tile(4, l, i,0));
                 i++;//4 is wind
             }
         }
 
         Collections.shuffle(deckTiles);
         for(int p = 0; p < deckTiles.size(); p++){
-            deckTiles.get(p).setID(p);
+            deckTiles.get(p).setDeckPos(p);
         }
 
     }

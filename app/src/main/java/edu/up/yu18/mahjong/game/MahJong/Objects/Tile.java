@@ -8,12 +8,13 @@ public class Tile {
     private int suit;
     private int val;
     private int ID;
-
+    private int deckPos;
     // Constructor
-    public Tile(int s, int v, int ego){
+    public Tile(int s, int v, int ego, int deckPos){
         this.suit = s;
         this.val = v;
         this.ID = ego;
+        this.deckPos = deckPos;
     }
 
     // Checks if this tile is "above" another tile
@@ -53,7 +54,9 @@ public class Tile {
     public int getID(){return this.ID;}
     public int getSuit(){return this.suit;}
     public int getVal(){return this.val;}
+    public int getDeckPos(){return this.deckPos;}
 
+    public void setDeckPos(int dP){this.deckPos = dP;}
     public void setID(int id){this.ID = id;}
 
 }
