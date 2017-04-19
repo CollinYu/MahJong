@@ -23,7 +23,7 @@ import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 
 
 public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
-    private ImageButton passButton;
+    private Button passButton;
     private ImageButton[] myTiles = new ImageButton[14];
     private boolean[] tilePressed = new boolean[14];
     private ImageView[][] playerClosedHand = new ImageView[3][14];
@@ -336,7 +336,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             receiveInfo(state);
         }
 
-        passButton = (ImageButton) activity.findViewById((R.id.PassButton));
+        passButton = (Button) activity.findViewById((R.id.PassButton));
         playerClosedHand[0][0] = (ImageView) activity.findViewById(R.id.player2Tile1);
         playerClosedHand[0][1] = (ImageView) activity.findViewById(R.id.player2Tile2);
         playerClosedHand[0][2] = (ImageView) activity.findViewById(R.id.player2Tile3);
