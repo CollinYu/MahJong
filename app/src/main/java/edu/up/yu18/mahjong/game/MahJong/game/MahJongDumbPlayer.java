@@ -22,7 +22,7 @@ public class MahJongDumbPlayer extends GameComputerPlayer {
         if(info instanceof MahJongGameState){
             state = new MahJongGameState((MahJongGameState) info);
         }
-        if(state.getGameStage() == this.playerNum*2 -1){
+        if(state.getGameStage() == (this.playerNum+1)*2-1){
             Discard d = new Discard(this, playerNum, state.getPlayerOpenHandTile(playerNum,0));
             game.sendAction(d);
         }
