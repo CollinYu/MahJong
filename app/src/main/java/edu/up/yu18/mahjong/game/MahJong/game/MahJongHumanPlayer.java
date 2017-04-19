@@ -194,7 +194,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
         for (int k = 0; k < 1; k++) {
             for (int n = 0; n < 14; n++) {
-                if (state.getPlayerOpenHandTile(playerNum, n) != null) {
+                if ((state.getPlayerOpenHandTile(playerNum, n) != null) && (state.getPlayerOpenHands(playerNum,n) != 136)) {
                     //if suit is dots suit is 0
                     if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 0) {
                         if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
@@ -291,6 +291,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
                     }
 
+                }
+                else   {
+                    playerOpenHand[k][n].setVisibility(View.INVISIBLE);
                 }
             }
         }
