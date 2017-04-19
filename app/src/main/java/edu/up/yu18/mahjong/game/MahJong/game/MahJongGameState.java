@@ -40,11 +40,11 @@ public class MahJongGameState extends GameState {
         for(int i = 0; i < 14; i++) {
             playerClosedHands[0][i] = i;
         }
-        for(int i = 1; i < 4; i++){
-            for( int j = 0; j < 13; j++){
-                playerClosedHands[i][j] = 1 + i*13 + j;
+        for(int l = 1; l < 4; l++){
+            for( int q = 0; q < 13; q++){
+                playerClosedHands[l][q] = 1 + l*13 + q;
             }
-            playerClosedHands[i][13] = 136;
+            playerClosedHands[l][13] = 136;
         }
         
         wall = new int[84]; // 136 - 52 Tiles initially (hands dealt before deck is made)
@@ -54,6 +54,11 @@ public class MahJongGameState extends GameState {
         deckPosition = 52;         
         playerNames = new String[4]; // 4 players
         playerOpenHands = new int[4][16]; // 4 players, 16 cards max (4 Kongs)
+        for(int k = 0; k < 4; k++){
+            for(int j=0; j < 16; j++){
+                playerOpenHands[k][j] = 136;
+            }
+        }
         gameStage = 1;
     }
 
@@ -95,35 +100,39 @@ public class MahJongGameState extends GameState {
         // a copy of the equivalent element of the parameter
         deck = game.deck;
         wall = new int[game.wall.length];
-        for (int i = 0; i < game.wall.length; i++) {
-            wall[i] = game.wall[i];
+        for (int a = 0; a < game.wall.length; a++) {
+            wall[a] = game.wall[a];
         }
 
         discardPile = new int[game.discardPile.length];
-        for (int i = 0; i < game.discardPile.length; i++) {
-            discardPile[i] = game.discardPile[i];
+        for (int b = 0; b < game.discardPile.length; b++) {
+            discardPile[b] = game.discardPile[b];
         }
 
         playerNames = new String[game.playerNames.length];
-        for (int i = 0; i < game.playerNames.length; i++) {
-            if (playerNames[i] != null) {
-                playerNames[i] = game.playerNames[i];
+        for (int c = 0; c < game.playerNames.length; c++) {
+            if (playerNames[c] != null) {
+                playerNames[c] = game.playerNames[c];
             }
         }
 
 
-        playerClosedHands = new int[game.playerClosedHands.length][]; // sets the "array of arrays" to the equivalent size - playerClosedHands[copies this part's length][]
-        for (int i = 0; i < game.playerClosedHands.length; i++) { // goes through each array in the "array of arrays" - playerClosedHands[goes through this part][]
-            playerClosedHands[i] = Arrays.copyOf(game.playerClosedHands[i], game.playerClosedHands[i].length); // sets array length to that of the equivalent array - playerClosedHands[][copies this part's length]
+        playerClosedHands = new int[4][14]; // sets the "array of arrays" to the equivalent size - playerClosedHands[copies this part's length][]
+        for (int d = 0; d < 4; d++) { // goes through each array in the "array of arrays" - playerClosedHands[goes through this part][]
+            for (int j = 0; j < 4; j++) {// sets array length to that of the equivalent array - playerClosedHands[][copies this part's length]
+                playerClosedHands[d][j] = game.playerClosedHands[d][j];
+            }
         }
 
-        playerOpenHands = new int[game.playerOpenHands.length][];
-        for (int i = 0; i < game.playerOpenHands.length; i++) {
-            playerOpenHands[i] = Arrays.copyOf(game.playerOpenHands[i], game.playerOpenHands.length);
+        playerOpenHands = new int[4][16];
+        for (int e = 0; e < 4; e++) {
+            for (int j = 0; j < 4; j++) {
+                playerOpenHands[e][j] = game.playerOpenHands[e][j];
+            }
         }
 
-        for(int i = 0; i < 4; i++){
-            sort(i);
+        for(int g = 0; g < 4; g++){
+            sort(g);
         }
         gameStage = game.gameStage; // pretty obvious how this one works
 
