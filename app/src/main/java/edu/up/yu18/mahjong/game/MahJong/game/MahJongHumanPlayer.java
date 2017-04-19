@@ -174,21 +174,18 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
         for (int i = 0; i < 14; i++){
             if (state.getPlayerClosedHandTile(playerNum, i) != null) {
-                playerClosedHand[0][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
+                playerClosedHand[0][i].setImageResource(R.mipmap.mahjongtile_back2);
             }
-            playerClosedHand[0][i].setImageResource(R.mipmap.mahjongtile_back2);
         }
         for (int i = 0; i < 14; i++){
             if (state.getPlayerClosedHandTile(playerNum, i) != null) {
-                playerClosedHand[1][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
+                playerClosedHand[1][i].setImageResource(R.mipmap.mahjongtile_back2);
             }
-            playerClosedHand[1][i].setImageResource(R.mipmap.mahjongtile_back2);
         }
         for (int i = 0; i < 14; i++){
             if (state.getPlayerClosedHandTile(playerNum, i) != null) {
-                playerClosedHand[2][i].setBackgroundResource(R.mipmap.mahjongtile_back);
+                playerClosedHand[2][i].setImageResource(R.mipmap.mahjongtile_back);
             }
-            playerClosedHand[2][i].setImageResource(R.mipmap.mahjongtile_back);
         }
 
        /* for (int k = 0; k < 4; k++) {
