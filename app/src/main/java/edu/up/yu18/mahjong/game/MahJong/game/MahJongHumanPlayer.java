@@ -415,13 +415,14 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         kongButton.setOnClickListener(this);
         discardButton = (Button) activity.findViewById(R.id.discardButton);
         discardButton.setOnClickListener(this);
+        /**
         emoteButton = (Button) activity.findViewById(R.id.emoteButton);
         emoteButton.setOnClickListener(this);
         emoteSpinner = (Spinner) activity.findViewById(R.id.EmoteSpinner);
+         */
         scoreSpinner = (Spinner) activity.findViewById(R.id.ScoreSpinner);
         String[] emoteSpinner = activity.getResources().getStringArray(R.array.emote_choices);
         String[] scoreSpinner = activity.getResources().getStringArray(R.array.emote_choices);
-
     }
 
     @Override
@@ -486,7 +487,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             Tile tile = null;
             for (int i = 0; i < tilePressed.length; i++) {
                 if (tilePressed[i]) {
-                    tile = state.getPlayerOpenHandTile(playerNum, i);
+                    tile = state.getPlayerClosedHandTile(playerNum, i);
                     counter++;
                 }
                 if (counter != 1) {
@@ -502,9 +503,11 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 if (!tilePressed[i]) {
                     myTiles[i].setBackgroundColor(0xFF0000B2);
                     tilePressed[i] = true;
+                    updateDisplay();
                 } else {
                     myTiles[i].setBackgroundColor(0xFF00B200);
                     tilePressed[i] = false;
+                    updateDisplay();
                 }
                 return;
             }

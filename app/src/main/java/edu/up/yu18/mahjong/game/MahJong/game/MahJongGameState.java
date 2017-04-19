@@ -122,6 +122,9 @@ public class MahJongGameState extends GameState {
             playerOpenHands[i] = Arrays.copyOf(game.playerOpenHands[i], game.playerOpenHands.length);
         }
 
+        for(int i = 0; i < 4; i++){
+            sort(i);
+        }
         gameStage = game.gameStage; // pretty obvious how this one works
 
     }
@@ -321,7 +324,7 @@ public class MahJongGameState extends GameState {
 
     public void Discard(Discard d) {
         // Remove it from closedhand
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 14; i++) {
             if (this.playerClosedHands[d.getPlayerID()][i] == d.getTile().getDeckPos()) {
                 setPlayerClosedHandTile(d.getPlayerID(), -1, i);
                 return;
@@ -350,15 +353,15 @@ public class MahJongGameState extends GameState {
     }
     public void sort(int pID){
         int temp = 0;
-        for (int i = 0; i < playerClosedHands[pID].length - 1; i++) {
-            for (int j = i + 1; j < playerClosedHands[pID].length; j++) {
-                if (deck.get(playerClosedHands[pID][i] ).getID() > deck.get(playerClosedHands[pID][j]).getID()) {
-                    temp = playerClosedHands[pID][j];
-                    playerClosedHands[pID][j] = playerClosedHands[pID][i];
-                    playerClosedHands[pID][i] = temp;
+            for (int i = 0; i < playerClosedHands[pID].length - 1; i++) {
+                for (int j = i + 1; j < playerClosedHands[pID].length; j++) {
+                    if (deck.get(playerClosedHands[pID][i]).getID() > deck.get(playerClosedHands[pID][j]).getID()) {
+                        temp = playerClosedHands[pID][j];
+                        playerClosedHands[pID][j] = playerClosedHands[pID][i];
+                        playerClosedHands[pID][i] = temp;
+                    }
                 }
             }
-        }
 
     }
     
@@ -390,7 +393,7 @@ public class MahJongGameState extends GameState {
                     }
                 } catch (NullPointerException n){}
                 try {
-                    if (i + 6 > playerOpenHands[pID].length) {
+                    if (i + 3 > playerOpenHands[pID].length) {
                         if (deck.get(playerOpenHands[pID][i + 4]).isBelow(deck.get(playerOpenHands[pID][i + 5]))) {
                             playerMJProg[pID]++;
                         }
