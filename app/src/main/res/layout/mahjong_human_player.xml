@@ -1209,7 +1209,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile7"
-            android:background="@drawable/mahjongtilecharacter8"/>
+            android:background="@drawable/mahjongtilecharacter8"
+            android:adjustViewBounds="false" />
 
     </LinearLayout>
 
