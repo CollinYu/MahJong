@@ -47,5 +47,7 @@ public class Tile {
     }
     // Gets tileID
     public int getID(){return this.ID;}
+    public int getSuit(){return this.suit;}
+    public int getVal(){return this.val;}
 
 }

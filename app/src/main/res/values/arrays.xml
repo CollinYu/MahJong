@@ -6,7 +6,7 @@
      second elements of each correspond, etc. -->
 
     <array name="imageIdArray">
-        <item>@drawable/back_tile</item>
+        <item>@mipmap/back_tile</item>
         <item>@drawable/mahjongtilebamboo1</item>
         <item>@drawable/mahjongtilebamboo2</item>
         <item>@drawable/mahjongtilebamboo3</item>
