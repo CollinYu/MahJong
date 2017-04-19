@@ -27,7 +27,7 @@ public class MahJongDumbPlayer extends GameComputerPlayer {
             Discard disc = new Discard(this, playerNum, state.getPlayerOpenHandTile(playerNum,0));
             game.sendAction(disc);
         }
-        else if (state.getGameStage() % 2 == 0){
+        else if (state.getGameStage() % 2 == 0 && !state.hasPassed(this.playerNum)){
             Pass p = new Pass(this, this.playerNum);
             game.sendAction(p);
         }

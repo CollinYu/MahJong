@@ -1475,8 +1475,7 @@
             android:textColor="#FFFFFF"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:textSize="20sp"
-            android:clickable="true" />
+            android:textSize="20sp" />
 
         <Button
             android:layout_width="0dp"

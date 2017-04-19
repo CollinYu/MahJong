@@ -96,6 +96,7 @@ public class MahJongGameState extends GameState {
         this.gameStage = stage;
     }
     public int getGameStage() {return this.gameStage;}
+    public boolean hasPassed(int pID) {return passingPlayers[pID];}
 
     // Takes an existing mahJongGameState object as a parameter to
     // initialize a new object with the same attributes

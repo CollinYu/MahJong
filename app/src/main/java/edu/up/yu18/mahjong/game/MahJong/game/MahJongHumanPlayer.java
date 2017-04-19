@@ -342,7 +342,6 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             receiveInfo(state);
         }
 
-        passButton = (Button) activity.findViewById((R.id.PassButton));
         playerClosedHand[0][0] = (ImageView) activity.findViewById(R.id.player2Tile1);
         playerClosedHand[0][1] = (ImageView) activity.findViewById(R.id.player2Tile2);
         playerClosedHand[0][2] = (ImageView) activity.findViewById(R.id.player2Tile3);
@@ -532,6 +531,8 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         kongButton.setOnClickListener(this);
         discardButton = (Button) activity.findViewById(R.id.discardButton);
         discardButton.setOnClickListener(this);
+        passButton = (Button) activity.findViewById((R.id.PassButton));
+        passButton.setOnClickListener(this);
         /**
         emoteButton = (Button) activity.findViewById(R.id.emoteButton);
         emoteButton.setOnClickListener(this);
@@ -596,6 +597,10 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 }
             }
         }
+        if (v == passButton){
+            action = new Pass(this, this.playerNum);
+            displayTextBox.setText("Passed");
+        }
         /**
          if (v == emoteButton){
          String text = emoteSpinner.getSelectedItem().toString();
@@ -620,25 +625,23 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     tilePressed[pos] = !tilePressed[pos];
                     action = new Discard(this, playerNum, tile);
                     game.sendAction(action);
+                    displayTextBox.setText("Tile Discarded");
                 }
 
         }
         for (int i = 0; i < myTiles.length; i++) {
             if (v == myTiles[i]) {
                 if (!tilePressed[i]) {
+                    updateDisplay();
                     myTiles[i].setBackgroundTintMode(PorterDuff.Mode.MULTIPLY);
                     tilePressed[i] = true;
-                    updateDisplay();
                 } else {
+                    updateDisplay();
                     myTiles[i].setBackgroundTintMode(PorterDuff.Mode.SRC_ATOP);
                     tilePressed[i] = false;
-                    updateDisplay();
                 }
                 return;
             }
-        }
-        if (v == passButton){
-            action = new Pass(this, this.playerNum);
         }
         if (action != null) {
             game.sendAction(action);
