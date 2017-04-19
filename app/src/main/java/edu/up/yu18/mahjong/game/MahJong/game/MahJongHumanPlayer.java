@@ -1,5 +1,6 @@
 package edu.up.yu18.mahjong.game.MahJong.game;
 
+import android.graphics.PorterDuff;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -19,11 +20,13 @@ import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameHumanPlayer;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
+import edu.up.yu18.mahjong.game.frameWork.base.game.LocalGame;
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 
 
 public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
     private Button passButton;
+    protected MahJongLocalGame MJLG;
     private ImageButton[] myTiles = new ImageButton[14];
     private boolean[] tilePressed = new boolean[14];
     private ImageView[][] playerClosedHand = new ImageView[3][14];
@@ -61,23 +64,23 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                         for (int j = 0; j < 9; j++) {
                             if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
                                 if (j == 0) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledots1);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots1);
                                 } else if (j == 1) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledots2);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots2);
                                 } else if (j == 2) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledots3);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots3);
                                 } else if (j == 3) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledots4);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots4);
                                 } else if (j == 4) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledots5);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots5);
                                 } else if (j == 5) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledots6);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots6);
                                 } else if (j == 6) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledots7);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots7);
                                 } else if (j == 7) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledots8);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots8);
                                 } else if (j == 8) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledots9);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots9);
                                 }
                             }
                         }
@@ -87,23 +90,23 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                         for (int j = 0; j < 9; j++) {
                             if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
                                 if (j == 0) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilebamboo1);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo1);
                                 } else if (j == 1) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilebamboo2);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo2);
                                 } else if (j == 2) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilebamboo3);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo3);
                                 } else if (j == 3) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilebamboo4);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo4);
                                 } else if (j == 4) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilebamboo5);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo5);
                                 } else if (j == 5) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilebamboo6);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo6);
                                 } else if (j == 6) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilebamboo7);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo7);
                                 } else if (j == 7) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilebamboo8);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo8);
                                 } else if (j == 8) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilebamboo9);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo9);
                                 }
                             }
                         }
@@ -113,23 +116,23 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                         for (int j = 0; j < 9; j++) {
                             if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
                                 if (j == 0) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilecharacter1);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter1);
                                 } else if (j == 1) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilecharacter2);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter2);
                                 } else if (j == 2) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilecharacter3);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter3);
                                 } else if (j == 3) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilecharacter4);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter4);
                                 } else if (j == 4) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilecharacter5);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter5);
                                 } else if (j == 5) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilecharacter6);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter6);
                                 } else if (j == 6) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilecharacter7);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter7);
                                 } else if (j == 7) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilecharacter8);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter8);
                                 } else if (j == 8) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtilecharacter9);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter9);
                                 }
                             }
                         }
@@ -139,11 +142,11 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                         for (int j = 0; j < 3; j++) {
                             if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
                                 if (j == 0) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledragongreen);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledragongreen);
                                 } else if (j == 1) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledragonred);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledragonred);
                                 } else if (j == 2) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledragonwhite);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledragonwhite);
                                 }
                             }
                         }
@@ -154,13 +157,13 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                         for (int j = 0; j < 4; j++) {
                             if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
                                 if (j == 0) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledirectioneast);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectioneast);
                                 } else if (j == 1) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledirectionnorth);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectionnorth);
                                 } else if (j == 2) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledirectionsouth);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectionsouth);
                                 } else if (j == 3) {
-                                    myTiles[i].setImageResource(R.drawable.mahjongtiledirectionwest);
+                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectionwest);
                                 }
                             }
                         }
@@ -174,17 +177,17 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
         for (int i = 0; i < 14; i++){
             if (state.getPlayerClosedHandTile(playerNum, i) != null) {
-                playerClosedHand[0][i].setImageResource(R.mipmap.mahjongtile_back2);
+                playerClosedHand[0][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
             }
         }
         for (int i = 0; i < 14; i++){
             if (state.getPlayerClosedHandTile(playerNum, i) != null) {
-                playerClosedHand[1][i].setImageResource(R.mipmap.mahjongtile_back2);
+                playerClosedHand[1][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
             }
         }
         for (int i = 0; i < 14; i++){
             if (state.getPlayerClosedHandTile(playerNum, i) != null) {
-                playerClosedHand[2][i].setImageResource(R.mipmap.mahjongtile_back);
+                playerClosedHand[2][i].setBackgroundResource(R.mipmap.mahjongtile_back);
             }
         }
 
@@ -420,6 +423,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         scoreSpinner = (Spinner) activity.findViewById(R.id.ScoreSpinner);
         String[] emoteSpinner = activity.getResources().getStringArray(R.array.emote_choices);
         String[] scoreSpinner = activity.getResources().getStringArray(R.array.emote_choices);
+        if (state != null) {
+            receiveInfo(state);
+        }
     }
 
     @Override
@@ -486,23 +492,24 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 if (tilePressed[i]) {
                     tile = state.getPlayerClosedHandTile(playerNum, i);
                     counter++;
-                }
+                 }
+            }
                 if (counter != 1) {
                     displayTextBox.setText("Invalid Move!");
                     return;
                 } else {
                     action = new Discard(this, playerNum, tile);
                 }
-            }
+
         }
         for (int i = 0; i < myTiles.length; i++) {
             if (v == myTiles[i]) {
                 if (!tilePressed[i]) {
-                    myTiles[i].setBackgroundColor(0xFF0000B2);
+                    myTiles[i].setBackgroundTintMode(PorterDuff.Mode.MULTIPLY);
                     tilePressed[i] = true;
                     updateDisplay();
                 } else {
-                    myTiles[i].setBackgroundColor(0xFF00B200);
+                    myTiles[i].setBackgroundTintMode(PorterDuff.Mode.SRC_ATOP);
                     tilePressed[i] = false;
                     updateDisplay();
                 }
@@ -512,7 +519,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         if (v == passButton){
             action = new Pass();
         }
-        game.sendAction(action);
+            game.sendAction(action);
     }
 
 

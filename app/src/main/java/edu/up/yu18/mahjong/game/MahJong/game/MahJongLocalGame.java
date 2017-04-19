@@ -34,7 +34,7 @@ public class MahJongLocalGame extends LocalGame {
     @Override
     protected boolean canMove(int playerIdx) {
         if (state.getGameStage() % 2 == 0){return true;}
-        if (state.getGameStage() == playerIdx*2 -1){return true;}
+        if (state.getGameStage() == (playerIdx+1)*2 -1){return true;}
         else{return false;}
     }
 
@@ -42,7 +42,7 @@ public class MahJongLocalGame extends LocalGame {
     protected String checkIfGameOver() {
         for(int i = 0; i < 4; i++){
             if(state.hasMahJong(i)){
-                String victoryMsg = "Player " + i + " has won the game!";
+                String victoryMsg = "Player " + i+1 + " has won the game!";
                 return victoryMsg;
             }
         }

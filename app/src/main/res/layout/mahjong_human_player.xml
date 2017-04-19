@@ -1161,7 +1161,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/tile1"
-            android:background="@drawable/mahjongtiledots1" />
+            android:background="@drawable/mahjongtiledots1"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop" />
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1169,7 +1171,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile2"
-            android:background="@drawable/mahjongtiledots2"/>
+            android:background="@drawable/mahjongtiledots2"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop" />
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1177,7 +1181,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile3"
-            android:background="@drawable/mahjongtiledots3"/>
+            android:background="@drawable/mahjongtiledots3"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1185,7 +1191,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile4"
-            android:background="@drawable/mahjongtiledots4"/>
+            android:background="@drawable/mahjongtiledots4"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1193,7 +1201,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile5"
-            android:background="@drawable/mahjongtilebamboo3"/>
+            android:background="@drawable/mahjongtilebamboo3"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1201,7 +1211,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile6"
-            android:background="@drawable/mahjongtilebamboo8"/>
+            android:background="@drawable/mahjongtilebamboo8"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1210,6 +1222,8 @@
             android:layout_weight="1"
             android:id="@+id/tile7"
             android:background="@drawable/mahjongtilecharacter8"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"
             android:adjustViewBounds="false" />
 
     </LinearLayout>
@@ -1227,7 +1241,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile8"
-            android:background="@drawable/mahjongtilecharacter4"/>
+            android:background="@drawable/mahjongtilecharacter4"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1235,7 +1251,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile9"
-            android:background="@drawable/mahjongtilecharacter5"/>
+            android:background="@drawable/mahjongtilecharacter5"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1243,7 +1261,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile10"
-            android:background="@drawable/mahjongtilecharacter8"/>
+            android:background="@drawable/mahjongtilecharacter8"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1251,7 +1271,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile11"
-            android:background="@drawable/mahjongtilebamboo9"/>
+            android:background="@drawable/mahjongtilebamboo9"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1259,7 +1281,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile12"
-            android:background="@drawable/mahjongtiledots9"/>
+            android:background="@drawable/mahjongtiledots9"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1267,7 +1291,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile13"
-            android:background="@drawable/mahjongtiledirectionnorth"/>
+            android:background="@drawable/mahjongtiledirectionnorth"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"/>
 
         <ImageButton
             android:layout_marginStart="40dp"
@@ -1275,7 +1301,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile14"
-            android:background="@drawable/mahjongtiledragonred"/>
+            android:background="@drawable/mahjongtiledragonred"
+            android:backgroundTint="#680000FF"
+            android:backgroundTintMode="src_atop"/>
 
 </LinearLayout>
 </LinearLayout>

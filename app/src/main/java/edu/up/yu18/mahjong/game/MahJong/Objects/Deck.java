@@ -35,6 +35,7 @@ public class Deck {
         }
 
         Collections.shuffle(deckTiles);
+        deckTiles.add(new Tile(0,0,0,0));
         for(int p = 0; p < deckTiles.size(); p++){
             deckTiles.get(p).setDeckPos(p);
         }
