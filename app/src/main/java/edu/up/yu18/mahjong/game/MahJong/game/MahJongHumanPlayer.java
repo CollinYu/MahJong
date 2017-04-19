@@ -31,7 +31,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
     private boolean[] tilePressed = new boolean[14];
     private ImageView[][] playerClosedHand = new ImageView[3][14];
     private ImageView[][] playerOpenHand = new ImageView[1][14];
-    private ImageButton[] discard = new ImageButton[48];
+    private ImageButton[] discard = new ImageButton[84];
     private TextView displayTextBox;
     private Button chowButton;
     private Button pongButton;
@@ -296,12 +296,22 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         }
         /**
          * TODO make the wall update GUI
-        for(int i = 0; i < 48; i++){
+         * */
+        for(int i = 0; i < 84; i++){
             if(state.getDiscardPile(i) != 136) {
-                state.setWall(state.getCurrDiscard().getDeckPos(),i);
+                int newSuit = state.getCurrDiscard().getSuit();
+                int newId = state.getCurrDiscard().getID();
+                int newVal = state.getCurrDiscard().getVal();
+                int newDeckPos = state.getCurrDiscard().getDeckPos();
+                Tile dis = new Tile(newSuit,newVal,newId,newDeckPos);
+                discard[i].setImageResource(dis.getID());
+
+            }
+            else{
+                discard[i].setVisibility(View.INVISIBLE);
             }
         }
-        */
+
 }
 
     /**
