@@ -297,7 +297,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         /**
          * TODO make the wall update GUI
          * */
-        for(int i = 0; i < 84; i++){
+        for(int i = 0; i < 48; i++){
             if(state.getDiscardPile(i) != 136) {
                 int newSuit = state.getCurrDiscard().getSuit();
                 int newId = state.getCurrDiscard().getID();
