@@ -72,7 +72,8 @@ public class MahJongLocalGame extends LocalGame {
             return true;
         }
         if (action instanceof Pass){
-            state.pass();
+            Pass p = (Pass) action;
+            state.pass(p);
             return true;
         }
 

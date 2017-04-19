@@ -2,6 +2,7 @@ package edu.up.yu18.mahjong.game.MahJong.game;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import edu.up.yu18.mahjong.game.MahJong.Actions.Pass;
 import edu.up.yu18.mahjong.game.MahJong.Objects.Deck;
 import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Pong;
@@ -15,7 +16,12 @@ import edu.up.yu18.mahjong.game.frameWork.base.util.GameTimer;
 public class MahJongGameState extends GameState {
     private ArrayList<Tile> deck;
     private int deckPosition;
-    private int passingPlayers;
+    private boolean[] passingPlayers = {
+            false,
+            false,
+            false,
+            false
+    };
     private int[] wall;
     private int[] discardPile;
     private String[] playerNames;
@@ -33,12 +39,11 @@ public class MahJongGameState extends GameState {
 
     //Constructor
     public MahJongGameState() {
-        passingPlayers = 0;
         Deck d = new Deck();
         deck = d.getDeckTiles();
         playerClosedHands = new int[4][14]; // 4 players, 14 cards max
-        for(int i = 0; i < 14; i++) {
-            playerClosedHands[0][i] = i;
+        for(int g = 0; g < 14; g++) {
+            playerClosedHands[0][g] = g;
         }
         for(int l = 1; l < 4; l++){
             for( int q = 0; q < 13; q++){
@@ -98,6 +103,7 @@ public class MahJongGameState extends GameState {
 
         // Goes through each element of int[] wall and makes it individually
         // a copy of the equivalent element of the parameter
+        for(int h = 0; h < 4; h++){passingPlayers[h] = game.passingPlayers[h];}
         deck = game.deck;
         wall = new int[game.wall.length];
         for (int a = 0; a < game.wall.length; a++) {
@@ -119,14 +125,14 @@ public class MahJongGameState extends GameState {
 
         playerClosedHands = new int[4][14]; // sets the "array of arrays" to the equivalent size - playerClosedHands[copies this part's length][]
         for (int d = 0; d < 4; d++) { // goes through each array in the "array of arrays" - playerClosedHands[goes through this part][]
-            for (int j = 0; j < 4; j++) {// sets array length to that of the equivalent array - playerClosedHands[][copies this part's length]
+            for (int j = 0; j < 14; j++) {// sets array length to that of the equivalent array - playerClosedHands[][copies this part's length]
                 playerClosedHands[d][j] = game.playerClosedHands[d][j];
             }
         }
 
         playerOpenHands = new int[4][16];
         for (int e = 0; e < 4; e++) {
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 16; j++) {
                 playerOpenHands[e][j] = game.playerOpenHands[e][j];
             }
         }
@@ -151,7 +157,7 @@ public class MahJongGameState extends GameState {
             for (int i = 0; i < 16; i++) {
                 if (this.playerOpenHands[c.getPlayerID()][i] == 136) {
                     setPlayerOpenHandTile(c.getPlayerID(), c.getTile1().getDeckPos(), i);
-                    return;
+                    break;
                 }
             }
 
@@ -160,7 +166,7 @@ public class MahJongGameState extends GameState {
             for (int i = 0; i < 16; i++) {
                 if (this.playerClosedHands[c.getPlayerID()][i] == c.getTile1().getDeckPos()) {
                     setPlayerClosedHandTile(c.getPlayerID(), 136, i);
-                    return;
+                    break;
                 }
             }
 
@@ -200,7 +206,10 @@ public class MahJongGameState extends GameState {
         }
         playerMJProg[c.getPlayerID()]++;
         draw(gameStage/2 + 1);
-        passingPlayers = 0;
+        passingPlayers[0] = false;
+        passingPlayers[1] = false;
+        passingPlayers[2] = false;
+        passingPlayers[3] = false;
         gameStage++;
     }
 
@@ -259,7 +268,10 @@ public class MahJongGameState extends GameState {
 
         playerMJProg[p.getPlayerID()]++;
         draw(gameStage/2 + 1);
-        passingPlayers = 0;
+        passingPlayers[0] = false;
+        passingPlayers[1] = false;
+        passingPlayers[2] = false;
+        passingPlayers[3] = false;
         gameStage++;
     }
 
@@ -321,13 +333,16 @@ public class MahJongGameState extends GameState {
         for (int i = 0; i < 16; i++) {
             if (this.playerClosedHands[p.getPlayerID()][i] == p.getTile4().getDeckPos()) {
                 setPlayerOpenHandTile(p.getPlayerID(), p.getTile3().getDeckPos(), i);
-                return;
+                break;
             }
 
         }
         playerMJProg[p.getPlayerID()]++;
         draw(gameStage/2 + 1);
-        passingPlayers = 0;
+        passingPlayers[0] = false;
+        passingPlayers[1] = false;
+        passingPlayers[2] = false;
+        passingPlayers[3] = false;
         gameStage++;
     }
 
@@ -336,15 +351,16 @@ public class MahJongGameState extends GameState {
         for (int i = 0; i < 14; i++) {
             if (this.playerClosedHands[d.getPlayerID()][i] == d.getTile().getDeckPos()) {
                 setPlayerClosedHandTile(d.getPlayerID(), 136, i);
-                return;
+
+                break;
             }
         }
         currDiscard = d.getTile();
         gameStage++;
     }
-    public void pass(){
-        passingPlayers++;
-        if(passingPlayers == 4) {
+    public void pass(Pass p){
+        passingPlayers[p.getId()] = true;
+        if(passingPlayers[0] && passingPlayers[1] && passingPlayers[2] && passingPlayers[3]) {
             if (currDiscard != null) {
                 for (int i = 0; i < discardPile.length; i++) {
                     if (discardPile[i] == 136) {
@@ -352,7 +368,10 @@ public class MahJongGameState extends GameState {
                         currDiscard = null;
                         draw(gameStage / 2 + 1);
                         gameStage++;
-                        passingPlayers = 0;
+                        passingPlayers[0] = false;
+                        passingPlayers[1] = false;
+                        passingPlayers[2] = false;
+                        passingPlayers[3] = false;
                         break;
                     }
                 }
@@ -372,22 +391,11 @@ public class MahJongGameState extends GameState {
             }
         }
 
-        int temp2 = 0;
-            for (int i = 0; i < playerClosedHands[pID].length - 1; i++) {
-                for (int j = i + 1; j < playerClosedHands[pID].length; j++) {
-                    if (deck.get(playerClosedHands[pID][i]).getID() > deck.get(playerClosedHands[pID][j]).getID()) {
-                        temp2 = playerClosedHands[pID][j];
-                        playerClosedHands[pID][j] = playerClosedHands[pID][i];
-                        playerClosedHands[pID][i] = temp2;
-                    }
-                }
-            }
-
     }
     
     public void draw(int pID){
         for(int i= 0; i < playerClosedHands[pID][i]; i++){
-            if(playerClosedHands[pID][i] != 136){
+            if(playerClosedHands[pID][i] == 136){
                 playerClosedHands[pID][i] = this.deckPosition;
                 this.deckPosition++;
                 sort(pID);

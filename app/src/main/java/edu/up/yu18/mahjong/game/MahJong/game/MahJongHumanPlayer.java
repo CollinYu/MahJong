@@ -605,9 +605,11 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         if (v == discardButton) {
             int counter = 0;
             Tile tile = null;
+            int pos = 0;
             for (int i = 0; i < tilePressed.length; i++) {
                 if (tilePressed[i]) {
                     tile = state.getPlayerClosedHandTile(playerNum, i);
+                    pos = i;
                     counter++;
                  }
             }
@@ -615,7 +617,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     displayTextBox.setText("Invalid Move!");
                     return;
                 } else {
+                    tilePressed[pos] = !tilePressed[pos];
                     action = new Discard(this, playerNum, tile);
+                    game.sendAction(action);
                 }
 
         }
@@ -634,9 +638,11 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             }
         }
         if (v == passButton){
-            action = new Pass();
+            action = new Pass(this, this.playerNum);
         }
+        if (action != null) {
             game.sendAction(action);
+        }
     }
 
 
