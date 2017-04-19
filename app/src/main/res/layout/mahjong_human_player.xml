@@ -1108,8 +1108,8 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Emote"
-            android:id="@+id/emoteButton"
+            android:text="Pass"
+            android:id="@+id/PassButton"
             android:layout_weight="1"
             android:background="#449616"
             android:textColor="#FFFFFF"
