@@ -28,6 +28,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
     private boolean[] tilePressed = new boolean[14];
     private ImageView[][] playerClosedHand = new ImageView[3][14];
     private ImageView[][] playerOpenHand = new ImageView[4][14];
+    private ImageButton[] discard = new ImageButton[48];
     private TextView displayTextBox;
     private Button chowButton;
     private Button pongButton;
@@ -580,6 +581,56 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         myTiles[11] = (ImageButton) activity.findViewById(R.id.tile12);
         myTiles[12] = (ImageButton) activity.findViewById(R.id.tile13);
         myTiles[13] = (ImageButton) activity.findViewById(R.id.tile14);
+
+        discard[0] = (ImageButton) activity.findViewById(R.id.Discard1Tile1);
+        discard[1] = (ImageButton) activity.findViewById(R.id.Discard1Tile2);
+        discard[2] = (ImageButton) activity.findViewById(R.id.Discard1Tile3);
+        discard[3] = (ImageButton) activity.findViewById(R.id.Discard1Tile4);
+        discard[4] = (ImageButton) activity.findViewById(R.id.Discard1Tile5);
+        discard[5] = (ImageButton) activity.findViewById(R.id.Discard1Tile6);
+        discard[6] = (ImageButton) activity.findViewById(R.id.Discard1Tile7);
+        discard[7] = (ImageButton) activity.findViewById(R.id.Discard1Tile8);
+        discard[8] = (ImageButton) activity.findViewById(R.id.Discard1Tile9);
+        discard[9] = (ImageButton) activity.findViewById(R.id.Discard1Tile10);
+        discard[10] = (ImageButton) activity.findViewById(R.id.Discard1Tile11);
+        discard[11] = (ImageButton) activity.findViewById(R.id.Discard1Tile12);
+        discard[12] = (ImageButton) activity.findViewById(R.id.Discard1Tile13);
+        discard[13] = (ImageButton) activity.findViewById(R.id.Discard1Tile14);
+        discard[14] = (ImageButton) activity.findViewById(R.id.Discard1Tile15);
+        discard[15] = (ImageButton) activity.findViewById(R.id.Discard1Tile16);
+        discard[16] = (ImageButton) activity.findViewById(R.id.Discard1Tile17);
+        discard[17] = (ImageButton) activity.findViewById(R.id.Discard1Tile18);
+        discard[18] = (ImageButton) activity.findViewById(R.id.Discard1Tile19);
+        discard[19] = (ImageButton) activity.findViewById(R.id.Discard1Tile20);
+        discard[20] = (ImageButton) activity.findViewById(R.id.Discard1Tile21);
+        discard[21] = (ImageButton) activity.findViewById(R.id.Discard1Tile22);
+        discard[22] = (ImageButton) activity.findViewById(R.id.Discard1Tile23);
+        discard[23] = (ImageButton) activity.findViewById(R.id.Discard1Tile24);
+        discard[24] = (ImageButton) activity.findViewById(R.id.Discard1Tile25);
+        discard[25] = (ImageButton) activity.findViewById(R.id.Discard1Tile26);
+        discard[26] = (ImageButton) activity.findViewById(R.id.Discard1Tile27);
+        discard[27] = (ImageButton) activity.findViewById(R.id.Discard1Tile28);
+        discard[28] = (ImageButton) activity.findViewById(R.id.Discard1Tile29);
+        discard[29] = (ImageButton) activity.findViewById(R.id.Discard1Tile30);
+        discard[30] = (ImageButton) activity.findViewById(R.id.Discard1Tile31);
+        discard[31] = (ImageButton) activity.findViewById(R.id.Discard1Tile32);
+        discard[32] = (ImageButton) activity.findViewById(R.id.Discard1Tile33);
+        discard[33] = (ImageButton) activity.findViewById(R.id.Discard1Tile34);
+        discard[34] = (ImageButton) activity.findViewById(R.id.Discard1Tile35);
+        discard[35] = (ImageButton) activity.findViewById(R.id.Discard1Tile36);
+        discard[36] = (ImageButton) activity.findViewById(R.id.Discard1Tile37);
+        discard[37] = (ImageButton) activity.findViewById(R.id.Discard1Tile38);
+        discard[38] = (ImageButton) activity.findViewById(R.id.Discard1Tile39);
+        discard[39] = (ImageButton) activity.findViewById(R.id.Discard1Tile40);
+        discard[40] = (ImageButton) activity.findViewById(R.id.Discard1Tile41);
+        discard[41] = (ImageButton) activity.findViewById(R.id.Discard1Tile42);
+        discard[42] = (ImageButton) activity.findViewById(R.id.Discard1Tile43);
+        discard[43] = (ImageButton) activity.findViewById(R.id.Discard1Tile44);
+        discard[44] = (ImageButton) activity.findViewById(R.id.Discard1Tile45);
+        discard[45] = (ImageButton) activity.findViewById(R.id.Discard1Tile46);
+        discard[46] = (ImageButton) activity.findViewById(R.id.Discard1Tile47);
+        discard[47] = (ImageButton) activity.findViewById(R.id.Discard1Tile48);
+
         for (int i = 0; i < myTiles.length; i++) {
             myTiles[i].setOnClickListener(this);
         }
