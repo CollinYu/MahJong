@@ -55,11 +55,11 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
     public void updateDisplay() {
         for (int k = 0; k < 4; k++) {
             for (int i = 0; i < 14; i++) {
-                if (state.getPlayerOpenHandTile(k, i) != null) {
+                if (state.getPlayerClosedHandTile(playerNum, i) != null) {
                     //if suit is dots suit is 0
-                    if (state.getPlayerOpenHandTile(k, i).getSuit() == 0) {
+                    if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 0) {
                         for (int j = 0; j < 9; j++) {
-                            if (state.getPlayerOpenHandTile(k, i).getVal() == j) {
+                            if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
                                 if (j == 0) {
                                     myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots1);
                                 } else if (j == 1) {
@@ -83,9 +83,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                         }
                     }
                     //if suit is bamboo suit is 1
-                    if (state.getPlayerOpenHandTile(k, i).getSuit() == 1) {
+                    if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 1) {
                         for (int j = 0; j < 9; j++) {
-                            if (state.getPlayerOpenHandTile(k, i).getVal() == j) {
+                            if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
                                 if (j == 0) {
                                     myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo1);
                                 } else if (j == 1) {
@@ -109,9 +109,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                         }
                     }
                     //if suit is character suit is 2
-                    if (state.getPlayerOpenHandTile(k, i).getSuit() == 2) {
+                    if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 2) {
                         for (int j = 0; j < 9; j++) {
-                            if (state.getPlayerOpenHandTile(k, i).getVal() == j) {
+                            if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
                                 if (j == 0) {
                                     myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter1);
                                 } else if (j == 1) {
@@ -135,9 +135,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                         }
                     }
                     //if suit is dragon suit is 3
-                    if (state.getPlayerOpenHandTile(k, i).getSuit() == 3) {
+                    if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 3) {
                         for (int j = 0; j < 3; j++) {
-                            if (state.getPlayerOpenHandTile(k, i).getVal() == j) {
+                            if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
                                 if (j == 0) {
                                     myTiles[i].setBackgroundResource(R.drawable.mahjongtiledragongreen);
                                 } else if (j == 1) {
@@ -150,9 +150,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
                     }
                     //if suit is wind suit is 4
-                    if (state.getPlayerOpenHandTile(k, i).getSuit() == 4) {
+                    if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 4) {
                         for (int j = 0; j < 4; j++) {
-                            if (state.getPlayerOpenHandTile(k, i).getVal() == j) {
+                            if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
                                 if (j == 0) {
                                     myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectioneast);
                                 } else if (j == 1) {
