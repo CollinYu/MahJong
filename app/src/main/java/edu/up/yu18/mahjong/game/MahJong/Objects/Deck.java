@@ -24,13 +24,13 @@ public class Deck {
         for (int j = 0; j < 4; j++) {
             for (int l =0;l < 3; l++) {
                 deckTiles.add(new Tile(3, l, i));
-                i++;//4 is dragon
+                i++;//3 is dragon
             }
         }
         for (int j = 0; j < 4; j++) {
             for (int l =0;l < 4; l++) {
                 deckTiles.add(new Tile(4, l, i));
-                i++;//5 is wind
+                i++;//4 is wind
             }
         }
 
