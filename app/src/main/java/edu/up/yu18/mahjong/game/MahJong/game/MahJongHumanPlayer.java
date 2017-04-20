@@ -300,6 +300,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         /**
          * TODO make the wall update GUI
          * */
+
         for(int i = 0; i < 48; i++){
             if(state.getDiscardPile(i) != 136) {
                 int newSuit = state.getCurrDiscard().getSuit();
@@ -307,7 +308,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 int newVal = state.getCurrDiscard().getVal();
                 int newDeckPos = state.getCurrDiscard().getDeckPos();
                 Tile dis = new Tile(newSuit,newVal,newId,newDeckPos);
-                discard[i].setImageResource(dis.getID());
+                discard[i].setImageResource(R.drawable.mahjongtilebamboo1);
 
             }
             else{
