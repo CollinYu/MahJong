@@ -91,6 +91,7 @@ public class MahJongGameState extends GameState {
     public Tile getPlayerClosedHandTile(int player, int pos) {return deck.get(this.playerClosedHands[player][pos]);}
     public void setPlayerOpenHandTile(int player, int tile, int pos) {this.playerOpenHands[player][pos] = tile;}
     public Tile getPlayerOpenHandTile(int player, int pos) {return deck.get(this.playerOpenHands[player][pos]);}
+    public Tile getDiscardPileTile(int player, int pos){return deck.get(this.playerOpenHands[player][pos]);}
     public int getPlayerOpenHandLength(int player){return playerOpenHands[player].length;}
     public Tile getCurrDiscard(){return this.currDiscard;}
     public void setGameStage(int stage) {
