@@ -422,13 +422,29 @@ public class MahJongGameState extends GameState {
 
 
         public boolean hasMahJong(int pID){
-            int counter1 = 0;
-            for(int i = 0; i < playerOpenHands[pID].length; i++)
-            {
-                for( int j =0; j < playerOpenHands[pID].length; j++){
-
+            int i = 0;
+            while(i < playerClosedHands[pID].length){
+                if(i + 3 < playerClosedHands.length){
+                    if (playerClosedHands[pID][i] == playerClosedHands[pID][i + 1] &&
+                            playerClosedHands[pID][i + 1] == playerClosedHands[pID][i + 2]) {
+                        playerMJProg[pID]++;
+                        i += 3;
+                    }
+                    else if (deck.get(playerClosedHands[pID][i]).isBelow(deck.get(playerClosedHands[pID][i+1])) &&
+                            deck.get(playerClosedHands[pID][i+1]).isBelow(deck.get(playerClosedHands[pID][i+2]))){
+                        playerMJProg[pID]++;
+                        i += 3;
+                    }
+                    else {break;}
+                }
+                else {
+                    if (playerClosedHands[pID][i] == playerClosedHands[pID][i + 1]){
+                        playerMJProg[pID]++;
+                        break;
+                    }
                 }
             }
+            if (playerMJProg[pID] == 5){return true;}
             return  false;
         }
 
