@@ -16,6 +16,7 @@ import edu.up.yu18.mahjong.game.MahJong.Actions.Chow;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Kong;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Pong;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Sort;
 import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameHumanPlayer;
@@ -37,6 +38,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
     private Button pongButton;
     private Button kongButton;
     private Button discardButton;
+    private Button sortButton;
     private Button emoteButton;
     private Spinner emoteSpinner;
     private Spinner scoreSpinner;
@@ -302,7 +304,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
          * */
 
         for(int i = 0; i < 48; i++){
-            if(state.getDiscardPile(i) != 136) {
+            if(state.getDiscardPile(i) != 136 && state.getCurrDiscard() != null) {
                 int newSuit = state.getCurrDiscard().getSuit();
                 int newId = state.getCurrDiscard().getID();
                 int newVal = state.getCurrDiscard().getVal();
@@ -527,6 +529,8 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             tilePressed[i] = false;
         }
         displayTextBox = (TextView) activity.findViewById(R.id.DisplayTextBox);
+        sortButton = (Button) activity.findViewById(R.id.sortButton);
+        sortButton.setOnClickListener(this);
         chowButton = (Button) activity.findViewById(R.id.chowButton);
         chowButton.setOnClickListener(this);
         pongButton = (Button) activity.findViewById(R.id.pongButton);
@@ -602,8 +606,15 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             }
         }
         if (v == passButton){
-            action = new Pass(this, this.playerNum);
-            displayTextBox.setText("Passed");
+            if(state.getGameStage() % 2 == 0) {
+                action = new Pass(this, this.playerNum);
+                displayTextBox.setText("Passed");
+            }
+            else{displayTextBox.setText("Invalid Move!");}
+        }
+        if (v == sortButton){
+            Sort s = new Sort(this, this.playerNum);
+            action = s;
         }
         /**
          if (v == emoteButton){
@@ -612,43 +623,44 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
          }
          */
         if (v == discardButton) {
-            int counter = 0;
-            Tile tile = null;
-            int pos = 0;
-            for (int i = 0; i < tilePressed.length; i++) {
-                if (tilePressed[i]) {
-                    tile = state.getPlayerClosedHandTile(playerNum, i);
-                    pos = i;
-                    counter++;
-                 }
-            }
+            if (!(state.getGameStage() == (this.playerNum+1)*2 -1)) {displayTextBox.setText("Invalid Move!");}
+            else{
+                int counter = 0;
+                Tile tile = null;
+                int pos = 0;
+                for (int i = 0; i < tilePressed.length; i++) {
+                    if (tilePressed[i]) {
+                        tile = state.getPlayerClosedHandTile(playerNum, i);
+                        pos = i;
+                        counter++;
+                    }
+                }
                 if (counter != 1) {
                     displayTextBox.setText("Invalid Move!");
                     return;
                 } else {
                     tilePressed[pos] = !tilePressed[pos];
                     action = new Discard(this, playerNum, tile);
-                    game.sendAction(action);
                     displayTextBox.setText("Tile Discarded");
                 }
+            }
 
         }
         for (int i = 0; i < myTiles.length; i++) {
             if (v == myTiles[i]) {
                 if (!tilePressed[i]) {
-                    updateDisplay();
-                    myTiles[i].setBackgroundTintMode(PorterDuff.Mode.MULTIPLY);
                     tilePressed[i] = true;
-                } else {
                     updateDisplay();
-                    myTiles[i].setBackgroundTintMode(PorterDuff.Mode.SRC_ATOP);
+                } else {
                     tilePressed[i] = false;
+                    updateDisplay();
                 }
                 return;
             }
         }
         if (action != null) {
             game.sendAction(action);
+            updateDisplay();
         }
     }
 

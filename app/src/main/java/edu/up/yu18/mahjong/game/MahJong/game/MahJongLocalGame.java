@@ -5,6 +5,7 @@ import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Kong;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Pass;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Pong;
+import edu.up.yu18.mahjong.game.MahJong.Actions.Sort;
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.TimerAction;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
@@ -74,6 +75,12 @@ public class MahJongLocalGame extends LocalGame {
         if (action instanceof Pass){
             Pass p = (Pass) action;
             state.pass(p);
+            return true;
+        }
+
+        if (action instanceof Sort){
+            Sort s = (Sort) action;
+            state.sort(s.getId());
             return true;
         }
 
