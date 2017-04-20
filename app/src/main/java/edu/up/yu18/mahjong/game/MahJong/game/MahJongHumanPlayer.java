@@ -63,7 +63,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             for (int i = 0; i < 14; i++) {
                 if (state.getPlayerClosedHandTile(playerNum, i) != null) {
                     if(state.getPlayerClosedHandTile(playerNum,i).getSuit() == -1){
-                        myTiles[i].setVisibility(View.INVISIBLE);
+                        myTiles[i].setBackgroundColor(0xFF00FF00);
                     }
                     //if suit is dots suit is 0
                     if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 0) {
