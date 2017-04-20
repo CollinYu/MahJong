@@ -207,12 +207,14 @@ public class MahJongGameState extends GameState {
             }
         }
         playerMJProg[c.getPlayerID()]++;
-        draw(gameStage/2 + 1);
+        if(gameStage == 8){draw(0);}
+        else{draw(gameStage/2);}
         passingPlayers[0] = false;
         passingPlayers[1] = false;
         passingPlayers[2] = false;
         passingPlayers[3] = false;
-        gameStage++;
+        if(gameStage<8){gameStage++;}
+        else if (gameStage == 8){gameStage = 1;}
     }
 
     public void Pong(Pong p) {
@@ -269,12 +271,15 @@ public class MahJongGameState extends GameState {
         }
 
         playerMJProg[p.getPlayerID()]++;
-        draw(gameStage/2 + 1);
+
+        if(gameStage == 8){draw(0);}
+        else{draw(gameStage/2);}
         passingPlayers[0] = false;
         passingPlayers[1] = false;
         passingPlayers[2] = false;
         passingPlayers[3] = false;
-        gameStage++;
+        if(gameStage<8){gameStage++;}
+        else if (gameStage == 8){gameStage = 1;}
     }
 
     public void Kong(Kong p) {
@@ -340,12 +345,15 @@ public class MahJongGameState extends GameState {
 
         }
         playerMJProg[p.getPlayerID()]++;
-        draw(gameStage/2 + 1);
+
+        if(gameStage == 8){draw(0);}
+        else{draw(gameStage/2);}
         passingPlayers[0] = false;
         passingPlayers[1] = false;
         passingPlayers[2] = false;
         passingPlayers[3] = false;
-        gameStage++;
+        if(gameStage<8){gameStage++;}
+        else if (gameStage == 8){gameStage = 1;}
     }
 
     public void Discard(Discard d) {
@@ -358,8 +366,10 @@ public class MahJongGameState extends GameState {
             }
         }
         currDiscard = d.getTile();
-        gameStage++;
+        if(gameStage<8){gameStage++;}
+        else if (gameStage == 8){gameStage = 1;}
     }
+
     public void pass(Pass p){
         passingPlayers[p.getId()] = true;
         if(passingPlayers[0] && passingPlayers[1] && passingPlayers[2] && passingPlayers[3]) {
@@ -368,8 +378,10 @@ public class MahJongGameState extends GameState {
                     if (discardPile[i] == 136) {
                         discardPile[i] = currDiscard.getDeckPos();
                         currDiscard = null;
-                        draw(gameStage / 2 + 1);
-                        gameStage++;
+                        if(gameStage == 8){draw(0);}
+                        else{draw(gameStage/2);}
+                        if(gameStage<8){gameStage++;}
+                        else if (gameStage == 8){gameStage = 1;}
                         passingPlayers[0] = false;
                         passingPlayers[1] = false;
                         passingPlayers[2] = false;
@@ -382,7 +394,7 @@ public class MahJongGameState extends GameState {
 
     }
     public void sort(int pID){
-        int temp = 0;
+        int temp;
         for (int i = 0; i < playerClosedHands[pID].length - 1; i++) {
             for (int j = i + 1; j < playerClosedHands[pID].length; j++) {
                 if (deck.get(playerClosedHands[pID][i]).getID() > deck.get(playerClosedHands[pID][j]).getID()) {
@@ -396,7 +408,7 @@ public class MahJongGameState extends GameState {
     }
     
     public void draw(int pID){
-        for(int i= 0; i < playerClosedHands[pID][i]; i++){
+        for(int i= 0; i < playerClosedHands[pID].length; i++){
             if(playerClosedHands[pID][i] == 136){
                 playerClosedHands[pID][i] = this.deckPosition;
                 this.deckPosition++;
@@ -406,34 +418,17 @@ public class MahJongGameState extends GameState {
         }
     }
 
+
+
         public boolean hasMahJong(int pID){
-            return false;/**
-            for(int i = 0; i < playerOpenHands[pID].length; i+=3){
-                try {
-                    if (deck.get(playerOpenHands[pID][i]).isEqualto(deck.get(playerOpenHands[pID][i + 1])) &&
-                            deck.get(playerOpenHands[pID][i + 1]).isEqualto(deck.get(playerOpenHands[pID][i + 2])))
-                    {
-                        playerMJProg[pID]++;
-                    }
-                } catch (ArrayIndexOutOfBoundsException n){}
+            int counter1 = 0;
+            for(int i = 0; i < playerOpenHands[pID].length; i++)
+            {
+                for( int j =0; j < playerOpenHands[pID].length; j++){
 
-                try {
-                    if (deck.get(playerOpenHands[pID][i]).isBelow(deck.get(playerOpenHands[pID][i + 1])) &&
-                            deck.get(playerOpenHands[pID][i + 1]).isBelow(deck.get(playerOpenHands[pID][i + 2]))) {
-                        playerMJProg[pID]++;
-                    }
-                } catch (ArrayIndexOutOfBoundsException n){}
-                try {
-                    if (i + 3 > playerOpenHands[pID].length) {
-                        if (deck.get(playerOpenHands[pID][i + 4]).isBelow(deck.get(playerOpenHands[pID][i + 5]))) {
-                            playerMJProg[pID]++;
-                        }
-
-                    }
-                } catch (ArrayIndexOutOfBoundsException n){}
+                }
             }
-            if (playerMJProg[pID] == 5){return true;}
-            else {return  false;}*/
+            return  false;
         }
 
     }
