@@ -12,6 +12,16 @@ import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameState;
 import edu.up.yu18.mahjong.game.frameWork.base.util.GameTimer;
 
+/**
+ * Current functionality of game as a whole:
+ * Can Discard and Pass turn,
+ * Chow, Pong, and Kong should work, but the visual feedback of the discard pile and the card currently being
+ * discarded does not, so this portion has yet to be tested
+ * Highlighting of hand tiles does not work
+ * Can run through all eight stages of the game, win condition recently implemented and not fully tested but should work
+ * DumbPlayer goes through the game passing and discarding accordingly
+ * Sort and associated button work, but game automatically sorts hand anyways, so it is currently redundant
+ */
 
 public class MahJongGameState extends GameState {
     private ArrayList<Tile> deck;
@@ -106,6 +116,7 @@ public class MahJongGameState extends GameState {
 
         // Goes through each element of int[] wall and makes it individually
         // a copy of the equivalent element of the parameter
+        this.currDiscard = game.getCurrDiscard();
         for(int h = 0; h < 4; h++){passingPlayers[h] = game.passingPlayers[h];}
         deck = game.deck;
         wall = new int[game.wall.length];
@@ -206,16 +217,15 @@ public class MahJongGameState extends GameState {
                     return;
                 }
             }
+
+            playerMJProg[c.getPlayerID()]++;
+            draw(c.getPlayerID());
+            gameStage = (c.getPlayerID() + 1) * 2 - 1;
+            passingPlayers[0] = false;
+            passingPlayers[1] = false;
+            passingPlayers[2] = false;
+            passingPlayers[3] = false;
         }
-        playerMJProg[c.getPlayerID()]++;
-        if(gameStage == 8){draw(0);}
-        else{draw(gameStage/2);}
-        passingPlayers[0] = false;
-        passingPlayers[1] = false;
-        passingPlayers[2] = false;
-        passingPlayers[3] = false;
-        if(gameStage<8){gameStage++;}
-        else if (gameStage == 8){gameStage = 1;}
     }
 
     public void Pong(Pong p) {
@@ -269,92 +279,90 @@ public class MahJongGameState extends GameState {
                     return;
                 }
             }
+
+
+            playerMJProg[p.getPlayerID()]++;
+            draw(p.getPlayerID());
+            gameStage = (p.getPlayerID() + 1) * 2 - 1;
+            passingPlayers[0] = false;
+            passingPlayers[1] = false;
+            passingPlayers[2] = false;
+            passingPlayers[3] = false;
         }
-
-        playerMJProg[p.getPlayerID()]++;
-
-        if(gameStage == 8){draw(0);}
-        else{draw(gameStage/2);}
-        passingPlayers[0] = false;
-        passingPlayers[1] = false;
-        passingPlayers[2] = false;
-        passingPlayers[3] = false;
-        if(gameStage<8){gameStage++;}
-        else if (gameStage == 8){gameStage = 1;}
     }
 
-    public void Kong(Kong p) {
+    public void Kong(Kong k) {
         // Check Legality
-        if (p.getTile1().isEqualto(p.getTile2()) && p.getTile2().isEqualto(p.getTile3()) && p.getTile3().isEqualto(p.getTile4())) {
+        if (k.getTile1().isEqualto(k.getTile2()) && k.getTile2().isEqualto(k.getTile3()) && k.getTile3().isEqualto(k.getTile4())) {
 
-        }
-        // Set 1st open slot to Tile 1
-        for (int i = 0; i < 16; i++) {
-            if (this.playerOpenHands[p.getPlayerID()][i] == 136) {
-                setPlayerOpenHandTile(p.getPlayerID(), p.getTile1().getDeckPos(), i);
-                return;
-            }
-        }
-        // Find the tile in your hand, and remove it
-        for (int i = 0; i < 16; i++) {
-            if (this.playerClosedHands[p.getPlayerID()][i] == p.getTile1().getDeckPos()) {
-                setPlayerClosedHandTile(p.getPlayerID(), 136, i);
-                return;
-            }
-        }
-         // Set next open slot to Tile 2
-        for (int i = 0; i < 16; i++) {
-            if (this.playerOpenHands[p.getPlayerID()][i] == 136) {
-                setPlayerOpenHandTile(p.getPlayerID(), p.getTile2().getDeckPos(), i);
-                return;
-            }
-        }
-        // Find the tile in your hand, and remove it
-        for (int i = 0; i < 16; i++) {
-            if (this.playerClosedHands[p.getPlayerID()][i] == p.getTile2().getDeckPos()) {
-                setPlayerClosedHandTile(p.getPlayerID(), 136, i);
-                return;
-            }
-        }
 
-        // Set next open openhand slot to Tile 3
-        for (int i = 0; i < 16; i++) {
-            if (this.playerOpenHands[p.getPlayerID()][i] == 136) {
-                setPlayerOpenHandTile(p.getPlayerID(), p.getTile3().getDeckPos(), i);
+            // Set 1st open slot to Tile 1
+            for (int i = 0; i < 16; i++) {
+                if (this.playerOpenHands[k.getPlayerID()][i] == 136) {
+                    setPlayerOpenHandTile(k.getPlayerID(), k.getTile1().getDeckPos(), i);
+                    return;
+                }
             }
-        }
-        // Find the tile in your hand, and remove it
-        for (int i = 0; i < 16; i++) {
-            if (this.playerClosedHands[p.getPlayerID()][i] == p.getTile3().getDeckPos()) {
-                setPlayerClosedHandTile(p.getPlayerID(), 136, i);
-                return;
+            // Find the tile in your hand, and remove it
+            for (int i = 0; i < 16; i++) {
+                if (this.playerClosedHands[k.getPlayerID()][i] == k.getTile1().getDeckPos()) {
+                    setPlayerClosedHandTile(k.getPlayerID(), 136, i);
+                    return;
+                }
             }
-        }
-        // Set next open openhand slot to Tile 4
-        for (int i = 0; i < 16; i++) {
-            if (this.playerOpenHands[p.getPlayerID()][i] == 136) {
-                setPlayerOpenHandTile(p.getPlayerID(), p.getTile4().getDeckPos(), i);
-                return;
+            // Set next open slot to Tile 2
+            for (int i = 0; i < 16; i++) {
+                if (this.playerOpenHands[k.getPlayerID()][i] == 136) {
+                    setPlayerOpenHandTile(k.getPlayerID(), k.getTile2().getDeckPos(), i);
+                    return;
+                }
             }
-        }
-        // Find the tile in your hand, and remove it
-        for (int i = 0; i < 16; i++) {
-            if (this.playerClosedHands[p.getPlayerID()][i] == p.getTile4().getDeckPos()) {
-                setPlayerOpenHandTile(p.getPlayerID(), p.getTile3().getDeckPos(), i);
-                break;
+            // Find the tile in your hand, and remove it
+            for (int i = 0; i < 16; i++) {
+                if (this.playerClosedHands[k.getPlayerID()][i] == k.getTile2().getDeckPos()) {
+                    setPlayerClosedHandTile(k.getPlayerID(), 136, i);
+                    return;
+                }
             }
 
-        }
-        playerMJProg[p.getPlayerID()]++;
+            // Set next open openhand slot to Tile 3
+            for (int i = 0; i < 16; i++) {
+                if (this.playerOpenHands[k.getPlayerID()][i] == 136) {
+                    setPlayerOpenHandTile(k.getPlayerID(), k.getTile3().getDeckPos(), i);
+                }
+            }
+            // Find the tile in your hand, and remove it
+            for (int i = 0; i < 16; i++) {
+                if (this.playerClosedHands[k.getPlayerID()][i] == k.getTile3().getDeckPos()) {
+                    setPlayerClosedHandTile(k.getPlayerID(), 136, i);
+                    return;
+                }
+            }
+            // Set next open openhand slot to Tile 4
+            for (int i = 0; i < 16; i++) {
+                if (this.playerOpenHands[k.getPlayerID()][i] == 136) {
+                    setPlayerOpenHandTile(k.getPlayerID(), k.getTile4().getDeckPos(), i);
+                    return;
+                }
+            }
+            // Find the tile in your hand, and remove it
+            for (int i = 0; i < 16; i++) {
+                if (this.playerClosedHands[k.getPlayerID()][i] == k.getTile4().getDeckPos()) {
+                    setPlayerOpenHandTile(k.getPlayerID(), k.getTile3().getDeckPos(), i);
+                    break;
+                }
 
-        if(gameStage == 8){draw(0);}
-        else{draw(gameStage/2);}
-        passingPlayers[0] = false;
-        passingPlayers[1] = false;
-        passingPlayers[2] = false;
-        passingPlayers[3] = false;
-        if(gameStage<8){gameStage++;}
-        else if (gameStage == 8){gameStage = 1;}
+            }
+
+            playerMJProg[k.getPlayerID()]++;
+            draw(k.getPlayerID());
+            draw(k.getPlayerID());
+            gameStage = (k.getPlayerID() + 1) * 2 - 1;
+            passingPlayers[0] = false;
+            passingPlayers[1] = false;
+            passingPlayers[2] = false;
+            passingPlayers[3] = false;
+        }
     }
 
     public void Discard(Discard d) {
@@ -366,7 +374,7 @@ public class MahJongGameState extends GameState {
                 break;
             }
         }
-        currDiscard = d.getTile();
+        currDiscard = new Tile(d.getTile());
         if(gameStage<8){gameStage++;}
         else if (gameStage == 8){gameStage = 1;}
     }
@@ -422,9 +430,11 @@ public class MahJongGameState extends GameState {
 
 
         public boolean hasMahJong(int pID){
+            return false;
+            /**
             int i = 0;
+            boolean paired = false;
             while(i < playerClosedHands[pID].length){
-                if(i + 3 < playerClosedHands.length){
                     if (playerClosedHands[pID][i] == playerClosedHands[pID][i + 1] &&
                             playerClosedHands[pID][i + 1] == playerClosedHands[pID][i + 2]) {
                         playerMJProg[pID]++;
@@ -435,17 +445,18 @@ public class MahJongGameState extends GameState {
                         playerMJProg[pID]++;
                         i += 3;
                     }
+                    else if (!paired && playerClosedHands[pID][i] == playerClosedHands[pID][i + 1]){
+                        paired = true;
+                        playerMJProg[pID]++;
+                        i +=2;
+                    }
+
                     else {break;}
                 }
-                else {
-                    if (playerClosedHands[pID][i] == playerClosedHands[pID][i + 1]){
-                        playerMJProg[pID]++;
-                        break;
-                    }
-                }
-            }
+
             if (playerMJProg[pID] == 5){return true;}
             return  false;
+             */
         }
 
     }

@@ -50,6 +50,15 @@ public class Tile {
         }
         return false;
     }
+
+    // Tile Deep Copy
+
+    public Tile (Tile t){
+        this.suit = t.suit;
+        this.val = t.val;
+        this.ID = t.ID;
+        this.deckPos = t.deckPos;
+    }
     // Gets tileID
     public int getID(){return this.ID;}
     public int getSuit(){return this.suit;}

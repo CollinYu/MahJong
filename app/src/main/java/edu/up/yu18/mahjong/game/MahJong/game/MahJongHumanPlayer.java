@@ -547,6 +547,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         passButton = (Button) activity.findViewById((R.id.PassButton));
         passButton.setOnClickListener(this);
         /**
+         *
         emoteButton = (Button) activity.findViewById(R.id.emoteButton);
         emoteButton.setOnClickListener(this);
         emoteSpinner = (Spinner) activity.findViewById(R.id.EmoteSpinner);
@@ -569,47 +570,67 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         GameAction action = null;
 
         if (v == chowButton) {
-            ArrayList<Tile> tiles = new ArrayList<>(0);
-            for (int i = 0; i < tilePressed.length; i++) {
-                if (tilePressed[i]) {
-                    tiles.add(state.getPlayerOpenHandTile(playerNum, i));
+            if (this.playerNum == 0 && state.getGameStage() == 8 ||
+                    state.getGameStage() == this.playerNum*2) {
+                ArrayList<Tile> tiles = new ArrayList<>(0);
+                for (int i = 0; i < tilePressed.length; i++) {
+                    if (tilePressed[i]) {
+                        tiles.add(state.getPlayerClosedHandTile(playerNum, i));
+                    }
                 }
                 if (tiles.size() != 2) {
-                    displayTextBox.setText("Invalid Move!");
+                    displayTextBox.setText("Invalid Chow!");
                     return;
                 } else {
                     action = new Chow(this, playerNum, tiles.get(0), tiles.get(1), state.getCurrDiscard());
                 }
             }
+            else {
+                displayTextBox.setText("You can't Chow right now!");
+            }
         }
+
         if (v == pongButton) {
-            ArrayList<Tile> tiles = new ArrayList<>(0);
-            for (int i = 0; i < tilePressed.length; i++) {
-                if (tilePressed[i]) {
-                    tiles.add(state.getPlayerOpenHandTile(playerNum, i));
+            if (state.getGameStage() != (this.playerNum+1)*2 &&
+                    state.getGameStage() % 2 == 0) {
+                ArrayList<Tile> tiles = new ArrayList<>(0);
+                for (int i = 0; i < tilePressed.length; i++) {
+                    if (tilePressed[i]) {
+                        tiles.add(state.getPlayerClosedHandTile(playerNum, i));
+                    }
                 }
                 if (tiles.size() != 2) {
-                    displayTextBox.setText("Invalid Move!");
+                    displayTextBox.setText("Invalid Pong!");
                     return;
                 } else {
                     action = new Pong(this, playerNum, tiles.get(0), tiles.get(1), state.getCurrDiscard());
                 }
             }
+            else {
+                displayTextBox.setText("You can't Pong right now!");
+            }
         }
         if (v == kongButton) {
-            ArrayList<Tile> tiles = new ArrayList<>(0);
-            for (int i = 0; i < tilePressed.length; i++) {
-                if (tilePressed[i]) {
-                    tiles.add(state.getPlayerOpenHandTile(playerNum, i));
+            if (state.getGameStage() != (this.playerNum + 1) * 2 &&
+                    state.getGameStage() % 2 == 0) {
+                ArrayList<Tile> tiles = new ArrayList<>(0);
+                for (int i = 0; i < tilePressed.length; i++) {
+                    if (tilePressed[i]) {
+                        tiles.add(state.getPlayerClosedHandTile(playerNum, i));
+                    }
                 }
                 if (tiles.size() != 3) {
-                    displayTextBox.setText("Invalid Move!");
+                    displayTextBox.setText("Invalid Kong!");
                     return;
                 } else {
                     action = new Kong(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2), state.getCurrDiscard());
                 }
             }
+            else{
+                displayTextBox.setText("You can't Kong right now!");
+            }
         }
+
         if (v == passButton){
             if(state.getGameStage() % 2 == 0) {
                 action = new Pass(this, this.playerNum);
@@ -628,7 +649,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
          }
          */
         if (v == discardButton) {
-            if (!(state.getGameStage() == (this.playerNum+1)*2 -1)) {displayTextBox.setText("Invalid Move!");}
+            if (!(state.getGameStage() == (this.playerNum+1)*2 -1)) {displayTextBox.setText("You can't Discard right now!");}
             else{
                 int counter = 0;
                 Tile tile = null;
