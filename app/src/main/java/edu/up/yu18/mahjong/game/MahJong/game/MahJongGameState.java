@@ -198,7 +198,7 @@ public class MahJongGameState extends GameState {
     /**
      * @Collin_Yu
      * @param c the chow given
-     * changes this in response to chow action sent through the MahJongLocalGame
+     * changes this in response to the chow action previously checked and handled by MahJongLocalGame
      */
     public void Chow(Chow c) {
 
@@ -275,6 +275,11 @@ public class MahJongGameState extends GameState {
         }
     }
 
+    /**
+     * @Collin_Yu
+     * @param p the Pong given
+     * changes this in response to the Pong action previously checked and handled by MahJongLocalGame
+     */
     public void Pong(Pong p) {
         if (p.getTile1().isEqualto(p.getTile2()) && p.getTile2().isEqualto(p.getTile3())) {
             // Set next open openhand slot to Tile 1
@@ -328,8 +333,8 @@ public class MahJongGameState extends GameState {
             }
 
 
+
             playerMJProg[p.getPlayerID()]++;
-            draw(p.getPlayerID());
             gameStage = (p.getPlayerID() + 1) * 2 - 1;
             passingPlayers[0] = false;
             passingPlayers[1] = false;
@@ -338,6 +343,11 @@ public class MahJongGameState extends GameState {
         }
     }
 
+    /**
+     * @Collin_Yu
+     * @param k the Kong given
+     * changes this in response to chow action action previously checked and handled by MahJongLocalGame
+     */
     public void Kong(Kong k) {
         // Check Legality
         if (k.getTile1().isEqualto(k.getTile2()) && k.getTile2().isEqualto(k.getTile3()) && k.getTile3().isEqualto(k.getTile4())) {
@@ -401,10 +411,16 @@ public class MahJongGameState extends GameState {
 
             }
 
+            // increment MahJong progress accordingly
             playerMJProg[k.getPlayerID()]++;
+
+            // draw as one is supposed to after a Kong
             draw(k.getPlayerID());
-            draw(k.getPlayerID());
+
+            // set gameStage to the discard phase of the player who Konged
             gameStage = (k.getPlayerID() + 1) * 2 - 1;
+
+            // reset passingPlayers
             passingPlayers[0] = false;
             passingPlayers[1] = false;
             passingPlayers[2] = false;
@@ -421,27 +437,61 @@ public class MahJongGameState extends GameState {
                 break;
             }
         }
+
+        // Set up the currDiscard for the post-discard phase
         currDiscard = new Tile(d.getTile());
+
+        // increment gameStage accordingly
         if(gameStage<8){gameStage++;}
         else if (gameStage == 8){gameStage = 1;}
     }
-
+    /**
+     * @Collin_Yu
+     * @param p the pass given
+     * changes this in response to chow action action previously checked and handled by MahJongLocalGame
+     */
     public void pass(Pass p){
+
+        // sets that the player who sent the Pass action has passed
         passingPlayers[p.getId()] = true;
+
+        // if all have passed
         if(passingPlayers[0] && passingPlayers[1] && passingPlayers[2] && passingPlayers[3]) {
+            // make sure currDiscard is not null
+            // note that this should never happen, but catching it just in case
             if (currDiscard != null) {
+
+                // loop through to find the first blank tile
                 for (int i = 0; i < discardPile.length; i++) {
+
+                    // upon encountering the first blank tile
                     if (discardPile[i] == 136) {
+
+                        // replace it with the current discard
                         discardPile[i] = currDiscard.getDeckPos();
+
+                        // reset currDiscard to null
                         currDiscard = null;
-                        if(gameStage == 8){draw(0);}
-                        else{draw(gameStage/2);}
-                        if(gameStage<8){gameStage++;}
-                        else if (gameStage == 8){gameStage = 1;}
+
+                        // if end of round, cycle over
+                        if(gameStage == 8){
+                            draw(0);
+                            gameStage = 1;
+                        }
+
+                        // otherwise continue normally
+                        else {
+                            draw(gameStage/2);
+                            gameStage++;
+                        }
+
+                        // reset passingPlayers
                         passingPlayers[0] = false;
                         passingPlayers[1] = false;
                         passingPlayers[2] = false;
                         passingPlayers[3] = false;
+
+                        // break search loop
                         break;
                     }
                 }
@@ -449,6 +499,8 @@ public class MahJongGameState extends GameState {
         }
 
     }
+
+
     public void sort(int pID){
         int temp;
         for (int i = 0; i < playerClosedHands[pID].length - 1; i++) {

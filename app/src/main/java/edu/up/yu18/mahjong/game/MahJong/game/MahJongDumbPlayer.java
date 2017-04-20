@@ -23,14 +23,22 @@ public class MahJongDumbPlayer extends GameComputerPlayer {
         super(name);
     }
     @Override
+
+    // Only receives MahJongGameState type GameInfos
     protected void receiveInfo(GameInfo info) {
+
+        // make sure it really is a MahJongGameState
         if(info instanceof MahJongGameState){
             state = new MahJongGameState((MahJongGameState) info);
         }
+
+        // if it's this' turn, discards the first card in its hand
         if(state.getGameStage() == (this.playerNum+1)*2-1){
             Discard disc = new Discard(this, playerNum, state.getPlayerOpenHandTile(playerNum,0));
             game.sendAction(disc);
         }
+
+        // if it's a post-discard phase, just passes
         else if (state.getGameStage() % 2 == 0 && !state.hasPassed(this.playerNum)){
             Pass p = new Pass(this, this.playerNum);
             game.sendAction(p);
