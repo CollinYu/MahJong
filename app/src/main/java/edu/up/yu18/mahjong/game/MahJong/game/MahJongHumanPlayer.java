@@ -62,6 +62,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         for (int k = 0; k < 4; k++) {
             for (int i = 0; i < 14; i++) {
                 if (state.getPlayerClosedHandTile(playerNum, i) != null) {
+                    if(state.getPlayerClosedHandTile(playerNum,i).getSuit() == -1){
+                        myTiles[i].setVisibility(View.INVISIBLE);
+                    }
                     //if suit is dots suit is 0
                     if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 0) {
                         for (int j = 0; j < 9; j++) {
@@ -305,11 +308,13 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
         for(int i = 0; i < 48; i++){
             if(state.getDiscardPile(i) != 136 && state.getCurrDiscard() != null) {
+                /*
                 int newSuit = state.getCurrDiscard().getSuit();
                 int newId = state.getCurrDiscard().getID();
                 int newVal = state.getCurrDiscard().getVal();
                 int newDeckPos = state.getCurrDiscard().getDeckPos();
                 Tile dis = new Tile(newSuit,newVal,newId,newDeckPos);
+                */
                 discard[i].setImageResource(R.drawable.mahjongtilebamboo1);
 
             }
