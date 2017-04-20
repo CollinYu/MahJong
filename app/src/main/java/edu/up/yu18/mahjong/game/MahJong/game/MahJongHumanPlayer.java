@@ -316,7 +316,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
          * TODO make the wall update GUI
          * */
 
-        for(int i = 0; i < 48; i++){
+       /* for(int i = 0; i < 48; i++){
             if(state.getDiscardPile(i) != 136 && state.getCurrDiscard() != null) {
                
                 discard[i].setImageResource(R.drawable.mahjongtilebamboo1);
@@ -325,7 +325,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             else{
                 discard[i].setVisibility(View.INVISIBLE);
             }
-        }
+        }*/
         for(int i = 0; i < 48; i++){
             if(state.getCurrDiscard() != null){
                 if (state.getCurrDiscard().getSuit() == 0) {
