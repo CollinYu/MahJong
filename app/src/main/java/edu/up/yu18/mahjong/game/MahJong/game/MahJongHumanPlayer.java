@@ -69,11 +69,6 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     if(state.getPlayerClosedHandTile(playerNum,i).getSuit() == -1){
                         myTiles[i].setBackgroundColor(0xFF00FF00);
                     }
-                    for(int q = 0; q < 14; q++) {
-                        if (tilePressed[q]){
-                            myTiles[i].setBackgroundColor(Color.BLUE);
-                        }
-                    }
 
                     //if suit is dots suit is 0
                     if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 0) {
@@ -191,6 +186,11 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             }
         }
 
+        for(int q = 0; q < 14; q++) {
+            if (tilePressed[q]){
+                myTiles[q].setBackgroundColor(Color.BLUE);
+            }
+        }
         for (int i = 0; i < 14; i++) {
             if (state.getPlayerClosedHandTile(playerNum, i) != null) {
                 playerClosedHand[0][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
@@ -318,18 +318,126 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
         for(int i = 0; i < 48; i++){
             if(state.getDiscardPile(i) != 136 && state.getCurrDiscard() != null) {
-                /*
-                int newSuit = state.getCurrDiscard().getSuit();
-                int newId = state.getCurrDiscard().getID();
-                int newVal = state.getCurrDiscard().getVal();
-                int newDeckPos = state.getCurrDiscard().getDeckPos();
-                Tile dis = new Tile(newSuit,newVal,newId,newDeckPos);
-                */
+               
                 discard[i].setImageResource(R.drawable.mahjongtilebamboo1);
 
             }
             else{
                 discard[i].setVisibility(View.INVISIBLE);
+            }
+        }
+        for(int i = 0; i < 48; i++){
+            if(state.getCurrDiscard() != null){
+                if (state.getCurrDiscard().getSuit() == 0) {
+                    for (int j = 0; j < 9; j++) {
+                        if (state.getCurrDiscard().getVal() == j) {
+                            if (j == 0) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledots1);
+                            } else if (j == 1) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledots2);
+                            } else if (j == 2) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledots3);
+                            } else if (j == 3) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledots4);
+                            } else if (j == 4) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledots5);
+                            } else if (j == 5) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledots6);
+                            } else if (j == 6) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledots7);
+                            } else if (j == 7) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledots8);
+                            } else if (j == 8) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledots9);
+                            }
+                        }
+                    }
+                }
+                //if suit is bamboo suit is 1
+                if (state.getCurrDiscard().getSuit() == 1) {
+                    for (int j = 0; j < 9; j++) {
+                        if (state.getCurrDiscard().getVal() == j) {
+                            if (j == 0) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo1);
+                            } else if (j == 1) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo2);
+                            } else if (j == 2) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo3);
+                            } else if (j == 3) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo4);
+                            } else if (j == 4) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo5);
+                            } else if (j == 5) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo6);
+                            } else if (j == 6) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo7);
+                            } else if (j == 7) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo8);
+                            } else if (j == 8) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo9);
+                            }
+                        }
+                    }
+                }
+                //if suit is character suit is 2
+                if (state.getCurrDiscard().getSuit() == 2) {
+                    for (int j = 0; j < 9; j++) {
+                        if (state.getCurrDiscard().getVal() == j) {
+                            if (j == 0) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter1);
+                            } else if (j == 1) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter2);
+                            } else if (j == 2) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter3);
+                            } else if (j == 3) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter4);
+                            } else if (j == 4) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter5);
+                            } else if (j == 5) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter6);
+                            } else if (j == 6) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter7);
+                            } else if (j == 7) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter8);
+                            } else if (j == 8) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter9);
+                            }
+                        }
+                    }
+                }
+                //if suit is dragon suit is 3
+                if (state.getCurrDiscard().getSuit() == 3) {
+                    for (int j = 0; j < 3; j++) {
+                        if (state.getCurrDiscard().getVal() == j) {
+                            if (j == 0) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledragongreen);
+                            } else if (j == 1) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledragonred);
+                            } else if (j == 2) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledragonwhite);
+                            }
+                        }
+                    }
+
+                }
+                //if suit is wind suit is 4
+                if (state.getCurrDiscard().getSuit() == 4) {
+                    for (int j = 0; j < 4; j++) {
+                        if (state.getCurrDiscard().getVal() == j) {
+                            if (j == 0) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledirectioneast);
+                            } else if (j == 1) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledirectionnorth);
+                            } else if (j == 2) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledirectionsouth);
+                            } else if (j == 3) {
+                                discard[i].setBackgroundResource(R.drawable.mahjongtiledirectionwest);
+                            }
+                        }
+                    }
+
+                }
+                
             }
         }
 
