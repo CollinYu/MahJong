@@ -1,5 +1,6 @@
 package edu.up.yu18.mahjong.game.MahJong.game;
 
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.view.View;
 import android.widget.Button;
@@ -68,6 +69,12 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     if(state.getPlayerClosedHandTile(playerNum,i).getSuit() == -1){
                         myTiles[i].setBackgroundColor(0xFF00FF00);
                     }
+                    for(int q = 0; q < 14; q++) {
+                        if (tilePressed[q]){
+                            myTiles[i].setBackgroundColor(Color.BLUE);
+                        }
+                    }
+
                     //if suit is dots suit is 0
                     if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 0) {
                         for (int j = 0; j < 9; j++) {
