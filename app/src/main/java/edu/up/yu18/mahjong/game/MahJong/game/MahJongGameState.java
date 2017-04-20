@@ -23,23 +23,48 @@ import edu.up.yu18.mahjong.game.frameWork.base.util.GameTimer;
  * Sort and associated button work, but game automatically sorts hand anyways, so it is currently redundant
  */
 
+
+/**
+ * @Collin_Yu
+ * The MahJongGameState class holds all of the information one would need to recreate the game from scratch, its alteration
+ * represents any change in the game
+ */
 public class MahJongGameState extends GameState {
+
+    // our deck sets itself up as a referential source, it shuffles itself and like the Random() class, one
+    // simply needs to look at the next object to get the sense of randomization
     private ArrayList<Tile> deck;
+
+    // the reference point for the next tile in the deck
     private int deckPosition;
+
+    // passingPlayers represents those players that have passed in a given post-discard phase
     private boolean[] passingPlayers = {
             false,
             false,
             false,
             false
     };
+
+    // represents the undrawn portions of the deck
     private int[] wall;
+
+    // represents the previously discarded tiles
     private int[] discardPile;
+
+    // player names...
     private String[] playerNames;
+
     // Note that the int arrays below are [playerID][tileID]
     private int[][] playerClosedHands;
     private int[][] playerOpenHands;
+
+    // Represents the players progress towards a mahjong, boolean hasMahjong(int playerID) utilizes this
     private int[] playerMJProg = {0,0,0,0};
+
+    // The most recently discarded card in a given post-discard phase
     private Tile currDiscard;
+
     // whose turn it is will be expressed in stages, player 1's turn
     //will be stage 1, player 1's post-discard phase will be stage 2,
     // player 2's turn will be stage 3, her discard phase will be stage 4,
@@ -47,8 +72,15 @@ public class MahJongGameState extends GameState {
     private int gameStage;
 
 
-    //Constructor
+    /**
+     * @Collin_Yu
+     * Initializes game with default and constant values.
+     * Only called once at the start of the game.
+     */
+
     public MahJongGameState() {
+
+        // instantiate variables
         Deck d = new Deck();
         deck = d.getDeckTiles();
         playerClosedHands = new int[4][14]; // 4 players, 14 cards max
@@ -110,8 +142,12 @@ public class MahJongGameState extends GameState {
     public int getGameStage() {return this.gameStage;}
     public boolean hasPassed(int pID) {return passingPlayers[pID];}
 
-    // Takes an existing mahJongGameState object as a parameter to
-    // initialize a new object with the same attributes
+    /**
+     * @Collin_Yu
+     * Takes an existing mahJongGameState object as a parameter to
+     * initialize a new object with the same attributes that does not point to the parameter
+     *  AKA deep copier
+     */
     public MahJongGameState(MahJongGameState game) {
 
         // Goes through each element of int[] wall and makes it individually
@@ -158,7 +194,14 @@ public class MahJongGameState extends GameState {
 
     }
 
+
+    /**
+     * @Collin_Yu
+     * @param c the chow given
+     * changes this in response to chow action sent through the MahJongLocalGame
+     */
     public void Chow(Chow c) {
+
         // Check legality
         if (c.getTile1().isAbove(c.getTile2()) && c.getTile2().isAbove(c.getTile3()) ||
                 c.getTile2().isAbove(c.getTile1()) && c.getTile1().isAbove(c.getTile3()) ||
@@ -218,9 +261,13 @@ public class MahJongGameState extends GameState {
                 }
             }
 
+            // increment MahJongProgress accordingly
             playerMJProg[c.getPlayerID()]++;
-            draw(c.getPlayerID());
+
+            // it is now your turn to discard
             gameStage = (c.getPlayerID() + 1) * 2 - 1;
+
+            // reset passingPlayers for the post-discard phase
             passingPlayers[0] = false;
             passingPlayers[1] = false;
             passingPlayers[2] = false;

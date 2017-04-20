@@ -24,10 +24,13 @@ import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
 import edu.up.yu18.mahjong.game.frameWork.base.game.LocalGame;
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 
+/**
+ * @Collin_Yu
+ * the MahJongHumanPlayer Class translates both ways between a GUI and the game
+ */
 
 public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
     private Button passButton;
-    protected MahJongLocalGame MJLG;
     private ImageButton[] myTiles = new ImageButton[14];
     private boolean[] tilePressed = new boolean[14];
     private ImageView[][] playerClosedHand = new ImageView[3][14];
@@ -338,6 +341,11 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
     }
 
 
+    /**
+     * @Collin_Yu
+     * initializes this players GUI
+     * @param activity
+     */
     public void setAsGui(GameMainActivity activity) {
 
         // remember the activity
@@ -560,6 +568,13 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         }
     }
 
+    /**
+     * @Collin_Yu
+     * @param v, the view that received the click action
+     * governs:
+     *           - Tile Selection
+     *           - GUIPlayer Actions
+     */
     @Override
     public void onClick(View v) {
 

@@ -8,7 +8,11 @@ import java.lang.Math;
 import java.util.Random;
 
 /**
- * Created by CollinYu on 4/12/17.
+ * @Collin_Yu
+ * Computer AI (if intelligence is really an applicable word here) that really really sucks at MahJong
+ * Performs the bare minimum for a MahJong player:
+ * - Discards on its turn
+ * - Passes when it needs to
  */
 
 public class MahJongDumbPlayer extends GameComputerPlayer {
