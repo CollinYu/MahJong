@@ -501,8 +501,20 @@ public class MahJongGameState extends GameState {
     }
 
 
+    /**
+     * @Collin_Yu
+     * @param pID the player whose hand needs to be sorted
+     * Sorts hand of the given player in the following manner
+     *            - dots 1-9
+     *            - bamboo 1-9
+     *            - characters 1-9
+     *            - dragon tiles
+     *            - wind tiles
+     */
     public void sort(int pID){
         int temp;
+
+        // ID of the tiles was made for easy sorting
         for (int i = 0; i < playerClosedHands[pID].length - 1; i++) {
             for (int j = i + 1; j < playerClosedHands[pID].length; j++) {
                 if (deck.get(playerClosedHands[pID][i]).getID() > deck.get(playerClosedHands[pID][j]).getID()) {
@@ -514,20 +526,40 @@ public class MahJongGameState extends GameState {
         }
 
     }
-    
+
+    /**
+     * @Collin_Yu
+     * @param pID the player who will draw
+     * Replaces first blank tile in hand with the next spot in the deck reference, and increments accordingly
+     */
     public void draw(int pID){
+        // search hand
         for(int i= 0; i < playerClosedHands[pID].length; i++){
+
+            // if blank tile
             if(playerClosedHands[pID][i] == 136){
+
+                // set blank tile to next card in the deck
                 playerClosedHands[pID][i] = this.deckPosition;
+
+                // increment deckPosition accordingly
                 this.deckPosition++;
+
+                // automatically sort their hand
                 sort(pID);
+
+                // break search loop
                 break;
             }
         }
     }
 
 
-
+    /**
+     * @Collin_Yu
+     * @param pID the player whose hand is being checked for a mahjong
+     * @return whether they do or not
+     */
         public boolean hasMahJong(int pID){
             return false;
             /**

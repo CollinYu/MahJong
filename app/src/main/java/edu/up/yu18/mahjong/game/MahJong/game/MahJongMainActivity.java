@@ -9,7 +9,9 @@ import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
 import edu.up.yu18.mahjong.game.frameWork.base.game.LocalGame;
 
 /**
- * Created by CollinYu on 4/12/17.
+ * @Steve_Vegdahl
+ * @Andrew_Nuxoll
+ * @Collin_Yu
  */
 
 public class MahJongMainActivity extends GameMainActivity{

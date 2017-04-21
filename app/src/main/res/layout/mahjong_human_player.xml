@@ -1519,6 +1519,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/tile1"
+            android:backgroundTint= "#48000088"
+            android:backgroundTintMode="src_atop"
             android:background="@drawable/mahjongtiledots1" />
 
         <ImageButton
@@ -1527,6 +1529,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile2"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtiledots2"/>
 
         <ImageButton
@@ -1535,6 +1539,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile3"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtiledots3"/>
 
         <ImageButton
@@ -1543,6 +1549,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile4"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtiledots4"/>
 
         <ImageButton
@@ -1551,6 +1559,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile5"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtilebamboo3"/>
 
         <ImageButton
@@ -1559,6 +1569,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile6"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtilebamboo8" />
 
         <ImageButton
@@ -1567,6 +1579,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile7"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtilecharacter8"
             android:adjustViewBounds="false" />
 
@@ -1585,6 +1599,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile8"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtilecharacter4"/>
 
         <ImageButton
@@ -1593,6 +1609,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile9"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtilecharacter5"/>
 
         <ImageButton
@@ -1601,6 +1619,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile10"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtilecharacter8"/>
 
         <ImageButton
@@ -1609,6 +1629,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile11"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtilebamboo9"/>
 
         <ImageButton
@@ -1617,6 +1639,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile12"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtiledots9"/>
 
         <ImageButton
@@ -1625,6 +1649,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile13"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtiledirectionnorth"/>
 
         <ImageButton
@@ -1633,6 +1659,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/tile14"
+            android:backgroundTint="#48000088"
+            android:backgroundTintMode="add"
             android:background="@drawable/mahjongtiledragonred"/>
 
 </LinearLayout>

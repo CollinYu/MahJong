@@ -63,6 +63,16 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
      * This is where we manipulate the gui objects in response to the gamestate having changed
      */
     public void updateDisplay() {
+
+        for(int q = 0; q < 14; q++) {
+            if (tilePressed[q]){
+                myTiles[q].setBackgroundTintMode(PorterDuff.Mode.SRC_ATOP);
+            }
+            else {
+
+                myTiles[q].setBackgroundTintMode(PorterDuff.Mode.ADD);
+            }
+        }
         for (int k = 0; k < 4; k++) {
             for (int i = 0; i < 14; i++) {
                 if (state.getPlayerClosedHandTile(playerNum, i) != null) {
@@ -877,6 +887,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             }
             else{displayTextBox.setText("Invalid Move!");}
         }
+
         if (v == sortButton){
             Sort s = new Sort(this, this.playerNum);
             action = s;
@@ -923,10 +934,8 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 return;
             }
         }
-        if (action != null) {
             game.sendAction(action);
             updateDisplay();
-        }
     }
 
 
