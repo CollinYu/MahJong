@@ -28,6 +28,8 @@ import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 /**
  * @Collin_Yu
  * the MahJongHumanPlayer Class translates both ways between a GUI and the game
+ *
+ * TODO: make discard work doh
  */
 
 public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
