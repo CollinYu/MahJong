@@ -317,12 +317,8 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
          * */
 
         for(int i = 0; i < 48; i++){
-            if(state.getDiscardPile(i) != 136 && state.getCurrDiscard() != null) {
-               
-                discard[i].setImageResource(R.drawable.mahjongtilebamboo1);
+            if(state.getDiscardPile(i) == 136) {
 
-            }
-            else{
                 discard[i].setBackgroundColor(0xFF00B200);
             }
         }
