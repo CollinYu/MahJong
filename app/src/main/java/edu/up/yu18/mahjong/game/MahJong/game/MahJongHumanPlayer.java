@@ -79,7 +79,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             for (int i = 0; i < 14; i++) {
                 if (state.getPlayerClosedHandTile(playerNum, i) != null) {
                     if(state.getPlayerClosedHandTile(playerNum,i).getSuit() == -1){
-                        myTiles[i].setBackgroundColor(0xFF00FF00);
+                        myTiles[i].setBackgroundColor(0xFF1e771e);
                     }
 
                     //if suit is dots suit is 0
@@ -320,7 +320,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
                 }
                 else   {
-                    playerOpenHand[k][n].setVisibility(View.INVISIBLE);
+                    playerOpenHand[k][n].setBackgroundColor(0xFF1e771e);
                 }
             }
         }
@@ -331,7 +331,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         for(int i = 0; i < 48; i++){
             if(state.getDiscardPile(i) == 136) {
 
-                discard[i].setBackgroundColor(0xFF00B200);
+                discard[i].setBackgroundColor(0xFF1e771e);
             }
         }
         for(int i = 0; i < 48; i++){
