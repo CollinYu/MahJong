@@ -336,6 +336,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         }
         for(int i = 0; i < 48; i++){
             if(state.getCurrDiscard() != null) {
+                /*
                 if (state.getDiscardPile(i) != 136){
                     if (state.getCurrDiscard().getSuit() == 0) {
                         for (int j = 0; j < 9; j++) {
@@ -447,7 +448,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
                     }
                 }
-                else if (state.getDiscardPile(i) == 136) {
+                else */if (state.getDiscardPile(i) == 136) {
                     if (state.getCurrDiscard().getSuit() == 0) {
                         for (int j = 0; j < 9; j++) {
                             if (state.getCurrDiscard().getVal() == j) {

@@ -11,7 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.up.yu18.mahjong.MainActivity"
     android:weightSum="100"
-    android:background="#00B200"
+    android:background="#1e771e"
     android:id="@+id/Main">
 
     <LinearLayout
@@ -1299,7 +1299,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:weightSum="14"
-        android:layout_weight="5"
+        android:layout_weight="6.48"
         android:id="@+id/YourOpenHand">
 
         <ImageView
@@ -1509,7 +1509,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="8.96"
         android:weightSum="7"
         android:layout_marginBottom="5dp"
         android:id="@+id/ClosedHand1">
@@ -1590,7 +1590,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="8.29"
         android:layout_marginTop="5dp"
         android:id="@+id/ClosedHand2">
 

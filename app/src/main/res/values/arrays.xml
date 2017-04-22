@@ -41,12 +41,6 @@
         <item>@drawable/mahjongtiledragonred</item>
         <item>@drawable/mahjongtiledragonwhite</item>
 
-        <item>@drawable/mahjong6</item>
-        <item>@drawable/mahjong7</item>
-        <item>@drawable/mahjong8</item>
-        <item>@drawable/mahjong9</item>
-        <item>@drawable/mahjongbamboo1</item>
-
     </array>
 
 </resources>
