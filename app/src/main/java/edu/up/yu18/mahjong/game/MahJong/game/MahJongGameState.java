@@ -211,7 +211,7 @@ public class MahJongGameState extends GameState {
                 c.getTile3().isAbove(c.getTile2()) && c.getTile2().isAbove(c.getTile1())) {
 
             // Set next open openhand slot to Tile 1
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerOpenHands.length; i++) {
                 if (this.playerOpenHands[c.getPlayerID()][i] == 136) {
                     setPlayerOpenHandTile(c.getPlayerID(), c.getTile1().getDeckPos(), i);
                     break;
@@ -220,7 +220,7 @@ public class MahJongGameState extends GameState {
 
 
             // Find the tile in your closedhand, and remove it
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerClosedHands.length; i++) {
                 if (this.playerClosedHands[c.getPlayerID()][i] == c.getTile1().getDeckPos()) {
                     setPlayerClosedHandTile(c.getPlayerID(), 136, i);
                     break;
@@ -229,39 +229,31 @@ public class MahJongGameState extends GameState {
 
 
             // Set next open openhand slot to Tile 2
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerOpenHands.length; i++) {
                 if (this.playerOpenHands[c.getPlayerID()][i] == 136) {
                     setPlayerOpenHandTile(c.getPlayerID(), c.getTile2().getDeckPos(), i);
-                    return;
+                    break;
                 }
             }
 
             // Find the tile in your closedhand, and remove it
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerClosedHands.length; i++) {
                 if (this.playerClosedHands[c.getPlayerID()][i] == c.getTile2().getDeckPos()) {
                     setPlayerClosedHandTile(c.getPlayerID(), 136, i);
-                    return;
+                    break;
                 }
             }
 
 
             // Set next open openhand slot to Tile 3
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerOpenHands.length; i++) {
                 if (this.playerOpenHands[c.getPlayerID()][i] == 136) {
                     setPlayerOpenHandTile(c.getPlayerID(), c.getTile3().getDeckPos(), i);
-                    return;
+                    break;
                 }
             }
 
-            // Find the tile in your closedhand, and remove it
-            for (int i = 0; i < 16; i++) {
-                if (this.playerClosedHands[c.getPlayerID()][i] == c.getTile3().getDeckPos()) {
-                    setPlayerClosedHandTile(c.getPlayerID(), 136, i);
-                    return;
-                }
-            }
-
-
+            // remove currDiscard
             currDiscard = null;
 
             // increment MahJongProgress accordingly
@@ -286,7 +278,7 @@ public class MahJongGameState extends GameState {
     public void Pong(Pong p) {
         if (p.getTile1().isEqualto(p.getTile2()) && p.getTile2().isEqualto(p.getTile3())) {
             // Set next open openhand slot to Tile 1
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerOpenHands.length; i++) {
                 if (this.playerOpenHands[p.getPlayerID()][i] == 136) {
                     setPlayerOpenHandTile(p.getPlayerID(), p.getTile1().getDeckPos(), i);
                     break;
@@ -294,7 +286,7 @@ public class MahJongGameState extends GameState {
             }
 
             // Find the tile in your closedhand, and remove it
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerClosedHands.length; i++) {
                 if (this.playerClosedHands[p.getPlayerID()][i] == p.getTile1().getDeckPos()) {
                     setPlayerClosedHandTile(p.getPlayerID(), 136, i);
                     break;
@@ -303,15 +295,15 @@ public class MahJongGameState extends GameState {
 
 
             // Set next open openhand slot to Tile 2
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerOpenHands.length; i++) {
                 if (this.playerOpenHands[p.getPlayerID()][i] == 136) {
-                    setPlayerClosedHandTile(p.getPlayerID(), p.getTile2().getDeckPos(), i);
+                    setPlayerOpenHandTile(p.getPlayerID(), p.getTile2().getDeckPos(), i);
                     break;
                 }
             }
 
             // Find the tile in your closedhand, and remove it
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerClosedHands.length; i++) {
                 if (this.playerClosedHands[p.getPlayerID()][i] == p.getTile2().getDeckPos()) {
                     setPlayerClosedHandTile(p.getPlayerID(), 136, i);
                     break;
@@ -320,22 +312,15 @@ public class MahJongGameState extends GameState {
 
 
             // Set next open openhand slot to Tile 3
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerOpenHands.length; i++) {
                 if (this.playerOpenHands[p.getPlayerID()][i] == p.getTile3().getDeckPos()) {
-                    setPlayerClosedHandTile(p.getPlayerID(), 136, i);
-                    break;
-                }
-            }
-
-            // Find the tile in your closedhand, and remove it
-            for (int i = 0; i < 16; i++) {
-                if (this.playerClosedHands[p.getPlayerID()][i] == 136) {
-                    setPlayerOpenHandTile(p.getPlayerID(), p.getTile3().getDeckPos(), i);
+                    setPlayerOpenHandTile(p.getPlayerID(), 136, i);
                     break;
                 }
             }
 
 
+            // remove currDiscard
             currDiscard = null;
 
             playerMJProg[p.getPlayerID()]++;
@@ -358,28 +343,28 @@ public class MahJongGameState extends GameState {
 
 
             // Set 1st open slot to Tile 1
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerOpenHands.length; i++) {
                 if (this.playerOpenHands[k.getPlayerID()][i] == 136) {
                     setPlayerOpenHandTile(k.getPlayerID(), k.getTile1().getDeckPos(), i);
                     break;
                 }
             }
             // Find the tile in your hand, and remove it
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerClosedHands.length; i++) {
                 if (this.playerClosedHands[k.getPlayerID()][i] == k.getTile1().getDeckPos()) {
                     setPlayerClosedHandTile(k.getPlayerID(), 136, i);
                     break;
                 }
             }
             // Set next open slot to Tile 2
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerOpenHands.length; i++) {
                 if (this.playerOpenHands[k.getPlayerID()][i] == 136) {
                     setPlayerOpenHandTile(k.getPlayerID(), k.getTile2().getDeckPos(), i);
                     break;
                 }
             }
             // Find the tile in your hand, and remove it
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerClosedHands.length; i++) {
                 if (this.playerClosedHands[k.getPlayerID()][i] == k.getTile2().getDeckPos()) {
                     setPlayerClosedHandTile(k.getPlayerID(), 136, i);
                     break;
@@ -387,33 +372,28 @@ public class MahJongGameState extends GameState {
             }
 
             // Set next open openhand slot to Tile 3
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerOpenHands.length; i++) {
                 if (this.playerOpenHands[k.getPlayerID()][i] == 136) {
                     setPlayerOpenHandTile(k.getPlayerID(), k.getTile3().getDeckPos(), i);
                     break;
                 }
             }
             // Find the tile in your hand, and remove it
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerClosedHands.length; i++) {
                 if (this.playerClosedHands[k.getPlayerID()][i] == k.getTile3().getDeckPos()) {
                     setPlayerClosedHandTile(k.getPlayerID(), 136, i);
                     break;
                 }
             }
             // Set next open openhand slot to Tile 4
-            for (int i = 0; i < 16; i++) {
+            for (int i = 0; i < playerOpenHands.length; i++) {
                 if (this.playerOpenHands[k.getPlayerID()][i] == 136) {
                     setPlayerOpenHandTile(k.getPlayerID(), k.getTile4().getDeckPos(), i);
                     break;
                 }
             }
-            // Find the tile in your hand, and remove it
-            for (int i = 0; i < 16; i++) {
-                if (this.playerClosedHands[k.getPlayerID()][i] == k.getTile4().getDeckPos()) {
-                    setPlayerOpenHandTile(k.getPlayerID(), k.getTile3().getDeckPos(), i);
-                    break;
-                }
-            }
+
+            // remove currDiscard
 
             currDiscard = null;
 

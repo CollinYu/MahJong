@@ -874,8 +874,16 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 if (tiles.size() != 3) {
                     displayTextBox.setText("Invalid Kong!");
                     return;
-                } else {
+                }
+                else if (tiles.get(0).isEqualto(tiles.get(1)) &&
+                        tiles.get(1).isEqualto(tiles.get(2)) &&
+                        tiles.get(2).isEqualto(tiles.get(3))){
+
                     action = new Kong(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2), state.getCurrDiscard());
+
+                }else {
+                    displayTextBox.setText("Invalid Kong!");
+                    return;
                 }
             }
             else{
