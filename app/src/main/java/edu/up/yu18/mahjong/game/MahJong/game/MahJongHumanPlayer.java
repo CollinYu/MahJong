@@ -821,25 +821,43 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         // Construct the action and send it to the game
         GameAction action = null;
 
+        // for chowButton
         if (v == chowButton) {
+
+            // check for valid gameStage
             if (this.playerNum == 0 && state.getGameStage() == 8 ||
                     state.getGameStage() == this.playerNum*2) {
+
+                // create new ArrayList of Tile objects for referential purposes
                 ArrayList<Tile> tiles = new ArrayList<>(0);
+
+                // for each Tile highlighted by the player, add that tile to the new array
                 for (int i = 0; i < tilePressed.length; i++) {
                     if (tilePressed[i]) {
                         tiles.add(state.getPlayerClosedHandTile(playerNum, i));
                     }
                 }
+
+                // check that tiles is the correct length for the action
                 if (tiles.size() != 2) {
-                    displayTextBox.setText("Invalid Chow!");
+                    displayTextBox.setText("Invalid Chow!"); // if invalid, let the player know
                     return;
-                } else {
-                    action = new Chow(this, playerNum, tiles.get(0), tiles.get(1), state.getCurrDiscard());
+
+                    // if action passed
+                } else if ((tiles.get(0).isAbove(tiles.get(1)) && tiles.get(1).isAbove(tiles.get(2)) ||
+                        (tiles.get(0).isAbove(tiles.get(2)) && tiles.get(2).isAbove(tiles.get(1)))  ||
+                        (tiles.get(1).isAbove(tiles.get(0)) && tiles.get(0).isAbove(tiles.get(2)))  ||
+                        (tiles.get(1).isAbove(tiles.get(2)) && tiles.get(2).isAbove(tiles.get(0)))  ||
+                        (tiles.get(2).isAbove(tiles.get(1)) && tiles.get(1).isAbove(tiles.get(0))) ||
+                        (tiles.get(2).isAbove(tiles.get(0)) && tiles.get(0).isAbove(tiles.get(1))))) {
+
+                    displayTextBox.setText("Nice Chow!"); // congratulate them on performing a simple game action
+
+                    action = new Chow(this, playerNum, tiles.get(0), tiles.get(1), state.getCurrDiscard()); // confirm Chow action
+                    for (int i = 0; i < tilePressed.length; i++){tilePressed[i] = false;} // reset hand highlighting
                 }
-            }
-            else {
-                displayTextBox.setText("You can't Chow right now!");
-            }
+            } // gameStage check
+            else {displayTextBox.setText("You can't Chow right now!");} // if invalid gameStage, let player know
         }
 
         if (v == pongButton) {
@@ -854,8 +872,19 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 if (tiles.size() != 2) {
                     displayTextBox.setText("Invalid Pong!");
                     return;
-                } else {
+                }
+                else if (tiles.get(0).isEqualto(tiles.get(1)) &&
+                        tiles.get(1).isEqualto(tiles.get(2)) &&
+                        tiles.get(2).isEqualto(tiles.get(3))) {
+                    
                     action = new Pong(this, playerNum, tiles.get(0), tiles.get(1), state.getCurrDiscard());
+                    displayTextBox.setText("Nice Pong!");
+                    for (int i = 0; i < tilePressed.length; i++){tilePressed[i] = false;}
+                }
+                   
+                else {
+                    displayTextBox.setText("Invalid Pong!");
+                    return;
                 }
             }
             else {
@@ -878,8 +907,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 else if (tiles.get(0).isEqualto(tiles.get(1)) &&
                         tiles.get(1).isEqualto(tiles.get(2)) &&
                         tiles.get(2).isEqualto(tiles.get(3))){
-
                     action = new Kong(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2), state.getCurrDiscard());
+                    displayTextBox.setText("Kong!");
+                    for (int i = 0; i < tilePressed.length; i++){tilePressed[i] = false;}
 
                 }else {
                     displayTextBox.setText("Invalid Kong!");
