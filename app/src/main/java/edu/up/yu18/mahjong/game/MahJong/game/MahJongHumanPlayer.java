@@ -779,8 +779,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
             tilePressed[i] = false;
         }
         displayTextBox = (TextView) activity.findViewById(R.id.DisplayTextBox);
-        sortButton = (Button) activity.findViewById(R.id.sortButton);
-        sortButton.setOnClickListener(this);
+        //
+        //sortButton = (Button) activity.findViewById(R.id.sortButton);
+        //sortButton.setOnClickListener(this);
         chowButton = (Button) activity.findViewById(R.id.chowButton);
         chowButton.setOnClickListener(this);
         pongButton = (Button) activity.findViewById(R.id.pongButton);
