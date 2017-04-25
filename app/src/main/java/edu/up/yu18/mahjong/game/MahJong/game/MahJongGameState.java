@@ -203,12 +203,12 @@ public class MahJongGameState extends GameState {
     public void Chow(Chow c) {
 
         // Check legality
-        if (c.getTile1().isAbove(c.getTile2()) && c.getTile2().isAbove(c.getTile3()) ||
-                c.getTile2().isAbove(c.getTile1()) && c.getTile1().isAbove(c.getTile3()) ||
-                c.getTile1().isAbove(c.getTile3()) && c.getTile3().isAbove(c.getTile2()) ||
-                c.getTile2().isAbove(c.getTile3()) && c.getTile3().isAbove(c.getTile1()) ||
-                c.getTile3().isAbove(c.getTile1()) && c.getTile1().isAbove(c.getTile2()) ||
-                c.getTile3().isAbove(c.getTile2()) && c.getTile2().isAbove(c.getTile1())) {
+        if ( (c.getTile1().isAbove(c.getTile2()) && c.getTile2().isAbove(c.getTile3())) ||
+                (c.getTile2().isAbove(c.getTile1()) && c.getTile1().isAbove(c.getTile3())) ||
+                (c.getTile1().isAbove(c.getTile3()) && c.getTile3().isAbove(c.getTile2())) ||
+                (c.getTile2().isAbove(c.getTile3()) && c.getTile3().isAbove(c.getTile1())) ||
+                (c.getTile3().isAbove(c.getTile1()) && c.getTile1().isAbove(c.getTile2())) ||
+                (c.getTile3().isAbove(c.getTile2()) && c.getTile2().isAbove(c.getTile1()))) {
 
             // Set next open openhand slot to Tile 1
             for (int i = 0; i < playerOpenHands.length; i++) {
@@ -217,7 +217,6 @@ public class MahJongGameState extends GameState {
                     break;
                 }
             }
-
 
             // Find the tile in your closedhand, and remove it
             for (int i = 0; i < playerClosedHands.length; i++) {
@@ -260,7 +259,8 @@ public class MahJongGameState extends GameState {
             playerMJProg[c.getPlayerID()]++;
 
             // it is now your turn to discard
-            gameStage++;
+            if(gameStage == 8){gameStage = 1;}
+            else{gameStage++;}
 
             // reset passingPlayers for the post-discard phase
             passingPlayers[0] = false;
@@ -413,6 +413,12 @@ public class MahJongGameState extends GameState {
             passingPlayers[3] = false;
         }
     }
+
+    /**
+     * @Collin_Yu
+     * @param d the Discard action given
+     * Removes the appropriate card from the hand and place it in the corresponding location: discardPile
+     */
 
     public void Discard(Discard d) {
         // Remove it from closedhand
