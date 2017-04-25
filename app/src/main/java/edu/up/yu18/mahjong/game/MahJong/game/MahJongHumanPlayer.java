@@ -837,6 +837,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     if (tilePressed[i]) {
                         tiles.add(state.getPlayerClosedHandTile(playerNum, i));
                     }
+
                 }
 
                 // check that tiles is the correct length for the action
@@ -845,12 +846,12 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     return;
 
                     // if action passed
-                } else if ((tiles.get(0).isAbove(tiles.get(1)) && tiles.get(1).isAbove(tiles.get(2)) ||
-                        (tiles.get(0).isAbove(tiles.get(2)) && tiles.get(2).isAbove(tiles.get(1)))  ||
-                        (tiles.get(1).isAbove(tiles.get(0)) && tiles.get(0).isAbove(tiles.get(2)))  ||
-                        (tiles.get(1).isAbove(tiles.get(2)) && tiles.get(2).isAbove(tiles.get(0)))  ||
-                        (tiles.get(2).isAbove(tiles.get(1)) && tiles.get(1).isAbove(tiles.get(0))) ||
-                        (tiles.get(2).isAbove(tiles.get(0)) && tiles.get(0).isAbove(tiles.get(1))))) {
+                } else if ((tiles.get(0).isAbove(tiles.get(1)) && tiles.get(1).isAbove(state.getCurrDiscard()) ||
+                        (tiles.get(0).isAbove(state.getCurrDiscard()) && state.getCurrDiscard().isAbove(tiles.get(1)))  ||
+                        (tiles.get(1).isAbove(tiles.get(0)) && tiles.get(0).isAbove(state.getCurrDiscard()))  ||
+                        (tiles.get(1).isAbove(state.getCurrDiscard()) && state.getCurrDiscard().isAbove(tiles.get(0)))  ||
+                        (state.getCurrDiscard().isAbove(tiles.get(1)) && tiles.get(1).isAbove(tiles.get(0))) ||
+                        (state.getCurrDiscard().isAbove(tiles.get(0)) && tiles.get(0).isAbove(tiles.get(1))))) {
 
                     displayTextBox.setText("Nice Chow!"); // congratulate them on performing a simple game action
 
@@ -875,9 +876,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     return;
                 }
                 else if (tiles.get(0).isEqualto(tiles.get(1)) &&
-                        tiles.get(1).isEqualto(tiles.get(2)) &&
-                        tiles.get(2).isEqualto(tiles.get(3))) {
-                    
+                        tiles.get(1).isEqualto(state.getCurrDiscard())){
                     action = new Pong(this, playerNum, tiles.get(0), tiles.get(1), state.getCurrDiscard());
                     displayTextBox.setText("Nice Pong!");
                     for (int i = 0; i < tilePressed.length; i++){tilePressed[i] = false;}
@@ -892,10 +891,18 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 displayTextBox.setText("You can't Pong right now!");
             }
         }
+
+        // for kongButton calls
         if (v == kongButton) {
+
+            // check for valid gameStage
             if (state.getGameStage() != (this.playerNum + 1) * 2 &&
                     state.getGameStage() % 2 == 0) {
+
+                // new ArrayList of Tiles to handle kong action
                 ArrayList<Tile> tiles = new ArrayList<>(0);
+
+                // for each
                 for (int i = 0; i < tilePressed.length; i++) {
                     if (tilePressed[i]) {
                         tiles.add(state.getPlayerClosedHandTile(playerNum, i));
@@ -906,8 +913,8 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     return;
                 }
                 else if (tiles.get(0).isEqualto(tiles.get(1)) &&
-                        tiles.get(1).isEqualto(tiles.get(2)) &&
-                        tiles.get(2).isEqualto(tiles.get(3))){
+                        tiles.get(1).isEqualto(state.getCurrDiscard()) &&
+                        state.getCurrDiscard().isEqualto(tiles.get(2))){
                     action = new Kong(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2), state.getCurrDiscard());
                     displayTextBox.setText("Kong!");
                     for (int i = 0; i < tilePressed.length; i++){tilePressed[i] = false;}
@@ -916,7 +923,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     displayTextBox.setText("Invalid Kong!");
                     return;
                 }
-            }
+            } // end gameStage check
             else{
                 displayTextBox.setText("You can't Kong right now!");
             }
