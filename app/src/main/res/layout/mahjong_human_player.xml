@@ -15,13 +15,6 @@
     android:id="@+id/Main">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="right"></LinearLayout>
-
-    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -190,20 +183,6 @@
             android:gravity="right"
             android:textSize="16sp"/>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ScoreSpinner"
-                android:entries="@array/score_set"
-                android:layout_weight="1"
-                android:spinnerMode="dropdown" />
-        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -356,7 +335,7 @@
             android:layout_weight="8"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="0dp"
             android:id="@+id/InnerBoard">
 
             <LinearLayout
@@ -567,7 +546,7 @@
                         android:layout_weight="1"
                         android:weightSum="8"
                         android:id="@+id/InnerDiscardPile1"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginTop="3dp"
                         android:layout_marginBottom="2dp">
 
                         <ImageButton
@@ -1065,33 +1044,167 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:id="@+id/SpinnerDisplay"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:weightSum="8"
+                        android:id="@+id/InnerDiscardPile7"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="2dp">
 
-                        <Spinner
+                        <ImageButton
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/EmoteSpinner"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:entries="@array/emote_choices"
-                            android:spinnerMode="dropdown" />
+                            android:id="@+id/Discard1Tile49"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile50"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile51"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile52"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile53"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile54"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile55"
+                            android:background="@drawable/mahjongtiledots1"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile56"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:id="@+id/TextDisplay"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:weightSum="8"
+                        android:id="@+id/InnerDiscardPile8"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="2dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:id="@+id/DisplayTextBox"
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textSize="32dp"
-                            android:singleLine="true" />
+                            android:id="@+id/Discard1Tile57"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile58"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile59"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile60"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile61"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile62"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile63"
+                            android:background="@drawable/mahjongtiledots1"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile64"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -1265,6 +1378,23 @@
                     android:layout_marginBottom="5dp"
                     android:id="@+id/Wall3Tile10"
                     android:background="@mipmap/mahjongtile_back"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/TextDisplay">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/DisplayTextBox"
+                    android:layout_weight="1"
+                    android:textSize="32dp"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
 

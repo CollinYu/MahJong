@@ -328,13 +328,13 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
          * TODO make the wall update GUI
          * */
 
-        for(int i = 0; i < 48; i++){
+        for(int i = 0; i < 64; i++){
             if(state.getDiscardPile(i) == 136) {
 
                 discard[i].setBackgroundColor(0xFF1e771e);
             }
         }
-        for(int i = 0; i < 48; i++){
+        for(int i = 0; i < 64; i++){
             if(state.getCurrDiscard() != null) {
                 /*
                 if (state.getDiscardPile(i) != 136){
@@ -771,6 +771,23 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         discard[45] = (ImageButton) activity.findViewById(R.id.Discard1Tile46);
         discard[46] = (ImageButton) activity.findViewById(R.id.Discard1Tile47);
         discard[47] = (ImageButton) activity.findViewById(R.id.Discard1Tile48);
+        discard[48] = (ImageButton) activity.findViewById(R.id.Discard1Tile49);
+        discard[49] = (ImageButton) activity.findViewById(R.id.Discard1Tile50);
+        discard[50] = (ImageButton) activity.findViewById(R.id.Discard1Tile51);
+        discard[51] = (ImageButton) activity.findViewById(R.id.Discard1Tile52);
+        discard[52] = (ImageButton) activity.findViewById(R.id.Discard1Tile53);
+        discard[53] = (ImageButton) activity.findViewById(R.id.Discard1Tile54);
+        discard[54] = (ImageButton) activity.findViewById(R.id.Discard1Tile55);
+        discard[55] = (ImageButton) activity.findViewById(R.id.Discard1Tile56);
+        discard[56] = (ImageButton) activity.findViewById(R.id.Discard1Tile57);
+        discard[57] = (ImageButton) activity.findViewById(R.id.Discard1Tile58);
+        discard[58] = (ImageButton) activity.findViewById(R.id.Discard1Tile59);
+        discard[59] = (ImageButton) activity.findViewById(R.id.Discard1Tile60);
+        discard[60] = (ImageButton) activity.findViewById(R.id.Discard1Tile61);
+        discard[61] = (ImageButton) activity.findViewById(R.id.Discard1Tile62);
+        discard[62] = (ImageButton) activity.findViewById(R.id.Discard1Tile63);
+        discard[63] = (ImageButton) activity.findViewById(R.id.Discard1Tile64);
+
 
         for (int i = 0; i < myTiles.length; i++) {
             myTiles[i].setOnClickListener(this);
@@ -798,9 +815,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         emoteButton.setOnClickListener(this);
         emoteSpinner = (Spinner) activity.findViewById(R.id.EmoteSpinner);
          */
-        scoreSpinner = (Spinner) activity.findViewById(R.id.ScoreSpinner);
+        /*scoreSpinner = (Spinner) activity.findViewById(R.id.ScoreSpinner);
         String[] emoteSpinner = activity.getResources().getStringArray(R.array.emote_choices);
-        String[] scoreSpinner = activity.getResources().getStringArray(R.array.emote_choices);
+        String[] scoreSpinner = activity.getResources().getStringArray(R.array.emote_choices);*/
         if (state != null) {
             receiveInfo(state);
         }
