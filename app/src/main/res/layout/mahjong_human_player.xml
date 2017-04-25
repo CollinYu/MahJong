@@ -649,7 +649,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:weightSum="8"
-                        android:id="@+id/linearLayout"
+                        android:id="@+id/InnerDiscardPile2"
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="2dp">
 
@@ -732,7 +732,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:weightSum="8"
-                        android:id="@+id/linearLayout2"
+                        android:id="@+id/InnerDiscardPile3"
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="2dp">
 
@@ -818,7 +818,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:weightSum="8"
-                        android:id="@+id/linearLayout3"
+                        android:id="@+id/InnerDiscardPile4"
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="2dp">
 
@@ -901,7 +901,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:weightSum="8"
-                        android:id="@+id/linearLayout5"
+                        android:id="@+id/InnerDiscardPile5"
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="2dp">
 
@@ -984,7 +984,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:weightSum="8"
-                        android:id="@+id/linearLayout4"
+                        android:id="@+id/InnerDiscardPile6"
                         android:layout_marginBottom="2dp"
                         android:layout_marginTop="2dp">
 
@@ -1534,7 +1534,7 @@
             android:layout_marginTop="10dp"
             android:background="#449616"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="19sp"
             android:clickable="true" />
 
         <Button
@@ -1547,7 +1547,7 @@
             android:background="#449616"
             android:textColor="#FFFFFF"
             android:layout_marginStart="10dp"
-            android:textSize="20sp"
+            android:textSize="19sp"
             android:clickable="true" />
 
         <Button
@@ -1560,7 +1560,7 @@
             android:background="#449616"
             android:textColor="#FFFFFF"
             android:layout_marginStart="10dp"
-            android:textSize="20sp"
+            android:textSize="19sp"
             android:clickable="true" />
 
         <Button
@@ -1573,7 +1573,7 @@
             android:background="#449616"
             android:textColor="#FFFFFF"
             android:layout_marginStart="10dp"
-            android:textSize="20sp"
+            android:textSize="19sp"
             android:clickable="true" />
 
         <Button
@@ -1586,19 +1586,19 @@
             android:textColor="#FFFFFF"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:textSize="20sp" />
+            android:textSize="19sp" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Sort"
-            android:id="@+id/sortButton"
+            android:text="Mahjong"
+            android:id="@+id/mahjongButton"
             android:layout_weight="1"
             android:background="#449616"
             android:textColor="#FFFFFF"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:textSize="20sp" />
+            android:textSize="19sp" />
 
         <Button
             android:layout_marginStart="10dp"
@@ -1610,7 +1610,7 @@
             android:background="#449616"
             android:textColor="#FFFFFF"
             android:layout_marginTop="10dp"
-            android:textSize="20sp"
+            android:textSize="19sp"
             android:clickable="true" />
 
 
