@@ -544,7 +544,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:weightSum="8"
+                        android:weightSum="11"
                         android:id="@+id/InnerDiscardPile1"
                         android:layout_marginTop="3dp"
                         android:layout_marginBottom="2dp">
@@ -611,6 +611,7 @@
                             android:background="@drawable/mahjongtiledots1"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
+
                         <ImageButton
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -619,18 +620,6 @@
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:weightSum="8"
-                        android:id="@+id/InnerDiscardPile2"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
@@ -658,6 +647,18 @@
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:weightSum="11"
+                        android:id="@+id/InnerDiscardPile2"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
@@ -691,7 +692,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile15"
-                            android:background="@drawable/mahjongtiledots1"
+                            android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -703,17 +704,6 @@
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:weightSum="8"
-                        android:id="@+id/InnerDiscardPile3"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
@@ -729,7 +719,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile18"
-                            android:background="@drawable/mahjongtiledots4"
+                            android:background="@drawable/mahjongtiledots1"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -757,9 +747,6 @@
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile21"
                             android:background="@drawable/mahjongtiledots4"
-                            android:padding="5dp"
-                            android:paddingLeft="5dp"
-                            android:paddingRight="5dp"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -771,13 +758,25 @@
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:weightSum="11"
+                        android:id="@+id/InnerDiscardPile3"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile23"
-                            android:background="@drawable/mahjongtiledots1"
+                            android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -789,17 +788,6 @@
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:weightSum="8"
-                        android:id="@+id/InnerDiscardPile4"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
@@ -842,7 +830,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile29"
-                            android:background="@drawable/mahjongtiledots4"
+                            android:background="@drawable/mahjongtiledots1"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -860,7 +848,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile31"
-                            android:background="@drawable/mahjongtiledots1"
+                            android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -872,17 +860,6 @@
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:weightSum="8"
-                        android:id="@+id/InnerDiscardPile5"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
@@ -892,6 +869,18 @@
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:weightSum="11"
+                        android:id="@+id/InnerDiscardPile4"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
@@ -906,7 +895,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:id="@+id/Discard1Tile35"
+                            android:id="@+id/Discard1Tile135"
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
@@ -915,7 +904,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:id="@+id/Discard1Tile36"
+                            android:id="@+id/Discard1Tile136"
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
@@ -943,7 +932,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile39"
-                            android:background="@drawable/mahjongtiledots1"
+                            android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -952,20 +941,9 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile40"
-                            android:background="@drawable/mahjongtiledots4"
+                            android:background="@drawable/mahjongtiledots1"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:weightSum="8"
-                        android:id="@+id/InnerDiscardPile6"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginTop="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
@@ -1002,6 +980,18 @@
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:weightSum="11"
+                        android:id="@+id/InnerDiscardPile5"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
@@ -1026,7 +1016,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile47"
-                            android:background="@drawable/mahjongtiledots1"
+                            android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -1038,17 +1028,6 @@
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:weightSum="8"
-                        android:id="@+id/InnerDiscardPile7"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginTop="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
@@ -1073,7 +1052,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile51"
-                            android:background="@drawable/mahjongtiledots4"
+                            android:background="@drawable/mahjongtiledots1"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -1109,9 +1088,21 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile55"
-                            android:background="@drawable/mahjongtiledots1"
+                            android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:weightSum="11"
+                        android:id="@+id/InnerDiscardPile6"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
@@ -1121,17 +1112,6 @@
                             android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:weightSum="8"
-                        android:id="@+id/InnerDiscardPile8"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="2dp">
 
                         <ImageButton
                             android:layout_width="0dp"
@@ -1183,7 +1163,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile62"
-                            android:background="@drawable/mahjongtiledots4"
+                            android:background="@drawable/mahjongtiledots1"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -1192,7 +1172,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile63"
-                            android:background="@drawable/mahjongtiledots1"
+                            android:background="@drawable/mahjongtiledots4"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -1205,6 +1185,245 @@
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile65"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile66"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:weightSum="11"
+                        android:id="@+id/InnerDiscardPile7"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="2dp">
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile67"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile68"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile69"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile70"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile71"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile72"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile73"
+                            android:background="@drawable/mahjongtiledots1"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile74"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile75"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile76"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile77"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:weightSum="11"
+                        android:id="@+id/InnerDiscardPile8"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="2dp">
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile78"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile79"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile80"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile81"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile82"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile83"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile84"
+                            android:background="@drawable/mahjongtiledots1"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile85"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile86"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile87"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/Discard1Tile88"
+                            android:background="@drawable/mahjongtiledots4"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp" />
                     </LinearLayout>
 
                 </LinearLayout>
