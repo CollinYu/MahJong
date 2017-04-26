@@ -315,8 +315,8 @@ public class MahJongGameState extends GameState {
 
             // Set next open openhand slot to Tile 3
             for (int i = 0; i < playerOpenHands[p.getPlayerID()].length; i++) {
-                if (this.playerOpenHands[p.getPlayerID()][i] == p.getTile3().getDeckPos()) {
-                    setPlayerOpenHandTile(p.getPlayerID(), 136, i);
+                if (this.playerOpenHands[p.getPlayerID()][i] == 136) {
+                    setPlayerOpenHandTile(p.getPlayerID(), p.getTile3().getDeckPos(), i);
                     break;
                 }
             }
