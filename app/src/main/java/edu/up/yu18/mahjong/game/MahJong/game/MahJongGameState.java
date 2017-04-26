@@ -71,6 +71,7 @@ public class MahJongGameState extends GameState {
     //and so forth, resulting in the game being split up into stages 1 through 8
     private int gameStage;
 
+    private boolean outOfCards = false;
 
     /**
      * @Collin_Yu
@@ -141,6 +142,7 @@ public class MahJongGameState extends GameState {
     }
     public int getGameStage() {return this.gameStage;}
     public boolean hasPassed(int pID) {return passingPlayers[pID];}
+    public boolean isOutOfCards(){return this.outOfCards;}
 
     /**
      * @Collin_Yu
@@ -535,6 +537,7 @@ public class MahJongGameState extends GameState {
                 playerClosedHands[pID][i] = this.deckPosition;
 
                 // increment deckPosition accordingly
+                if(deckPosition == 136){outOfCards = true;}
                 this.deckPosition++;
 
                 // automatically sort their hand
@@ -553,34 +556,40 @@ public class MahJongGameState extends GameState {
      * @return whether they do or not
      */
         public boolean hasMahJong(int pID){
+            // temporary int array (initialized at the player's current hand size)
+            int[] arbitraryHand = new int[14 - playerMJProg[pID]*3];
+
+            ArrayList<int[]> pairlessHands = new ArrayList<>(0);
+            for(int q = 0; q< arbitraryHand.length; q++){
+                arbitraryHand[q] = playerClosedHands[pID][q];
+            }
+
+            // finds the pair in each hand, if there is a pair, create a new hand without the pair for examination by threes.
+            for(int i = 0; i < arbitraryHand.length;){
+                 for(int l = 0; l < arbitraryHand.length; l++) {
+                     if (i != l && deck.get(arbitraryHand[i]).isEqualto(deck.get(arbitraryHand[i + 1])))
+                     {
+                         int k = 0;
+                         int h = 0;
+                         int[] depairedHand = new int[arbitraryHand.length - 2];
+                         while(h < depairedHand.length){
+                             if(k != i && k != l){
+                                 depairedHand[h] = arbitraryHand[k];
+                                 h++;
+                                 k++;
+                             }
+                             else {k++;}
+                         }
+                         pairlessHands.add(depairedHand);
+                     }
+                 }
+            }
+
+            int j = 0;
+            while(j < arbitraryHand.length){
+
+            }
             return false;
-            /**
-            int i = 0;
-            boolean paired = false;
-            while(i < playerClosedHands[pID].length){
-                    if (playerClosedHands[pID][i] == playerClosedHands[pID][i + 1] &&
-                            playerClosedHands[pID][i + 1] == playerClosedHands[pID][i + 2]) {
-                        playerMJProg[pID]++;
-                        i += 3;
-                    }
-                    else if (deck.get(playerClosedHands[pID][i]).isBelow(deck.get(playerClosedHands[pID][i+1])) &&
-                            deck.get(playerClosedHands[pID][i+1]).isBelow(deck.get(playerClosedHands[pID][i+2]))){
-                        playerMJProg[pID]++;
-                        i += 3;
-                    }
-                    else if (!paired && playerClosedHands[pID][i] == playerClosedHands[pID][i + 1]){
-                        paired = true;
-                        playerMJProg[pID]++;
-                        i +=2;
-                    }
-
-                    else {break;}
-                }
-
-            if (playerMJProg[pID] == 5){return true;}
-            return  false;
-             */
         }
-
     }
 
