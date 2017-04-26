@@ -1394,7 +1394,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile85"
-                            android:background="@drawable/mahjongtiledots4"
+                            android:background=""
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -1403,7 +1403,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile86"
-                            android:background="@drawable/mahjongtiledots4"
+                            android:background=""
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -1412,7 +1412,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile87"
-                            android:background="@drawable/mahjongtiledots4"
+                            android:background=""
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -1421,7 +1421,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile88"
-                            android:background="@drawable/mahjongtiledots4"
+                            android:background=""
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
                     </LinearLayout>
