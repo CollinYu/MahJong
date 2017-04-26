@@ -328,13 +328,13 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
          * TODO make the wall update GUI
          * */
 
-        for(int i = 0; i < 88; i++){
+        for(int i = 0; i < 84; i++){
             if(state.getDiscardPile(i) == 136) {
 
                 discard[i].setBackgroundColor(0xFF1e771e);
             }
         }
-        for(int i = 0; i < 88; i++){
+        for(int i = 0; i < 84; i++){
             if(state.getCurrDiscard() != null) {
                 /*
                 if (state.getDiscardPile(i) != 136){
