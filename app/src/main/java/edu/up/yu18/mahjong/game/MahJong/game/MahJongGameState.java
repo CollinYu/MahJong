@@ -61,7 +61,7 @@ public class MahJongGameState extends GameState {
     private int[][] playerOpenHands;
 
     // Represents the players progress towards a mahjong, boolean hasMahjong(int playerID) utilizes this
-    private int[] playerMJProg = {0,0,0,0};
+    private int[] playerMJProg = {0, 0, 0, 0};
 
     // The most recently discarded card in a given post-discard phase
     private Tile currDiscard;
@@ -75,8 +75,7 @@ public class MahJongGameState extends GameState {
     private boolean outOfCards = false;
 
     /**
-     * @Collin_Yu
-     * Initializes game with default and constant values.
+     * @Collin_Yu Initializes game with default and constant values.
      * Only called once at the start of the game.
      */
 
@@ -86,25 +85,29 @@ public class MahJongGameState extends GameState {
         Deck d = new Deck();
         deck = d.getDeckTiles();
         playerClosedHands = new int[4][14]; // 4 players, 14 cards max
-        for(int g = 0; g < 14; g++) {
+        for (int g = 0; g < 14; g++) {
             playerClosedHands[0][g] = g;
         }
-        for(int l = 1; l < 4; l++){
-            for( int q = 0; q < 13; q++){
-                playerClosedHands[l][q] = 1 + l*13 + q;
+        for (int l = 1; l < 4; l++) {
+            for (int q = 0; q < 13; q++) {
+                playerClosedHands[l][q] = 1 + l * 13 + q;
             }
             playerClosedHands[l][13] = 136;
         }
-        
+
         wall = new int[84]; // 136 - 52 Tiles initially (hands dealt before deck is made)
-        for(int i = 0; i < 84; i++){wall[i] = i+52;}
+        for (int i = 0; i < 84; i++) {
+            wall[i] = i + 52;
+        }
         discardPile = new int[84]; // at least 52 Tiles in all 4 players hands, thus max size is 84
-        for(int i = 0; i < discardPile.length; i++){discardPile[i] = 136;}
-        deckPosition = 52;         
+        for (int i = 0; i < discardPile.length; i++) {
+            discardPile[i] = 136;
+        }
+        deckPosition = 52;
         playerNames = new String[4]; // 4 players
         playerOpenHands = new int[4][16]; // 4 players, 16 cards max (4 Kongs)
-        for(int k = 0; k < 4; k++){
-            for(int j=0; j < 16; j++){
+        for (int k = 0; k < 4; k++) {
+            for (int j = 0; j < 16; j++) {
                 playerOpenHands[k][j] = 136;
             }
         }
@@ -115,58 +118,102 @@ public class MahJongGameState extends GameState {
     public void setWall(int tile, int pos) {
         this.wall[pos] = tile;
     }
+
     public int getWall(int pos) {
         return wall[pos];
     }
+
     public void setDiscardPile(int tile, int pos) {
         this.discardPile[pos] = tile;
     }
+
     public int getDiscardPile(int pos) {
         return this.discardPile[pos];
     }
-    public int[] getWholeClosedHand(int player){
-        int [] hand = new int[playerClosedHands[player].length];
-        for(int i = 0; i < playerClosedHands[player].length; i++){
+
+    public int[] getWholeClosedHand(int player) {
+        int[] hand = new int[playerClosedHands[player].length];
+        for (int i = 0; i < playerClosedHands[player].length; i++) {
             hand[i] = playerClosedHands[player][i];
         }
         return hand;
     }
+
     public void setPlayerName(String name, int player) {
         this.playerNames[player] = name;
     }
+
     public String getPlayerName(int player) {
         return this.playerNames[player];
     }
-    public int[] getWholeOpenHand(int player){return this.playerOpenHands[player];}
-    public int getPlayerOpenHands(int player, int pos){return (this.playerOpenHands[player][pos]);}
-    public void setPlayerClosedHandTile(int player, int tile, int pos) {this.playerClosedHands[player][pos] = tile;}
-    public Tile getPlayerClosedHandTile(int player, int pos) {return deck.get(this.playerClosedHands[player][pos]);}
-    public void setPlayerOpenHandTile(int player, int tile, int pos) {this.playerOpenHands[player][pos] = tile;}
-    public Tile getPlayerOpenHandTile(int player, int pos) {return deck.get(this.playerOpenHands[player][pos]);}
-    public Tile getDiscardPileTile(int player, int pos){return deck.get(this.playerOpenHands[player][pos]);}
-    public int getPlayerOpenHandLength(int player){return playerOpenHands[player].length;}
-    public int getPlayerClosedHandLength(int player){return playerClosedHands[player].length;}
-    public Tile getCurrDiscard(){return this.currDiscard;}
+
+    public int[] getWholeOpenHand(int player) {
+        return this.playerOpenHands[player];
+    }
+
+    public int getPlayerOpenHands(int player, int pos) {
+        return (this.playerOpenHands[player][pos]);
+    }
+
+    public void setPlayerClosedHandTile(int player, int tile, int pos) {
+        this.playerClosedHands[player][pos] = tile;
+    }
+
+    public Tile getPlayerClosedHandTile(int player, int pos) {
+        return deck.get(this.playerClosedHands[player][pos]);
+    }
+
+    public void setPlayerOpenHandTile(int player, int tile, int pos) {
+        this.playerOpenHands[player][pos] = tile;
+    }
+
+    public Tile getPlayerOpenHandTile(int player, int pos) {
+        return deck.get(this.playerOpenHands[player][pos]);
+    }
+
+    public Tile getDiscardPileTile(int player, int pos) {
+        return deck.get(this.playerOpenHands[player][pos]);
+    }
+
+    public int getPlayerOpenHandLength(int player) {
+        return playerOpenHands[player].length;
+    }
+
+    public int getPlayerClosedHandLength(int player) {
+        return playerClosedHands[player].length;
+    }
+
+    public Tile getCurrDiscard() {
+        return this.currDiscard;
+    }
+
     public void setGameStage(int stage) {
         this.gameStage = stage;
     }
-    public int getGameStage() {return this.gameStage;}
-    public boolean hasPassed(int pID) {return passingPlayers[pID];}
-    public boolean isOutOfCards(){return this.outOfCards;}
+
+    public int getGameStage() {
+        return this.gameStage;
+    }
+
+    public boolean hasPassed(int pID) {
+        return passingPlayers[pID];
+    }
+
+    public boolean isOutOfCards() {
+        return this.outOfCards;
+    }
+
     /**
      * makeSubHand
-     *
+     * <p>
      * removes 3 tiles from a given hand and returns the result. given
-     hand is unmodified
+     * hand is unmodified
      */
-    public int[] makeSubHand(int[] hand, int x, int y, int z)
-    {
+    public int[] makeSubHand(int[] hand, int x, int y, int z) {
         int[] newHand = new int[hand.length - 3];
         int index = 0;
-        for(int i = 0; i < hand.length; ++i)
-        {
-            if ((i != x) && (i != y) && (i != z))
-            {
+        for (int i = 0; i < hand.length; ++i) {
+            if ((i != x) && (i != y) && (i != z)) {
                 newHand[index] = hand[i];
                 index++;
             }
@@ -177,17 +224,14 @@ public class MahJongGameState extends GameState {
 
     /**
      * getIndexOfAbove
-     *
+     * <p>
      * finds the first tile above a given time starting at a given
-     index in a
+     * index in a
      * given hand
      */
-    public int getIndexOfAbove(int[] hand, int belowTileIndex)
-    {
-        for(int i = belowTileIndex + 1; i < hand.length; ++i)
-        {
-            if (deck.get(hand[i]).isAbove(deck.get(hand[belowTileIndex])))
-            {
+    public int getIndexOfAbove(int[] hand, int belowTileIndex) {
+        for (int i = belowTileIndex + 1; i < hand.length; ++i) {
+            if (deck.get(hand[i]).isAbove(deck.get(hand[belowTileIndex]))) {
                 return i;
             }
         }
@@ -196,17 +240,18 @@ public class MahJongGameState extends GameState {
     }
 
     /**
-     * @Collin_Yu
-     * Takes an existing mahJongGameState object as a parameter to
+     * @Collin_Yu Takes an existing mahJongGameState object as a parameter to
      * initialize a new object with the same attributes that does not point to the parameter
-     *  AKA deep copier
+     * AKA deep copier
      */
     public MahJongGameState(MahJongGameState game) {
 
         // Goes through each element of int[] wall and makes it individually
         // a copy of the equivalent element of the parameter
         this.currDiscard = game.getCurrDiscard();
-        for(int h = 0; h < 4; h++){passingPlayers[h] = game.passingPlayers[h];}
+        for (int h = 0; h < 4; h++) {
+            passingPlayers[h] = game.passingPlayers[h];
+        }
         deck = game.deck;
         wall = new int[game.wall.length];
         for (int a = 0; a < game.wall.length; a++) {
@@ -240,7 +285,7 @@ public class MahJongGameState extends GameState {
             }
         }
 
-        for(int g = 0; g < 4; g++){
+        for (int g = 0; g < 4; g++) {
             sort(g);
         }
         deckPosition = game.deckPosition;
@@ -250,14 +295,14 @@ public class MahJongGameState extends GameState {
 
 
     /**
-     * @Collin_Yu
      * @param c the chow given
-     * changes this in response to the chow action previously checked and handled by MahJongLocalGame
+     *          changes this in response to the chow action previously checked and handled by MahJongLocalGame
+     * @Collin_Yu
      */
     public void Chow(Chow c) {
 
         // Check legality
-        if ( (c.getTile1().isAbove(c.getTile2()) && c.getTile2().isAbove(c.getTile3())) ||
+        if ((c.getTile1().isAbove(c.getTile2()) && c.getTile2().isAbove(c.getTile3())) ||
                 (c.getTile2().isAbove(c.getTile1()) && c.getTile1().isAbove(c.getTile3())) ||
                 (c.getTile1().isAbove(c.getTile3()) && c.getTile3().isAbove(c.getTile2())) ||
                 (c.getTile2().isAbove(c.getTile3()) && c.getTile3().isAbove(c.getTile1())) ||
@@ -313,8 +358,11 @@ public class MahJongGameState extends GameState {
             playerMJProg[c.getPlayerID()]++;
 
             // it is now your turn to discard
-            if(gameStage == 8){gameStage = 1;}
-            else{gameStage++;}
+            if (gameStage == 8) {
+                gameStage = 1;
+            } else {
+                gameStage++;
+            }
 
             // reset passingPlayers for the post-discard phase
             passingPlayers[0] = false;
@@ -325,9 +373,9 @@ public class MahJongGameState extends GameState {
     }
 
     /**
-     * @Collin_Yu
      * @param p the Pong given
-     * changes this in response to the Pong action previously checked and handled by MahJongLocalGame
+     *          changes this in response to the Pong action previously checked and handled by MahJongLocalGame
+     * @Collin_Yu
      */
     public void Pong(Pong p) {
         if (p.getTile1().isEqualTo(p.getTile2()) && p.getTile2().isEqualTo(p.getTile3())) {
@@ -394,9 +442,9 @@ public class MahJongGameState extends GameState {
     }
 
     /**
-     * @Collin_Yu
      * @param k the Kong given
-     * changes this in response to chow action action previously checked and handled by MahJongLocalGame
+     *          changes this in response to chow action action previously checked and handled by MahJongLocalGame
+     * @Collin_Yu
      */
     public void Kong(Kong k) {
         // Check Legality
@@ -483,9 +531,9 @@ public class MahJongGameState extends GameState {
     }
 
     /**
-     * @Collin_Yu
      * @param d the Discard action given
-     * Removes the appropriate card from the hand and place it in the corresponding location: discardPile
+     *          Removes the appropriate card from the hand and place it in the corresponding location: discardPile
+     * @Collin_Yu
      */
 
     public void Discard(Discard d) {
@@ -502,21 +550,25 @@ public class MahJongGameState extends GameState {
         currDiscard = new Tile(d.getTile());
 
         // increment gameStage accordingly
-        if(gameStage<8){gameStage++;}
-        else if (gameStage == 8){gameStage = 1;}
+        if (gameStage < 8) {
+            gameStage++;
+        } else if (gameStage == 8) {
+            gameStage = 1;
+        }
     }
+
     /**
-     * @Collin_Yu
      * @param p the pass given
-     * changes this in response to chow action action previously checked and handled by MahJongLocalGame
+     *          changes this in response to chow action action previously checked and handled by MahJongLocalGame
+     * @Collin_Yu
      */
-    public void pass(Pass p){
+    public void pass(Pass p) {
 
         // sets that the player who sent the Pass action has passed
         passingPlayers[p.getId()] = true;
 
         // if all have passed
-        if(passingPlayers[0] && passingPlayers[1] && passingPlayers[2] && passingPlayers[3]) {
+        if (passingPlayers[0] && passingPlayers[1] && passingPlayers[2] && passingPlayers[3]) {
             // make sure currDiscard is not null
             // note that this should never happen, but catching it just in case
             if (currDiscard != null) {
@@ -533,14 +585,14 @@ public class MahJongGameState extends GameState {
                         currDiscard = null;
 
                         // if end of round, cycle over
-                        if(gameStage == 8){
+                        if (gameStage == 8) {
                             draw(0);
                             gameStage = 1;
                         }
 
                         // otherwise continue normally
                         else {
-                            draw(gameStage/2);
+                            draw(gameStage / 2);
                             gameStage++;
                         }
 
@@ -561,16 +613,16 @@ public class MahJongGameState extends GameState {
 
 
     /**
-     * @Collin_Yu
      * @param pID the player whose hand needs to be sorted
-     * Sorts hand of the given player in the following manner
+     *            Sorts hand of the given player in the following manner
      *            - dots 1-9
      *            - bamboo 1-9
      *            - characters 1-9
      *            - dragon tiles
      *            - wind tiles
+     * @Collin_Yu
      */
-    public void sort(int pID){
+    public void sort(int pID) {
         int temp;
 
         // ID of the tiles was made for easy sorting
@@ -587,28 +639,32 @@ public class MahJongGameState extends GameState {
     }
 
     /**
-     * @Collin_Yu
      * @param pID the player who will draw
-     * Replaces first blank tile in hand with the next spot in the deck reference, and increments accordingly
+     *            Replaces first blank tile in hand with the next spot in the deck reference, and increments accordingly
+     * @Collin_Yu
      */
-    public void draw(int pID){
+    public void draw(int pID) {
         // search hand
-        if(deckPosition > 135){
+        if (deckPosition > 135) {
             outOfCards = true;
             return;
         }
-        for(int i= 0; i < playerClosedHands[pID].length; i++){
+        for (int i = 0; i < playerClosedHands[pID].length; i++) {
 
-            if(deckPosition > 135){outOfCards = true;}
+            if (deckPosition > 135) {
+                outOfCards = true;
+            }
             // if blank tile
-            if(playerClosedHands[pID][i] == 136){
+            if (playerClosedHands[pID][i] == 136) {
 
                 // set blank tile to next card in the deck
                 playerClosedHands[pID][i] = this.deckPosition;
 
                 // increment deckPosition accordingly
                 this.deckPosition++;
-                if(deckPosition > 135){outOfCards = true;}
+                if (deckPosition > 135) {
+                    outOfCards = true;
+                }
 
                 // automatically sort their hand
                 sort(pID);
@@ -619,7 +675,7 @@ public class MahJongGameState extends GameState {
         }
     }
 
-    public int[] removeNull(int[] initHand){
+    public int[] removeNull(int[] initHand) {
         int[] hand = null;
         int counter = 0;
         boolean[] keep = new boolean[initHand.length];
@@ -634,32 +690,44 @@ public class MahJongGameState extends GameState {
         hand = new int[counter];
         int counter2 = 0;
         for (int n = 0; n < initHand.length; n++) {
-            if(keep[n]){
-                hand[counter2]=initHand[n];
+            if (keep[n]) {
+                hand[counter2] = initHand[n];
                 counter2++;
             }
         }
         return hand;
     }
 
-//    public int[] addCurrDiscard(int[] initHand){
-//
-//    }
-//
-    public boolean hasMahJong(int[] initHand)
+    public int[] addCurrDiscard(int[] initHand){
+        int[] hand = initHand;
+        for(int i = 0; i < hand.length; i++){
+            if(hand[i] == 136){
+                hand[i] = this.currDiscard.getDeckPos();
+                break;
+            }
+        }
+        return hand;
+    }
+    public boolean hasMahJong(int[] initHand, boolean firstTime)
     {
         /**
          * first time the method is called
          */
 
-        int[] hand = removeNull(initHand);
-
-        Arrays.sort(hand);
-        //base case, two tiles must be a pair
-        if (hand.length == 2)
-        {
-            return (deck.get(hand[0]).isEqualTo(deck.get(hand[1])));
+        int[] hand = initHand;
+        if(firstTime) {
+            if (gameStage % 2 == 0) {
+                if(currDiscard == null){return false;}
+                hand = addCurrDiscard(hand);
+            }
+            hand = removeNull(hand);
         }
+            Arrays.sort(hand);
+            //base case, two tiles must be a pair
+            if (hand.length == 2) {
+                return (deck.get(hand[0]).isEqualTo(deck.get(hand[1])));
+            }
+
 
         //check for pongs
         for(int i = 0; i < hand.length-2; ++i)
@@ -668,7 +736,7 @@ public class MahJongGameState extends GameState {
                     && (deck.get(hand[i]).isEqualTo(deck.get(hand[i+2]))) )
             {
                 int[] newHand = makeSubHand(hand, i, i+1, i+2);
-                if (hasMahJong(newHand)) return true;
+                if (hasMahJong(newHand, false)) return true;
             }
         }
 
@@ -683,7 +751,7 @@ public class MahJongGameState extends GameState {
                 if (third != -1)
                 {
                     int[] newHand = makeSubHand(hand, i, second, third);
-                    if (hasMahJong(newHand)) return true;
+                    if (hasMahJong(newHand, false)) return true;
                 }
             }
         }
