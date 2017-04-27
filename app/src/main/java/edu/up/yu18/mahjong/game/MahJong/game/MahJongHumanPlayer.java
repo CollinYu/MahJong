@@ -71,382 +71,442 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
      * This is where we manipulate the gui objects in response to the gamestate having changed
      */
     public void updateDisplay() {
-        if (state.getGameStage() % 2 ==0){
-            turnIndicator.setText("Player " + state.getGameStage()/2 + "'s Post-Discard Phase!");
-        }
-        else {
-            turnIndicator.setText("It is Player " + (state.getGameStage() + 1) / 2  + "'s Turn!");
-        }
+        if (state != null) {
+            if (state.getGameStage() % 2 == 0) {
+                String soot = null;
+                boolean numbered = false;
+                String modifier = null;
+                if(state.getCurrDiscard().getSuit() == 0){soot = "Dots"; numbered = true;}
+                if(state.getCurrDiscard().getSuit() == 1){soot = "Bamboo"; numbered = true;}
+                if(state.getCurrDiscard().getSuit() == 2){soot = "Characters"; numbered = true;}
+                if(state.getCurrDiscard().getSuit() == 3){
+                    soot = "Dragons";
+                    if(state.getCurrDiscard().getVal() == 0){modifier = "Green";}
+                    if(state.getCurrDiscard().getVal() == 1){modifier = "Red";}
+                    if(state.getCurrDiscard().getVal() == 2){modifier = "White";}
+                }
+                if(state.getCurrDiscard().getSuit() == 4){
+                    soot = "Winds";
+                    if(state.getCurrDiscard().getVal() == 0){modifier = "East";}
+                    if(state.getCurrDiscard().getVal() == 1){modifier = "North";}
+                    if(state.getCurrDiscard().getVal() == 2){modifier = "South";}
+                    if(state.getCurrDiscard().getVal() == 3){modifier = "West";}
+                }
+                if(numbered){
+                    infoDisplay.setText("Player " + state.getGameStage() / 2 + " has discarded a "
+                        + state.getCurrDiscard().getVal() + " of " + soot + " tile.");
+                }
+                else{
+                    infoDisplay.setText("Player " + state.getGameStage() / 2 + " has discarded a "
+                            + modifier + " " + soot + " tile.");
+                }
+                turnIndicator.setText("Player " + state.getGameStage() / 2 + "'s Post-Discard Phase!");
+            } else {
+                turnIndicator.setText("It is Player " + (state.getGameStage() + 1) / 2 + "'s Turn!");
+            }
 
-        for (int k = 0; k < 4; k++) {
+
+            for (int k = 0; k < 4; k++) {
+                for (int i = 0; i < 14; i++) {
+                    if (state.getPlayerClosedHandTile(playerNum, i) != null) {
+                        if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == -1) {
+                            myTiles[i].setBackgroundColor(0xFF1e771e);
+                        }
+
+                        //if suit is dots suit is 0
+                        if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 0) {
+                            for (int j = 0; j < 9; j++) {
+                                if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
+                                    if (j == 0) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots1);
+                                    } else if (j == 1) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots2);
+                                    } else if (j == 2) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots3);
+                                    } else if (j == 3) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots4);
+                                    } else if (j == 4) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots5);
+                                    } else if (j == 5) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots6);
+                                    } else if (j == 6) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots7);
+                                    } else if (j == 7) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots8);
+                                    } else if (j == 8) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots9);
+                                    }
+                                }
+                            }
+                        }
+                        //if suit is bamboo suit is 1
+                        if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 1) {
+                            for (int j = 0; j < 9; j++) {
+                                if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
+                                    if (j == 0) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo1);
+                                    } else if (j == 1) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo2);
+                                    } else if (j == 2) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo3);
+                                    } else if (j == 3) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo4);
+                                    } else if (j == 4) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo5);
+                                    } else if (j == 5) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo6);
+                                    } else if (j == 6) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo7);
+                                    } else if (j == 7) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo8);
+                                    } else if (j == 8) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo9);
+                                    }
+                                }
+                            }
+                        }
+                        //if suit is character suit is 2
+                        if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 2) {
+                            for (int j = 0; j < 9; j++) {
+                                if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
+                                    if (j == 0) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter1);
+                                    } else if (j == 1) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter2);
+                                    } else if (j == 2) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter3);
+                                    } else if (j == 3) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter4);
+                                    } else if (j == 4) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter5);
+                                    } else if (j == 5) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter6);
+                                    } else if (j == 6) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter7);
+                                    } else if (j == 7) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter8);
+                                    } else if (j == 8) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter9);
+                                    }
+                                }
+                            }
+                        }
+                        //if suit is dragon suit is 3
+                        if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 3) {
+                            for (int j = 0; j < 3; j++) {
+                                if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
+                                    if (j == 0) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledragongreen);
+                                    } else if (j == 1) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledragonred);
+                                    } else if (j == 2) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledragonwhite);
+                                    }
+                                }
+                            }
+
+                        }
+                        //if suit is wind suit is 4
+                        if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 4) {
+                            for (int j = 0; j < 4; j++) {
+                                if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
+                                    if (j == 0) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectioneast);
+                                    } else if (j == 1) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectionnorth);
+                                    } else if (j == 2) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectionsouth);
+                                    } else if (j == 3) {
+                                        myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectionwest);
+                                    }
+                                }
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+
+            for (int q = 0; q < 14; q++) {
+                if (tilePressed[q]) {
+                    myTiles[q].setBackgroundTintMode(PorterDuff.Mode.SRC_ATOP);
+
+                } else {
+
+                    myTiles[q].setBackgroundTintMode(PorterDuff.Mode.ADD);
+                }
+
+            }
             for (int i = 0; i < 14; i++) {
                 if (state.getPlayerClosedHandTile(playerNum, i) != null) {
-                    if(state.getPlayerClosedHandTile(playerNum,i).getSuit() == -1){
-                        myTiles[i].setBackgroundColor(0xFF1e771e);
-                    }
-
-                    //if suit is dots suit is 0
-                    if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 0) {
-                        for (int j = 0; j < 9; j++) {
-                            if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
-                                if (j == 0) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots1);
-                                } else if (j == 1) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots2);
-                                } else if (j == 2) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots3);
-                                } else if (j == 3) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots4);
-                                } else if (j == 4) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots5);
-                                } else if (j == 5) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots6);
-                                } else if (j == 6) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots7);
-                                } else if (j == 7) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots8);
-                                } else if (j == 8) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledots9);
-                                }
-                            }
-                        }
-                    }
-                    //if suit is bamboo suit is 1
-                    if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 1) {
-                        for (int j = 0; j < 9; j++) {
-                            if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
-                                if (j == 0) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo1);
-                                } else if (j == 1) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo2);
-                                } else if (j == 2) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo3);
-                                } else if (j == 3) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo4);
-                                } else if (j == 4) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo5);
-                                } else if (j == 5) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo6);
-                                } else if (j == 6) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo7);
-                                } else if (j == 7) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo8);
-                                } else if (j == 8) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilebamboo9);
-                                }
-                            }
-                        }
-                    }
-                    //if suit is character suit is 2
-                    if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 2) {
-                        for (int j = 0; j < 9; j++) {
-                            if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
-                                if (j == 0) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter1);
-                                } else if (j == 1) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter2);
-                                } else if (j == 2) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter3);
-                                } else if (j == 3) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter4);
-                                } else if (j == 4) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter5);
-                                } else if (j == 5) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter6);
-                                } else if (j == 6) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter7);
-                                } else if (j == 7) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter8);
-                                } else if (j == 8) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtilecharacter9);
-                                }
-                            }
-                        }
-                    }
-                    //if suit is dragon suit is 3
-                    if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 3) {
-                        for (int j = 0; j < 3; j++) {
-                            if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
-                                if (j == 0) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledragongreen);
-                                } else if (j == 1) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledragonred);
-                                } else if (j == 2) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledragonwhite);
-                                }
-                            }
-                        }
-
-                    }
-                    //if suit is wind suit is 4
-                    if (state.getPlayerClosedHandTile(playerNum, i).getSuit() == 4) {
-                        for (int j = 0; j < 4; j++) {
-                            if (state.getPlayerClosedHandTile(playerNum, i).getVal() == j) {
-                                if (j == 0) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectioneast);
-                                } else if (j == 1) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectionnorth);
-                                } else if (j == 2) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectionsouth);
-                                } else if (j == 3) {
-                                    myTiles[i].setBackgroundResource(R.drawable.mahjongtiledirectionwest);
-                                }
-                            }
-                        }
-
-                    }
-
+                    playerClosedHand[0][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
                 }
-
             }
-        }
-
-        for(int q = 0; q < 14; q++) {
-            if (tilePressed[q]) {
-                myTiles[q].setBackgroundTintMode(PorterDuff.Mode.SRC_ATOP);
-
-            }
-        else {
-
-            myTiles[q].setBackgroundTintMode(PorterDuff.Mode.ADD);
-        }
-
-        }
             for (int i = 0; i < 14; i++) {
-            if (state.getPlayerClosedHandTile(playerNum, i) != null) {
-                playerClosedHand[0][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
+                if (state.getPlayerClosedHandTile(playerNum, i) != null) {
+                    playerClosedHand[1][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
+                }
             }
-        }
-        for (int i = 0; i < 14; i++) {
-            if (state.getPlayerClosedHandTile(playerNum, i) != null) {
-                playerClosedHand[1][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
+            for (int i = 0; i < 14; i++) {
+                if (state.getPlayerClosedHandTile(playerNum, i) != null) {
+                    playerClosedHand[2][i].setBackgroundResource(R.mipmap.mahjongtile_back);
+                }
             }
-        }
-        for (int i = 0; i < 14; i++) {
-            if (state.getPlayerClosedHandTile(playerNum, i) != null) {
-                playerClosedHand[2][i].setBackgroundResource(R.mipmap.mahjongtile_back);
-            }
-        }
-        
-        for (int k = 1; k < 4; k++){
-            int w = 14;
-            for (int n = 0; n < 14; n--){
-                if ((state.getPlayerOpenHandTile(playerNum, n) != null) && (state.getPlayerOpenHands(playerNum,n) != 136)){
-                    if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 0) {
-                        if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledots1); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledots2); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledots3); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledots4); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledots5); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledots6); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledots7); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledots8); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledots9); --k;
+
+            for (int k = 0; k < 3; k++) {
+                int w = 14;
+                for (int n = 0; n < 14; n++) {
+                    if ((state.getPlayerOpenHandTile(playerNum, n) != null) && (state.getPlayerOpenHands(playerNum, n) != 136)) {
+                        if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 0) {
+                            if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots1);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots2);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots3);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots4);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots5);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots6);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots7);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots8);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots9);
+                                --w;
+                            }
+
                         }
+                        //if suit is bamboo suit is 1
+                        if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 1) {
+                            if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo1);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo2);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo3);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo4);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo5);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo6);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo7);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo8);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo9);
+                                --w;
+                            }
 
-                    }
-                    //if suit is bamboo suit is 1
-                    if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 1) {
-                        if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilebamboo1); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilebamboo2); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilebamboo3); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilebamboo4); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilebamboo5); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilebamboo6); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilebamboo7); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilebamboo8); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilebamboo9); --k;
+
                         }
-
-
-                    }
-                    //if suit is character suit is 2
-                    if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 2) {
-                        if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilecharacter1); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilecharacter2); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilecharacter3); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilecharacter4); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilecharacter5); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilecharacter6); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilecharacter7); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilecharacter8); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtilecharacter9); --k;
+                        //if suit is character suit is 2
+                        if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 2) {
+                            if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter1);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter2);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter3);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter4);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter5);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter6);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter7);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter8);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter9);
+                                --w;
+                            }
                         }
-                    }
-                    //if suit is dragon suit is 3
-                    if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 3) {
-                        if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledragongreen); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledragonred); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledragonwhite); --k;
+                        //if suit is dragon suit is 3
+                        if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 3) {
+                            if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledragongreen);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledragonred);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledragonwhite);
+                                --w;
+                            }
+
+
                         }
+                        //if suit is wind suit is 4
+                        if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 4) {
+                            if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledirectioneast);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledirectionnorth);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledirectionsouth);
+                                --w;
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
+                                playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledirectionwest);
+                                --w;
+                            }
 
 
-                    }
-                    //if suit is wind suit is 4
-                    if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 4) {
-                        if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledirectioneast); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledirectionnorth); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledirectionsouth); --k;
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
-                            playerClosedHand[k][k].setImageResource(R.drawable.mahjongtiledirectionwest); --k;
                         }
-
-
                     }
                 }
             }
-        }
-        
-        for (int k = 0; k < 1; k++) {
-            for (int n = 0; n < 14; n++) {
-                if ((state.getPlayerOpenHandTile(playerNum, n) != null) && (state.getPlayerOpenHands(playerNum,n) != 136)) {
-                    //if suit is dots suit is 0
-                    if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 0) {
-                        if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots1);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots2);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots3);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots4);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots5);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots6);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots7);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots8);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots9);
+
+            for (int k = 0; k < 1; k++) {
+                for (int n = 0; n < 14; n++) {
+                    if ((state.getPlayerOpenHandTile(playerNum, n) != null) && (state.getPlayerOpenHands(playerNum, n) != 136)) {
+                        //if suit is dots suit is 0
+                        if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 0) {
+                            if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots1);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots2);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots3);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots4);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots5);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots6);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots7);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots8);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledots9);
+                            }
+
+                        }
+                        //if suit is bamboo suit is 1
+                        if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 1) {
+                            if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo1);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo2);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo3);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo4);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo5);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo6);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo7);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo8);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo9);
+                            }
+
+
+                        }
+                        //if suit is character suit is 2
+                        if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 2) {
+                            if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter1);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter2);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter3);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter4);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter5);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter6);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter7);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter8);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter9);
+                            }
+                        }
+                        //if suit is dragon suit is 3
+                        if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 3) {
+                            if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledragongreen);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledragonred);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledragonwhite);
+                            }
+
+
+                        }
+                        //if suit is wind suit is 4
+                        if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 4) {
+                            if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledirectioneast);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledirectionnorth);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledirectionsouth);
+                            } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
+                                playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledirectionwest);
+                            }
+
+
                         }
 
+                    } else {
+                        playerOpenHand[k][n].setBackgroundColor(0xFF1e771e);
                     }
-                    //if suit is bamboo suit is 1
-                    if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 1) {
-                        if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo1);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo2);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo3);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo4);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo5);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo6);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo7);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo8);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilebamboo9);
-                        }
-
-
-                    }
-                    //if suit is character suit is 2
-                    if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 2) {
-                        if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter1);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter2);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter3);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter4);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 4) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter5);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 5) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter6);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 6) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter7);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 7) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter8);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 8) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtilecharacter9);
-                        }
-                    }
-                    //if suit is dragon suit is 3
-                    if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 3) {
-                        if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledragongreen);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledragonred);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledragonwhite);
-                        }
-
-
-                    }
-                    //if suit is wind suit is 4
-                    if (state.getPlayerOpenHandTile(playerNum, n).getSuit() == 4) {
-                        if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 0) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledirectioneast);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 1) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledirectionnorth);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 2) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledirectionsouth);
-                        } else if (state.getPlayerOpenHandTile(playerNum, n).getVal() == 3) {
-                            playerOpenHand[k][n].setImageResource(R.drawable.mahjongtiledirectionwest);
-                        }
-
-
-                    }
-
-                }
-                else   {
-                    playerOpenHand[k][n].setBackgroundColor(0xFF1e771e);
                 }
             }
-        }
-        /**
-         * TODO make the wall update GUI
-         * */
+            /**
+             * TODO make the wall update GUI
+             * */
 
-        for(int i = 0; i < 84; i++){
-            if(state.getDiscardPile(i) == 136) {
+            for (int i = 0; i < 84; i++) {
+                if (state.getDiscardPile(i) == 136) {
 
-                discard[i].setBackgroundColor(0xFF1e771e);
+                    discard[i].setBackgroundColor(0xFF1e771e);
+                }
             }
-        }
-        for(int i = 0; i < 84; i++){
-            if(state.getCurrDiscard() != null) {
+            for (int i = 0; i < 84; i++) {
+                if (state.getCurrDiscard() != null) {
                 /*
                 if (state.getDiscardPile(i) != 136){
                     if (state.getCurrDiscard().getSuit() == 0) {
@@ -559,121 +619,122 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
                     }
                 }
-                else */if (state.getDiscardPile(i) == 136) {
-                    if (state.getCurrDiscard().getSuit() == 0) {
-                        for (int j = 0; j < 9; j++) {
-                            if (state.getCurrDiscard().getVal() == j) {
-                                if (j == 0) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledots1);
-                                } else if (j == 1) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledots2);
-                                } else if (j == 2) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledots3);
-                                } else if (j == 3) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledots4);
-                                } else if (j == 4) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledots5);
-                                } else if (j == 5) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledots6);
-                                } else if (j == 6) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledots7);
-                                } else if (j == 7) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledots8);
-                                } else if (j == 8) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledots9);
+                else */
+                    if (state.getDiscardPile(i) == 136) {
+                        if (state.getCurrDiscard().getSuit() == 0) {
+                            for (int j = 0; j < 9; j++) {
+                                if (state.getCurrDiscard().getVal() == j) {
+                                    if (j == 0) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledots1);
+                                    } else if (j == 1) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledots2);
+                                    } else if (j == 2) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledots3);
+                                    } else if (j == 3) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledots4);
+                                    } else if (j == 4) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledots5);
+                                    } else if (j == 5) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledots6);
+                                    } else if (j == 6) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledots7);
+                                    } else if (j == 7) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledots8);
+                                    } else if (j == 8) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledots9);
+                                    }
                                 }
                             }
                         }
-                    }
-                    //if suit is bamboo suit is 1
-                    if (state.getCurrDiscard().getSuit() == 1) {
-                        for (int j = 0; j < 9; j++) {
-                            if (state.getCurrDiscard().getVal() == j) {
-                                if (j == 0) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo1);
-                                } else if (j == 1) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo2);
-                                } else if (j == 2) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo3);
-                                } else if (j == 3) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo4);
-                                } else if (j == 4) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo5);
-                                } else if (j == 5) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo6);
-                                } else if (j == 6) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo7);
-                                } else if (j == 7) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo8);
-                                } else if (j == 8) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo9);
+                        //if suit is bamboo suit is 1
+                        if (state.getCurrDiscard().getSuit() == 1) {
+                            for (int j = 0; j < 9; j++) {
+                                if (state.getCurrDiscard().getVal() == j) {
+                                    if (j == 0) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo1);
+                                    } else if (j == 1) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo2);
+                                    } else if (j == 2) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo3);
+                                    } else if (j == 3) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo4);
+                                    } else if (j == 4) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo5);
+                                    } else if (j == 5) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo6);
+                                    } else if (j == 6) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo7);
+                                    } else if (j == 7) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo8);
+                                    } else if (j == 8) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilebamboo9);
+                                    }
                                 }
                             }
                         }
-                    }
-                    //if suit is character suit is 2
-                    if (state.getCurrDiscard().getSuit() == 2) {
-                        for (int j = 0; j < 9; j++) {
-                            if (state.getCurrDiscard().getVal() == j) {
-                                if (j == 0) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter1);
-                                } else if (j == 1) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter2);
-                                } else if (j == 2) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter3);
-                                } else if (j == 3) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter4);
-                                } else if (j == 4) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter5);
-                                } else if (j == 5) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter6);
-                                } else if (j == 6) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter7);
-                                } else if (j == 7) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter8);
-                                } else if (j == 8) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter9);
+                        //if suit is character suit is 2
+                        if (state.getCurrDiscard().getSuit() == 2) {
+                            for (int j = 0; j < 9; j++) {
+                                if (state.getCurrDiscard().getVal() == j) {
+                                    if (j == 0) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter1);
+                                    } else if (j == 1) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter2);
+                                    } else if (j == 2) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter3);
+                                    } else if (j == 3) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter4);
+                                    } else if (j == 4) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter5);
+                                    } else if (j == 5) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter6);
+                                    } else if (j == 6) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter7);
+                                    } else if (j == 7) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter8);
+                                    } else if (j == 8) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtilecharacter9);
+                                    }
                                 }
                             }
                         }
-                    }
-                    //if suit is dragon suit is 3
-                    if (state.getCurrDiscard().getSuit() == 3) {
-                        for (int j = 0; j < 3; j++) {
-                            if (state.getCurrDiscard().getVal() == j) {
-                                if (j == 0) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledragongreen);
-                                } else if (j == 1) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledragonred);
-                                } else if (j == 2) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledragonwhite);
+                        //if suit is dragon suit is 3
+                        if (state.getCurrDiscard().getSuit() == 3) {
+                            for (int j = 0; j < 3; j++) {
+                                if (state.getCurrDiscard().getVal() == j) {
+                                    if (j == 0) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledragongreen);
+                                    } else if (j == 1) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledragonred);
+                                    } else if (j == 2) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledragonwhite);
+                                    }
                                 }
                             }
-                        }
 
-                    }
-                    //if suit is wind suit is 4
-                    if (state.getCurrDiscard().getSuit() == 4) {
-                        for (int j = 0; j < 4; j++) {
-                            if (state.getCurrDiscard().getVal() == j) {
-                                if (j == 0) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledirectioneast);
-                                } else if (j == 1) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledirectionnorth);
-                                } else if (j == 2) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledirectionsouth);
-                                } else if (j == 3) {
-                                    discard[i].setBackgroundResource(R.drawable.mahjongtiledirectionwest);
+                        }
+                        //if suit is wind suit is 4
+                        if (state.getCurrDiscard().getSuit() == 4) {
+                            for (int j = 0; j < 4; j++) {
+                                if (state.getCurrDiscard().getVal() == j) {
+                                    if (j == 0) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledirectioneast);
+                                    } else if (j == 1) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledirectionnorth);
+                                    } else if (j == 2) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledirectionsouth);
+                                    } else if (j == 3) {
+                                        discard[i].setBackgroundResource(R.drawable.mahjongtiledirectionwest);
+                                    }
                                 }
                             }
-                        }
 
+                        }
+                        return;
                     }
-                    return;
                 }
             }
         }
-
 }
 
     /**

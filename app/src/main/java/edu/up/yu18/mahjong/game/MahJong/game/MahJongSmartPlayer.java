@@ -39,21 +39,21 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
         if(info instanceof MahJongGameState){
             state = new MahJongGameState((MahJongGameState) info);
         }
-        for(int i = 0; i < hand.length; i++){
-            hand[i] = 10;
-        }
 
         if(isFirstTurn){
+            for(int i = 0; i < hand.length; i++){
+                hand[i] = 10;
+            }
             //sets the initial value to the AI of his current hand
             for(int i = 0;i < state.getPlayerClosedHandLength(playerNum)-1;i++){
                 for(int j = i+1;j < state.getPlayerClosedHandLength(playerNum);j++){
                     if(state.getPlayerClosedHandTile(playerNum,i).isEqualTo(state.getPlayerClosedHandTile(playerNum,j))){
-                        hand[i]+= 2;
-                        hand[j]+= 2;
+                        this.hand[i]+= 2;
+                        this.hand[j]+= 2;
                     }
                     if(state.getPlayerClosedHandTile(playerNum,i).isBelow(state.getPlayerClosedHandTile(playerNum,j))){
-                        hand[i]+= 2;
-                        hand[j]+= 2;
+                        this.hand[i]+= 2;
+                        this.hand[j]+= 2;
                     }
                 }
             }
@@ -87,30 +87,32 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
                 }
                 Arrays.sort(hand);
                 //CHOWWWWW
-                for (int i = 0; i < hand.length - 2; i++) {
-                    if (state.getPlayerClosedHandTile(this.playerNum, i).isEqualTo(curPlay)) {
-                        if (state.getPlayerClosedHandTile(this.playerNum, i + 1).isAbove(curPlay)
-                                && state.getPlayerClosedHandTile(this.playerNum, i + 2).isAbove(state.getPlayerClosedHandTile(this.playerNum, i + 1))) {
-                            action = new Chow(this, playerNum, state.getPlayerClosedHandTile(this.playerNum, i + 1)
-                                    , state.getPlayerClosedHandTile(this.playerNum, i + 2), curPlay);
-                        }
-                        if (i > 0) {
+                if(state.getGameStage() == (this.playerNum)*2 || (this.playerNum == 0 && state.getGameStage() == 8)){
+                    for (int i = 0; i < hand.length - 2; i++) {
+                        if (state.getPlayerClosedHandTile(this.playerNum, i).isEqualTo(curPlay)) {
                             if (state.getPlayerClosedHandTile(this.playerNum, i + 1).isAbove(curPlay)
-                                    && state.getPlayerClosedHandTile(this.playerNum, i - 1).isBelow(curPlay)) {
+                                    && state.getPlayerClosedHandTile(this.playerNum, i + 2).isAbove(state.getPlayerClosedHandTile(this.playerNum, i + 1))) {
                                 action = new Chow(this, playerNum, state.getPlayerClosedHandTile(this.playerNum, i + 1)
-                                        , state.getPlayerClosedHandTile(this.playerNum, i - 1), curPlay);
-
+                                        , state.getPlayerClosedHandTile(this.playerNum, i + 2), curPlay);
                             }
-                        }
-                        if (i > 1) {
-                            if (state.getPlayerClosedHandTile(this.playerNum, i - 1).isBelow(curPlay)
-                                    && state.getPlayerClosedHandTile(this.playerNum, i - 2).isBelow(curPlay)) {
-                                action = new Chow(this, playerNum, state.getPlayerClosedHandTile(this.playerNum, i - 1)
-                                        , state.getPlayerClosedHandTile(this.playerNum, i - 2), curPlay);
-                            }
-                        }
+                            if (i > 0) {
+                                if (state.getPlayerClosedHandTile(this.playerNum, i + 1).isAbove(curPlay)
+                                        && state.getPlayerClosedHandTile(this.playerNum, i - 1).isBelow(curPlay)) {
+                                    action = new Chow(this, playerNum, state.getPlayerClosedHandTile(this.playerNum, i + 1)
+                                            , state.getPlayerClosedHandTile(this.playerNum, i - 1), curPlay);
 
-                        break;
+                                }
+                            }
+                            if (i > 1) {
+                                if (state.getPlayerClosedHandTile(this.playerNum, i - 1).isBelow(curPlay)
+                                        && state.getPlayerClosedHandTile(this.playerNum, i - 2).isBelow(curPlay)) {
+                                    action = new Chow(this, playerNum, state.getPlayerClosedHandTile(this.playerNum, i - 1)
+                                            , state.getPlayerClosedHandTile(this.playerNum, i - 2), curPlay);
+                                }
+                            }
+
+                            break;
+                        }
                     }
                 }
 
@@ -137,7 +139,11 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
         // if it's this' turn, discards the first card in its hand
         if(state.getGameStage() == (this.playerNum+1)*2-1){
 
-            Discard disc = new Discard(this, playerNum, state.getPlayerClosedHandTile(playerNum,0));
+            int lowest = 0;
+            for (int q = 1; q < hand.length; q++){
+                if (hand[q] < hand[lowest]){lowest = q;}
+            }
+            Discard disc = new Discard(this, playerNum, state.getPlayerClosedHandTile(playerNum,lowest));
             game.sendAction(disc);
         }
 

@@ -71,7 +71,7 @@ public class MahJongLocalGame extends LocalGame {
     protected String checkIfGameOver() {
         // will be changed
         if(state.isOutOfCards()){
-            String victoryMsg = "The Deck has run out of cards! Everyone wins! yay...";
+            String victoryMsg = "The Deck has run out of cards! Everyone wins! Press Quit to leave.";
             return victoryMsg;
         }
         if(gameOverPrompt) {
