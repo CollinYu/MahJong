@@ -72,15 +72,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
      */
     public void updateDisplay() {
         if (state.getGameStage() % 2 ==0){
-            String suit = null;
-            int val;
-            if (state.getCurrDiscard().getSuit() == 0) {}
-            if (state.getCurrDiscard().getSuit() == 1) {}
-            if (state.getCurrDiscard().getSuit() == 2) {}
-            if (state.getCurrDiscard().getSuit() == 3) {}
-            if (state.getCurrDiscard().getSuit() == 4) {}
             turnIndicator.setText("Player " + state.getGameStage()/2 + "'s Post-Discard Phase!");
-            infoDisplay.setText("Player " + state.getGameStage()/2 + " has discarded " + state.getCurrDiscard());
         }
         else {
             turnIndicator.setText("It is Player " + (state.getGameStage() + 1) / 2  + "'s Turn!");
@@ -849,8 +841,6 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         chowButton.setOnClickListener(this);
         turnIndicator = (TextView) activity.findViewById(R.id.TurnIndicator);
         turnIndicator.setOnClickListener(this);
-        infoDisplay = (TextView) activity.findViewById(R.id.InfoDisplay);
-        infoDisplay.setOnClickListener(this);
         quitButton = (Button) activity.findViewById(R.id.quitButton);
         quitButton.setOnClickListener(this);
         pongButton = (Button) activity.findViewById(R.id.pongButton);
@@ -1069,19 +1059,15 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         }
 
         if (v == mahJongButton){
-            int[] hand;
-            hand = state.getWholeClosedHand(this.playerNum);
-            if ((state.getGameStage() % 2) == 0){
+            if ((state.getGameStage() % 2) == 0 || (state.getGameStage()) == (this.playerNum*2 - 1)){
+                int[] hand;
+                hand = state.getWholeClosedHand(this.playerNum);
                 if(state.getGameStage() % 2 == 0){hand[hand.length-1] = state.getCurrDiscard().getDeckPos();}
                 if(state.hasMahJong(hand)){
                         action = new MahJong(this, playerNum);
                         displayTextBox.setText("You Win!");
                 }
-            }if (state.getGameStage() == ((this.playerNum + 1) * 2 - 1)){
-                if(state.hasMahJong(hand)){
-                    action = new MahJong(this, playerNum);
-                    displayTextBox.setText("You Win!");
-                }
+
             }
             else
             {
