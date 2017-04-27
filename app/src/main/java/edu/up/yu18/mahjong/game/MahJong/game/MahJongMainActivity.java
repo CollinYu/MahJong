@@ -52,6 +52,11 @@ public class MahJongMainActivity extends GameMainActivity{
                     return new MahJongSmartPlayer(name);
                 }});
 
+            // a human player player type (player type 0)
+            playerTypes.add(new GamePlayerType("Network Human Player") {
+                public GamePlayer createPlayer(String name) {
+                    return new MahJongHumanPlayer(name);
+                }});
             // Create a game configuration class for MahJong:
             // - player types as given above
             // - from 1 to 2 players
@@ -62,9 +67,9 @@ public class MahJongMainActivity extends GameMainActivity{
 
             // Add the default players to the configuration
             defaultConfig.addPlayer("Human", 0); // player 1: a human player
-            defaultConfig.addPlayer("Computer", 1); // player 2: a computer player
-            defaultConfig.addPlayer("Computer", 1); // player 3: a computer player
-            defaultConfig.addPlayer("Computer", 1); // player 4: a computer player
+            defaultConfig.addPlayer("Computer", 2); // player 2: a computer player
+            defaultConfig.addPlayer("Computer", 2); // player 3: a computer player
+            defaultConfig.addPlayer("Computer", 2); // player 4: a computer player
 
             // Set the default remote-player setup:
             // - player name: "Remote Player"

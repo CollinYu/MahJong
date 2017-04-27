@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
         <activity
-            android:name="edu.up.yu18.mahjong.game.MahJong.game.MahJongMainActivity">
+            android:name="edu.up.yu18.mahjong.game.MahJong.game.MahJongMainActivity"
+            android:screenOrientation="portrait" >
             <!--
             1/29/2017
             Tried to start project with no activity, and when we created our activity and later
