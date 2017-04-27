@@ -208,10 +208,10 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
         for(int q = 0; q < 14; q++) {
             if (tilePressed[q]){
-                myTiles[q].setBackgroundColor(Color.BLUE);
+                myTiles[q].setBackgroundTintMode(PorterDuff.Mode.ADD);
             }
         }
-        for (int i = 0; i < 14; i++) {
+            for (int i = 0; i < 14; i++) {
             if (state.getPlayerClosedHandTile(playerNum, i) != null) {
                 playerClosedHand[0][i].setBackgroundResource(R.mipmap.mahjongtile_back2);
             }
