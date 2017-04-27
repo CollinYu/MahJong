@@ -20,6 +20,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
+import java.io.Serializable;
+
 /**
  * class GameHumanPlayer
  * 
@@ -32,7 +34,7 @@ import android.view.View;
  * @version July 2013
  * 
  */
-public abstract class GameHumanPlayer implements GamePlayer, Tickable {
+public abstract class GameHumanPlayer implements GamePlayer, Tickable, Serializable {
 	/**
 	 * instance variables
 	 */
@@ -44,6 +46,7 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
 	private GameMainActivity myActivity; // the current activity
 	private GameTimer myTimer = new GameTimer(this); // my player's timer
 	private boolean gameOver; // whether the game is over
+	private static final long serialVersionUID = 2813787488127392189L;
 
 	/**
 	 * constructor
@@ -53,6 +56,7 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
 
 	public GameHumanPlayer(String name) {
 		// set the name via the argument
+
 
 			this.name = name;
 
