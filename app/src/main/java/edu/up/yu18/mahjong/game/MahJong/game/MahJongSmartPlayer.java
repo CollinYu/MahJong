@@ -2,10 +2,14 @@ package edu.up.yu18.mahjong.game.MahJong.game;
 
 import android.app.Notification;
 
+import java.util.Arrays;
+
+import edu.up.yu18.mahjong.game.MahJong.Actions.Chow;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Kong;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Pass;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Pong;
+import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameComputerPlayer;
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
@@ -78,9 +82,35 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
             }
 
             int[] hand;
+            Tile curPlay = state.getCurrDiscard();
             hand = state.getWholeClosedHand(this.playerNum);
-            if(state.getGameStage() % 2 == 0){hand[hand.length-1] = state.getCurrDiscard().getDeckPos();}
+            if(state.getGameStage() % 2 == 0){hand[hand.length-1] = curPlay.getDeckPos();}
+            Arrays.sort(hand);
             //CHOWWWWW
+            for (int i = 0; i < hand.length;i++){
+                if(state.getPlayerClosedHandTile(this.playerNum, hand[i]).isEqualTo(curPlay)){
+                    if (state.getPlayerClosedHandTile(this.playerNum, hand[i+1]).isAbove(curPlay)
+                            &&state.getPlayerClosedHandTile(this.playerNum, hand[i+2]).isAbove(curPlay)){
+                        action = new Chow(this,playerNum,state.getPlayerClosedHandTile(this.playerNum,i+1)
+                                ,state.getPlayerClosedHandTile(this.playerNum,i+2),curPlay);
+                    }
+                    if (state.getPlayerClosedHandTile(this.playerNum, hand[i+1]).isAbove(curPlay)
+                            &&state.getPlayerClosedHandTile(this.playerNum, hand[i-1]).isBelow(curPlay)){
+                        action = new Chow(this,playerNum,state.getPlayerClosedHandTile(this.playerNum,i+1)
+                                ,state.getPlayerClosedHandTile(this.playerNum,i-1),curPlay);
+
+                    }
+                    if (state.getPlayerClosedHandTile(this.playerNum, hand[i-1]).isBelow(curPlay)
+                            &&state.getPlayerClosedHandTile(this.playerNum, hand[i-2]).isBelow(curPlay)){
+                        action = new Chow(this,playerNum,state.getPlayerClosedHandTile(this.playerNum,i-1)
+                                ,state.getPlayerClosedHandTile(this.playerNum,i-2),curPlay);
+                    }
+
+                    break;
+                }
+            }
+
+
 
             if(action instanceof Pass) {
                 for (int i = 0; i < state.getPlayerClosedHandLength(playerNum); i++) {
