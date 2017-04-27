@@ -76,34 +76,60 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 String soot = null;
                 boolean numbered = false;
                 String modifier = null;
-                if(state.getCurrDiscard().getSuit() == 0){soot = "Dots"; numbered = true;}
-                if(state.getCurrDiscard().getSuit() == 1){soot = "Bamboo"; numbered = true;}
-                if(state.getCurrDiscard().getSuit() == 2){soot = "Characters"; numbered = true;}
-                if(state.getCurrDiscard().getSuit() == 3){
-                    soot = "Dragons";
-                    if(state.getCurrDiscard().getVal() == 0){modifier = "Green";}
-                    if(state.getCurrDiscard().getVal() == 1){modifier = "Red";}
-                    if(state.getCurrDiscard().getVal() == 2){modifier = "White";}
+                if (state.getCurrDiscard() != null) {
+                    if (state.getCurrDiscard().getSuit() == 0) {
+                        soot = "Dots";
+                        numbered = true;
+                    }
+                    if (state.getCurrDiscard().getSuit() == 1) {
+                        soot = "Bamboo";
+                        numbered = true;
+                    }
+                    if (state.getCurrDiscard().getSuit() == 2) {
+                        soot = "Characters";
+                        numbered = true;
+                    }
+                    if (state.getCurrDiscard().getSuit() == 3) {
+                        soot = "Dragons";
+                        if (state.getCurrDiscard().getVal() == 0) {
+                            modifier = "Green";
+                        }
+                        if (state.getCurrDiscard().getVal() == 1) {
+                            modifier = "Red";
+                        }
+                        if (state.getCurrDiscard().getVal() == 2) {
+                            modifier = "White";
+                        }
+                    }
+                    if (state.getCurrDiscard().getSuit() == 4) {
+                        soot = "Winds";
+                        if (state.getCurrDiscard().getVal() == 0) {
+                            modifier = "East";
+                        }
+                        if (state.getCurrDiscard().getVal() == 1) {
+                            modifier = "North";
+                        }
+                        if (state.getCurrDiscard().getVal() == 2) {
+                            modifier = "South";
+                        }
+                        if (state.getCurrDiscard().getVal() == 3) {
+                            modifier = "West";
+                        }
+                    }
+
+                    if (numbered) {
+                        infoDisplay.setText("Player " + state.getGameStage() / 2 + " has discarded a "
+                                + (state.getCurrDiscard().getVal() + 1) + " of " + soot + " tile.");
+                    } else {
+                        infoDisplay.setText("Player " + state.getGameStage() / 2 + " has discarded a "
+                                + modifier + " " + soot + " tile.");
+                    }
                 }
-                if(state.getCurrDiscard().getSuit() == 4){
-                    soot = "Winds";
-                    if(state.getCurrDiscard().getVal() == 0){modifier = "East";}
-                    if(state.getCurrDiscard().getVal() == 1){modifier = "North";}
-                    if(state.getCurrDiscard().getVal() == 2){modifier = "South";}
-                    if(state.getCurrDiscard().getVal() == 3){modifier = "West";}
+                    turnIndicator.setText("Player " + state.getGameStage() / 2 + "'s Post-Discard Phase!");
+                } else {
+                    turnIndicator.setText("It is Player " + (state.getGameStage() + 1) / 2 + "'s Turn!");
                 }
-                if(numbered){
-                    infoDisplay.setText("Player " + state.getGameStage() / 2 + " has discarded a "
-                        + state.getCurrDiscard().getVal() + " of " + soot + " tile.");
-                }
-                else{
-                    infoDisplay.setText("Player " + state.getGameStage() / 2 + " has discarded a "
-                            + modifier + " " + soot + " tile.");
-                }
-                turnIndicator.setText("Player " + state.getGameStage() / 2 + "'s Post-Discard Phase!");
-            } else {
-                turnIndicator.setText("It is Player " + (state.getGameStage() + 1) / 2 + "'s Turn!");
-            }
+
 
 
             for (int k = 0; k < 4; k++) {

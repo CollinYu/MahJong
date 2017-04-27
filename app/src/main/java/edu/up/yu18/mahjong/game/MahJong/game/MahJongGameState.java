@@ -618,8 +618,42 @@ public class MahJongGameState extends GameState {
             }
         }
     }
-    boolean hasMahJong(int[] hand)
+
+    public int[] removeNull(int[] initHand){
+        int[] hand = null;
+        int counter = 0;
+        boolean[] keep = new boolean[initHand.length];
+        for (int m = 0; m < initHand.length; m++) {
+            if (initHand[m] == 136) {
+                keep[m] = false;
+            } else {
+                keep[m] = true;
+                counter++;
+            }
+        }
+        hand = new int[counter];
+        int counter2 = 0;
+        for (int n = 0; n < initHand.length; n++) {
+            if(keep[n]){
+                hand[counter2]=initHand[n];
+                counter2++;
+            }
+        }
+        return hand;
+    }
+
+//    public int[] addCurrDiscard(int[] initHand){
+//
+//    }
+//
+    public boolean hasMahJong(int[] initHand)
     {
+        /**
+         * first time the method is called
+         */
+
+        int[] hand = removeNull(initHand);
+
         Arrays.sort(hand);
         //base case, two tiles must be a pair
         if (hand.length == 2)
