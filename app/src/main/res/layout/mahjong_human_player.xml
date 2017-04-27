@@ -176,7 +176,6 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="[Player3 Name]: 100 Points"
             android:id="@+id/Player3Name"
             android:layout_weight="1"
             android:gravity="right"

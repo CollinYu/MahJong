@@ -77,15 +77,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         else {
             turnIndicator.setText("It is Player " + (state.getGameStage() + 1) / 2  + "'s Turn!");
         }
-        for(int q = 0; q < 14; q++) {
-            if (tilePressed[q]){
-                myTiles[q].setBackgroundTintMode(PorterDuff.Mode.SRC_ATOP);
-            }
-            else {
 
-                myTiles[q].setBackgroundTintMode(PorterDuff.Mode.ADD);
-            }
-        }
         for (int k = 0; k < 4; k++) {
             for (int i = 0; i < 14; i++) {
                 if (state.getPlayerClosedHandTile(playerNum, i) != null) {
@@ -210,9 +202,15 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         }
 
         for(int q = 0; q < 14; q++) {
-            if (tilePressed[q]){
-                myTiles[q].setBackgroundTintMode(PorterDuff.Mode.ADD);
+            if (tilePressed[q]) {
+                myTiles[q].setBackgroundTintMode(PorterDuff.Mode.SRC_ATOP);
+
             }
+        else {
+
+            myTiles[q].setBackgroundTintMode(PorterDuff.Mode.ADD);
+        }
+
         }
             for (int i = 0; i < 14; i++) {
             if (state.getPlayerClosedHandTile(playerNum, i) != null) {
@@ -841,6 +839,8 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         chowButton.setOnClickListener(this);
         turnIndicator = (TextView) activity.findViewById(R.id.TurnIndicator);
         turnIndicator.setOnClickListener(this);
+        infoDisplay = (TextView) activity.findViewById(R.id.InfoDisplay);
+        infoDisplay.setOnClickListener(this);
         quitButton = (Button) activity.findViewById(R.id.quitButton);
         quitButton.setOnClickListener(this);
         pongButton = (Button) activity.findViewById(R.id.pongButton);
