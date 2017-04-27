@@ -76,7 +76,10 @@ public class MahJongLocalGame extends LocalGame {
         }
         if(gameOverPrompt) {
             for (int i = 0; i < 4; i++) {
-                if (state.hasMahJong(state.getWholeOpenHand(i))) {
+                int[] hand;
+                hand = state.getWholeClosedHand(i);
+                if(state.getGameStage() % 2 == 0){hand[hand.length-1] = state.getCurrDiscard().getDeckPos();}
+                if (state.hasMahJong(hand)) {
                     String victoryMsg = "Player " + i + 1 + " has won the game!";
                     return victoryMsg;
                 }
@@ -105,7 +108,7 @@ public class MahJongLocalGame extends LocalGame {
         if (action instanceof MahJong){
             MahJong mj = (MahJong) action;
             int[] hand;
-            hand = state.getWholeOpenHand(mj.getPlayerID());
+            hand = state.getWholeClosedHand(mj.getPlayerID());
             if(state.getGameStage() % 2 == 0){hand[hand.length-1] = state.getCurrDiscard().getDeckPos();}
             if(state.hasMahJong(hand)){
                 this.gameOverPrompt = true;

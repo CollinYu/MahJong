@@ -78,7 +78,7 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
             }
 
             int[] hand;
-            hand = state.getWholeOpenHand(this.playerNum);
+            hand = state.getWholeClosedHand(this.playerNum);
             if(state.getGameStage() % 2 == 0){hand[hand.length-1] = state.getCurrDiscard().getDeckPos();}
             //CHOWWWWW
 

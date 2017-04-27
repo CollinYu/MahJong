@@ -1058,7 +1058,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         if (v == mahJongButton){
             if ((state.getGameStage() % 2) == 0 || (state.getGameStage()) == (this.playerNum*2 - 1)){
                 int[] hand;
-                hand = state.getWholeOpenHand(this.playerNum);
+                hand = state.getWholeClosedHand(this.playerNum);
                 if(state.getGameStage() % 2 == 0){hand[hand.length-1] = state.getCurrDiscard().getDeckPos();}
                 if(state.hasMahJong(hand)){
                         action = new MahJong(this, playerNum);
