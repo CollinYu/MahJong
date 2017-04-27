@@ -124,7 +124,13 @@ public class MahJongGameState extends GameState {
     public int getDiscardPile(int pos) {
         return this.discardPile[pos];
     }
-    public int[] getWholeClosedHand(int player){return this.playerClosedHands[player];}
+    public int[] getWholeClosedHand(int player){
+        int [] hand = new int[playerClosedHands[player].length];
+        for(int i = 0; i < playerClosedHands[player].length; i++){
+            hand[i] = playerClosedHands[player][i];
+        }
+        return hand;
+    }
     public void setPlayerName(String name, int player) {
         this.playerNames[player] = name;
     }
