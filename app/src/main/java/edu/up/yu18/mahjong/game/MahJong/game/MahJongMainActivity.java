@@ -16,6 +16,8 @@ import edu.up.yu18.mahjong.game.frameWork.base.game.LocalGame;
 
 public class MahJongMainActivity extends GameMainActivity{
 
+        private static final long serialVersionUID = 1323064452136954L;
+
         // the port number that this game will use when playing over the network
         private static final int PORT_NUMBER = 2234;
 
@@ -52,11 +54,6 @@ public class MahJongMainActivity extends GameMainActivity{
                     return new MahJongSmartPlayer(name);
                 }});
 
-            // a human player player type (player type 0)
-            playerTypes.add(new GamePlayerType("Network Human Player") {
-                public GamePlayer createPlayer(String name) {
-                    return new MahJongHumanPlayer(name);
-                }});
             // Create a game configuration class for MahJong:
             // - player types as given above
             // - from 1 to 2 players

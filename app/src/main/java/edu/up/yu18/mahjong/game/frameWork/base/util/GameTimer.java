@@ -1,5 +1,7 @@
 package edu.up.yu18.mahjong.game.frameWork.base.util;
 
+import java.io.Serializable;
+
 /**
  * A GameTimer is an object that sends a GameTimerAction to a Game or a
  * Player at regular intervals.  It can be used, for example, in games
@@ -24,7 +26,8 @@ package edu.up.yu18.mahjong.game.frameWork.base.util;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class GameTimer {
+public class GameTimer implements Serializable{
+	private static final long serialVersionUID = 9238296821234L;
 	// the game to send actions to
 	private Tickable target;
 

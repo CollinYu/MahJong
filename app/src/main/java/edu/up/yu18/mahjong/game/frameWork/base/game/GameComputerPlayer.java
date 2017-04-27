@@ -16,6 +16,8 @@ import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
 import android.os.Handler;
 import android.os.Looper;
 
+import java.io.Serializable;
+
 /**
  * An abstract computerized game player player. This is an abstract class, that
  * should be sub-classed to implement different AIs. The subclass must implement
@@ -25,7 +27,7 @@ import android.os.Looper;
  * @author Andrew Nuxoll
  * @version July 2013
  */
-public abstract class GameComputerPlayer implements GamePlayer, Tickable {
+public abstract class GameComputerPlayer implements GamePlayer, Tickable, Serializable{
 	/**
 	 * the current game state
 	 */
@@ -39,6 +41,7 @@ public abstract class GameComputerPlayer implements GamePlayer, Tickable {
 	private GameMainActivity myActivity; // the game's main activity, set only
 			// this game is connected to the GUI
 	private GameTimer myTimer = new GameTimer(this); // my timer
+	private static final long serialVersionUID = 2813787213127392189L;
 	
 	/**
 	 * Returns this game's timer.

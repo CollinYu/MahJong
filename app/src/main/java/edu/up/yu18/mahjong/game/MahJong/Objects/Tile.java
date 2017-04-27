@@ -1,14 +1,17 @@
 package edu.up.yu18.mahjong.game.MahJong.Objects;
 
+import java.io.Serializable;
+
 /**
  * Created by CollinYu on 3/9/17.
  */
 
-public class Tile {
+public class Tile implements Serializable{
     private int suit;
     private int val;
     private int ID;
     private int deckPos;
+    private static final long serialVersionUID = 6902512323454L;
     // Constructor
     public Tile(int s, int v, int ego, int deckPos){
         this.suit = s;

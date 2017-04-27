@@ -35,6 +35,7 @@ public class MahJongGameState extends GameState {
     // our deck sets itself up as a referential source, it shuffles itself and like the Random() class, one
     // simply needs to look at the next object to get the sense of randomization
     private ArrayList<Tile> deck;
+    private static final long serialVersionUID = 1323064333136954L;
 
     // the reference point for the next tile in the deck
     private int deckPosition;
@@ -114,6 +115,7 @@ public class MahJongGameState extends GameState {
         gameStage = 1;
     }
 
+    public Tile deckGet(int deckPos){return deck.get(deckPos);}
     // Getters and Setters for Instance Variables
     public void setWall(int tile, int pos) {
         this.wall[pos] = tile;
@@ -721,8 +723,18 @@ public class MahJongGameState extends GameState {
                 hand = addCurrDiscard(hand);
             }
             hand = removeNull(hand);
+        }        int temp;
+
+        // ID of the tiles was made for easy sorting
+        for (int i = 0; i < hand.length - 1; i++) {
+            for (int j = i + 1; j < hand.length; j++) {
+                if (deck.get(hand[i]).getID() > deck.get(hand[j]).getID()) {
+                    temp = hand[j];
+                    hand[j] = hand[i];
+                    hand[i] = temp;
+                }
+            }
         }
-            Arrays.sort(hand);
             //base case, two tiles must be a pair
             if (hand.length == 2) {
                 return (deck.get(hand[0]).isEqualTo(deck.get(hand[1])));

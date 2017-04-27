@@ -1,5 +1,7 @@
 package edu.up.yu18.mahjong.game.MahJong.game;
 
+import java.io.Serializable;
+
 import edu.up.yu18.mahjong.game.MahJong.Actions.Chow;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Kong;
@@ -18,7 +20,9 @@ import edu.up.yu18.mahjong.game.frameWork.base.util.GameTimer;
  * Sets everything up, and all actions pass through this
  */
 
-public class MahJongLocalGame extends LocalGame {
+public class MahJongLocalGame extends LocalGame implements  Serializable{
+
+    private static final long serialVersionUID = 132306433313234514L;
 
     private boolean gameOverPrompt = false;
     private MahJongGameState state;

@@ -7,6 +7,8 @@ import edu.up.yu18.mahjong.game.frameWork.base.util.NetworkObjectPasser;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
 import android.util.Log;
 
+import java.io.Serializable;
+
 /**
  * A Player object that is used as a proxy for the real player that is on another
  * machine on the network. Whenever a message is sent to the ProxyPlayer object,
@@ -17,7 +19,8 @@ import android.util.Log;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class ProxyPlayer implements GamePlayer {
+public class ProxyPlayer implements GamePlayer, Serializable {
+    private static final long serialVersionUID = 920173523454L;
 
     // the game object
     private Game game;

@@ -14,6 +14,7 @@ public class Pong extends GameAction {
     private Tile tile1;
     private Tile tile2;
     private Tile tile3;
+    private static final long serialVersionUID = 87918012323454L;
 
     // Constructor
     public Pong(GamePlayer player, int pID, Tile t1, Tile t2, Tile t3){

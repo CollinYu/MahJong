@@ -35,6 +35,8 @@ import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
  */
 
 public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
+
+    private static final long serialVersionUID = 13781238536954L;
     private Button passButton;
     private Button mahJongButton;
     private Button quitButton;
@@ -68,10 +70,12 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
 
     /**
-     * This is where we manipulate the gui objects in response to the gamestate having changed
+     * @Tristan_Boylan This is where we manipulate the gui objects in response to the gamestate having changed
      */
     public void updateDisplay() {
-        if (state != null) {
+
+        if (state != null) { // Catches null pointer for if the user calls the on-click method before the gamestate has loaded (network play error only)
+            // setup for infoDisplay: a text description of the most recently discarded tile for user QOL
             if (state.getGameStage() % 2 == 0 && state.getCurrDiscard() != null) {
                 String soot = null;
                 boolean numbered = false;
@@ -124,12 +128,12 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                         infoDisplay.setText("Player " + state.getGameStage() / 2 + " has discarded a "
                                 + modifier + " " + soot + " tile.");
                     }
+                    // setUp for turnIndicator: a text description of whose turn it is
                 }
-                    turnIndicator.setText("Player " + state.getGameStage() / 2 + "'s Post-Discard Phase!");
-                } else {
-                    turnIndicator.setText("It is Player " + (state.getGameStage() + 1) / 2 + "'s Turn!");
-                }
-
+                turnIndicator.setText("Player " + state.getGameStage() / 2 + "'s Post-Discard Phase!");
+            } else {
+                turnIndicator.setText("It is Player " + (state.getGameStage() + 1) / 2 + "'s Turn!");
+            }
 
 
             for (int k = 0; k < 4; k++) {
@@ -280,69 +284,70 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     playerClosedHand[2][i].setBackgroundResource(R.mipmap.mahjongtile_back);
                 }
             }
-
-            for (int k = 0; k < 3; k++) {
+            int k = 0;
+            for (int b = 0; b < 4; b++) {
+                if(b == this.playerNum){continue;}
                 for (int n = 0; n < 14; n++) {
                     int act = 14;
-                    if ((state.getPlayerOpenHandTile(k+1, n) != null) && (state.getPlayerOpenHands(k+1, n) != 136)) {
-                        if (state.getPlayerOpenHandTile(k+1, n).getSuit() == 0) {
-                            if (state.getPlayerOpenHandTile(k+1, n).getVal() == 0) {
+                    if ((state.getPlayerOpenHandTile(b, n) != null) && (state.getPlayerOpenHands(b, n) != 136)) {
+                        if (state.getPlayerOpenHandTile(b, n).getSuit() == 0) {
+                            if (state.getPlayerOpenHandTile(b, n).getVal() == 0) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots1);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 1) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 1) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots2);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 2) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 2) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots3);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 3) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 3) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots4);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 4) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 4) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots5);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 5) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 5) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots6);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 6) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 6) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots7);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 7) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 7) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots8);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 8) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 8) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledots9);
                                 --act;
                             }
 
                         }
                         //if suit is bamboo suit is 1
-                        if (state.getPlayerOpenHandTile(k+1, n).getSuit() == 1) {
-                            if (state.getPlayerOpenHandTile(k+1, n).getVal() == 0) {
+                        if (state.getPlayerOpenHandTile(b, n).getSuit() == 1) {
+                            if (state.getPlayerOpenHandTile(b, n).getVal() == 0) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo1);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 1) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 1) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo2);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 2) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 2) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo3);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 3) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 3) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo4);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 4) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 4) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo5);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 5) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 5) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo6);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 6) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 6) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo7);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 7) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 7) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo8);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 8) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 8) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilebamboo9);
                                 --act;
                             }
@@ -350,45 +355,45 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
                         }
                         //if suit is character suit is 2
-                        if (state.getPlayerOpenHandTile(k+1, n).getSuit() == 2) {
-                            if (state.getPlayerOpenHandTile(k+1, n).getVal() == 0) {
+                        if (state.getPlayerOpenHandTile(b, n).getSuit() == 2) {
+                            if (state.getPlayerOpenHandTile(b, n).getVal() == 0) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter1);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 1) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 1) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter2);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 2) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 2) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter3);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 3) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 3) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter4);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 4) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 4) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter5);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 5) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 5) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter6);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 6) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 6) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter7);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 7) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 7) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter8);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 8) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 8) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtilecharacter9);
                                 --act;
                             }
                         }
                         //if suit is dragon suit is 3
-                        if (state.getPlayerOpenHandTile(k+1, n).getSuit() == 3) {
-                            if (state.getPlayerOpenHandTile(k+1, n).getVal() == 0) {
+                        if (state.getPlayerOpenHandTile(b, n).getSuit() == 3) {
+                            if (state.getPlayerOpenHandTile(b, n).getVal() == 0) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledragongreen);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 1) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 1) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledragonred);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 2) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 2) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledragonwhite);
                                 --act;
                             }
@@ -396,17 +401,17 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
                         }
                         //if suit is wind suit is 4
-                        if (state.getPlayerOpenHandTile(k+1, n).getSuit() == 4) {
-                            if (state.getPlayerOpenHandTile(k+1, n).getVal() == 0) {
+                        if (state.getPlayerOpenHandTile(b, n).getSuit() == 4) {
+                            if (state.getPlayerOpenHandTile(b, n).getVal() == 0) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledirectioneast);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 1) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 1) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledirectionnorth);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 2) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 2) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledirectionsouth);
                                 --act;
-                            } else if (state.getPlayerOpenHandTile(k+1, n).getVal() == 3) {
+                            } else if (state.getPlayerOpenHandTile(b, n).getVal() == 3) {
                                 playerClosedHand[k][n].setImageResource(R.drawable.mahjongtiledirectionwest);
                                 --act;
                             }
@@ -415,9 +420,10 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                         }
                     }
                 }
+                k++;
             }
 
-            for (int k = 0; k < 1; k++) {
+            for (k = 0; k < 1; k++) {
                 for (int n = 0; n < 14; n++) {
                     if ((state.getPlayerOpenHandTile(playerNum, n) != null) && (state.getPlayerOpenHands(playerNum, n) != 136)) {
                         //if suit is dots suit is 0
@@ -761,7 +767,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 }
             }
         }
-}
+    }
 
     /**
      * We only receive new gamestates, basically just calls updateDisplay()
@@ -777,9 +783,8 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
 
     /**
-     * @Collin_Yu
-     * initializes this players GUI
      * @param activity
+     * @Collin_Yu initializes this players GUI
      */
     public void setAsGui(GameMainActivity activity) {
 
@@ -855,55 +860,55 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         playerOpenHand[0][10] = (ImageView) activity.findViewById(R.id.openTile11);
         playerOpenHand[0][11] = (ImageView) activity.findViewById(R.id.openTile12);
         playerOpenHand[0][12] = (ImageView) activity.findViewById(R.id.openTile13);
-        playerOpenHand[0][13]= (ImageView) activity.findViewById(R.id.openTile14);
+        playerOpenHand[0][13] = (ImageView) activity.findViewById(R.id.openTile14);
 
         /**
-        playerOpenHand[1][0] = (ImageView) activity.findViewById(R.id.player2Tile1);
-        playerOpenHand[1][1] = (ImageView) activity.findViewById(R.id.player2Tile2);
-        playerOpenHand[1][2] = (ImageView) activity.findViewById(R.id.player2Tile3);
-        playerOpenHand[1][3] = (ImageView) activity.findViewById(R.id.player2Tile4);
-        playerOpenHand[1][4] = (ImageView) activity.findViewById(R.id.player2Tile5);
-        playerOpenHand[1][5] = (ImageView) activity.findViewById(R.id.player2Tile6);
-        playerOpenHand[1][6] = (ImageView) activity.findViewById(R.id.player2Tile7);
-        playerOpenHand[1][7] = (ImageView) activity.findViewById(R.id.player2Tile8);
-        playerOpenHand[1][8] = (ImageView) activity.findViewById(R.id.player2Tile9);
-        playerOpenHand[1][9] = (ImageView) activity.findViewById(R.id.player2Tile10);
-        playerOpenHand[1][10] = (ImageView) activity.findViewById(R.id.player2Tile11);
-        playerOpenHand[1][11] = (ImageView) activity.findViewById(R.id.player2Tile12);
-        playerOpenHand[1][12] = (ImageView) activity.findViewById(R.id.player2Tile13);
-        playerOpenHand[1][13] = (ImageView) activity.findViewById(R.id.player2Tile14);
+         playerOpenHand[1][0] = (ImageView) activity.findViewById(R.id.player2Tile1);
+         playerOpenHand[1][1] = (ImageView) activity.findViewById(R.id.player2Tile2);
+         playerOpenHand[1][2] = (ImageView) activity.findViewById(R.id.player2Tile3);
+         playerOpenHand[1][3] = (ImageView) activity.findViewById(R.id.player2Tile4);
+         playerOpenHand[1][4] = (ImageView) activity.findViewById(R.id.player2Tile5);
+         playerOpenHand[1][5] = (ImageView) activity.findViewById(R.id.player2Tile6);
+         playerOpenHand[1][6] = (ImageView) activity.findViewById(R.id.player2Tile7);
+         playerOpenHand[1][7] = (ImageView) activity.findViewById(R.id.player2Tile8);
+         playerOpenHand[1][8] = (ImageView) activity.findViewById(R.id.player2Tile9);
+         playerOpenHand[1][9] = (ImageView) activity.findViewById(R.id.player2Tile10);
+         playerOpenHand[1][10] = (ImageView) activity.findViewById(R.id.player2Tile11);
+         playerOpenHand[1][11] = (ImageView) activity.findViewById(R.id.player2Tile12);
+         playerOpenHand[1][12] = (ImageView) activity.findViewById(R.id.player2Tile13);
+         playerOpenHand[1][13] = (ImageView) activity.findViewById(R.id.player2Tile14);
 
 
-        playerOpenHand[2][0] = (ImageView) activity.findViewById(R.id.player3Tile1);
-        playerOpenHand[2][1] = (ImageView) activity.findViewById(R.id.player3Tile2);
-        playerOpenHand[2][2] = (ImageView) activity.findViewById(R.id.player3Tile3);
-        playerOpenHand[2][3] = (ImageView) activity.findViewById(R.id.player3Tile4);
-        playerOpenHand[2][4] = (ImageView) activity.findViewById(R.id.player3Tile5);
-        playerOpenHand[2][5] = (ImageView) activity.findViewById(R.id.player3Tile6);
-        playerOpenHand[2][6] = (ImageView) activity.findViewById(R.id.player3Tile7);
-        playerOpenHand[2][7] = (ImageView) activity.findViewById(R.id.player3Tile8);
-        playerOpenHand[2][8] = (ImageView) activity.findViewById(R.id.player3Tile9);
-        playerOpenHand[2][9] = (ImageView) activity.findViewById(R.id.player3Tile10);
-        playerOpenHand[2][10] = (ImageView) activity.findViewById(R.id.player3Tile11);
-        playerOpenHand[2][11] = (ImageView) activity.findViewById(R.id.player3Tile12);
-        playerOpenHand[2][12] = (ImageView) activity.findViewById(R.id.player3Tile13);
-        playerOpenHand[2][13] = (ImageView) activity.findViewById(R.id.player3Tile14);
+         playerOpenHand[2][0] = (ImageView) activity.findViewById(R.id.player3Tile1);
+         playerOpenHand[2][1] = (ImageView) activity.findViewById(R.id.player3Tile2);
+         playerOpenHand[2][2] = (ImageView) activity.findViewById(R.id.player3Tile3);
+         playerOpenHand[2][3] = (ImageView) activity.findViewById(R.id.player3Tile4);
+         playerOpenHand[2][4] = (ImageView) activity.findViewById(R.id.player3Tile5);
+         playerOpenHand[2][5] = (ImageView) activity.findViewById(R.id.player3Tile6);
+         playerOpenHand[2][6] = (ImageView) activity.findViewById(R.id.player3Tile7);
+         playerOpenHand[2][7] = (ImageView) activity.findViewById(R.id.player3Tile8);
+         playerOpenHand[2][8] = (ImageView) activity.findViewById(R.id.player3Tile9);
+         playerOpenHand[2][9] = (ImageView) activity.findViewById(R.id.player3Tile10);
+         playerOpenHand[2][10] = (ImageView) activity.findViewById(R.id.player3Tile11);
+         playerOpenHand[2][11] = (ImageView) activity.findViewById(R.id.player3Tile12);
+         playerOpenHand[2][12] = (ImageView) activity.findViewById(R.id.player3Tile13);
+         playerOpenHand[2][13] = (ImageView) activity.findViewById(R.id.player3Tile14);
 
-        playerOpenHand[3][0] = (ImageView) activity.findViewById(R.id.player4Tile1);
-        playerOpenHand[3][1] = (ImageView) activity.findViewById(R.id.player4Tile2);
-        playerOpenHand[3][2] = (ImageView) activity.findViewById(R.id.player4Tile3);
-        playerOpenHand[3][3] = (ImageView) activity.findViewById(R.id.player4Tile4);
-        playerOpenHand[3][4] = (ImageView) activity.findViewById(R.id.player4Tile5);
-        playerOpenHand[3][5] = (ImageView) activity.findViewById(R.id.player4Tile6);
-        playerOpenHand[3][6] = (ImageView) activity.findViewById(R.id.player4Tile7);
-        playerOpenHand[3][7] = (ImageView) activity.findViewById(R.id.player4Tile8);
-        playerOpenHand[3][8] = (ImageView) activity.findViewById(R.id.player4Tile9);
-        playerOpenHand[3][9] = (ImageView) activity.findViewById(R.id.player4Tile10);
-        playerOpenHand[3][10] = (ImageView) activity.findViewById(R.id.player4Tile11);
-        playerOpenHand[3][11] = (ImageView) activity.findViewById(R.id.player4Tile12);
-        playerOpenHand[3][12] = (ImageView) activity.findViewById(R.id.player4Tile13);
-        playerOpenHand[3][13] = (ImageView) activity.findViewById(R.id.player4Tile14);
-        */
+         playerOpenHand[3][0] = (ImageView) activity.findViewById(R.id.player4Tile1);
+         playerOpenHand[3][1] = (ImageView) activity.findViewById(R.id.player4Tile2);
+         playerOpenHand[3][2] = (ImageView) activity.findViewById(R.id.player4Tile3);
+         playerOpenHand[3][3] = (ImageView) activity.findViewById(R.id.player4Tile4);
+         playerOpenHand[3][4] = (ImageView) activity.findViewById(R.id.player4Tile5);
+         playerOpenHand[3][5] = (ImageView) activity.findViewById(R.id.player4Tile6);
+         playerOpenHand[3][6] = (ImageView) activity.findViewById(R.id.player4Tile7);
+         playerOpenHand[3][7] = (ImageView) activity.findViewById(R.id.player4Tile8);
+         playerOpenHand[3][8] = (ImageView) activity.findViewById(R.id.player4Tile9);
+         playerOpenHand[3][9] = (ImageView) activity.findViewById(R.id.player4Tile10);
+         playerOpenHand[3][10] = (ImageView) activity.findViewById(R.id.player4Tile11);
+         playerOpenHand[3][11] = (ImageView) activity.findViewById(R.id.player4Tile12);
+         playerOpenHand[3][12] = (ImageView) activity.findViewById(R.id.player4Tile13);
+         playerOpenHand[3][13] = (ImageView) activity.findViewById(R.id.player4Tile14);
+         */
 
 
         myTiles[0] = (ImageButton) activity.findViewById(R.id.tile1);
@@ -1011,9 +1016,6 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         discard[87] = (ImageButton) activity.findViewById(R.id.Discard1Tile88);
 
 
-
-
-
         for (int i = 0; i < myTiles.length; i++) {
             myTiles[i].setOnClickListener(this);
         }
@@ -1044,9 +1046,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         mahJongButton.setOnClickListener(this);
         /**
          *
-        emoteButton = (Button) activity.findViewById(R.id.emoteButton);
-        emoteButton.setOnClickListener(this);
-        emoteSpinner = (Spinner) activity.findViewById(R.id.EmoteSpinner);
+         emoteButton = (Button) activity.findViewById(R.id.emoteButton);
+         emoteButton.setOnClickListener(this);
+         emoteSpinner = (Spinner) activity.findViewById(R.id.EmoteSpinner);
          */
         /*scoreSpinner = (Spinner) activity.findViewById(R.id.ScoreSpinner);
         String[] emoteSpinner = activity.getResources().getStringArray(R.array.emote_choices);
@@ -1057,11 +1059,11 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
     }
 
     /**
-     * @Collin_Yu
      * @param v, the view that received the click action
-     * governs:
+     *           governs:
      *           - Tile Selection
      *           - GUIPlayer Actions
+     * @Collin_Yu
      */
     @Override
     public void onClick(View v) {
@@ -1077,7 +1079,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
             // check for valid gameStage
             if (this.playerNum == 0 && state.getGameStage() == 8 ||
-                    state.getGameStage() == this.playerNum*2) {
+                    state.getGameStage() == this.playerNum * 2) {
 
                 // create new ArrayList of Tile objects for referential purposes
                 ArrayList<Tile> tiles = new ArrayList<>(0);
@@ -1098,25 +1100,29 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 }
                 // legality check
                 else if ((tiles.get(0).isAbove(tiles.get(1)) && tiles.get(1).isAbove(state.getCurrDiscard()) ||
-                        (tiles.get(0).isAbove(state.getCurrDiscard()) && state.getCurrDiscard().isAbove(tiles.get(1)))  ||
-                        (tiles.get(1).isAbove(tiles.get(0)) && tiles.get(0).isAbove(state.getCurrDiscard()))  ||
-                        (tiles.get(1).isAbove(state.getCurrDiscard()) && state.getCurrDiscard().isAbove(tiles.get(0)))  ||
+                        (tiles.get(0).isAbove(state.getCurrDiscard()) && state.getCurrDiscard().isAbove(tiles.get(1))) ||
+                        (tiles.get(1).isAbove(tiles.get(0)) && tiles.get(0).isAbove(state.getCurrDiscard())) ||
+                        (tiles.get(1).isAbove(state.getCurrDiscard()) && state.getCurrDiscard().isAbove(tiles.get(0))) ||
                         (state.getCurrDiscard().isAbove(tiles.get(1)) && tiles.get(1).isAbove(tiles.get(0))) ||
                         (state.getCurrDiscard().isAbove(tiles.get(0)) && tiles.get(0).isAbove(tiles.get(1))))) {
 
                     displayTextBox.setText("Nice Chow!"); // congratulate them on performing a simple game action
 
                     action = new Chow(this, playerNum, tiles.get(0), tiles.get(1), state.getCurrDiscard()); // confirm Chow action
-                    for (int i = 0; i < tilePressed.length; i++){tilePressed[i] = false;} // reset hand highlighting
+                    for (int i = 0; i < tilePressed.length; i++) {
+                        tilePressed[i] = false;
+                    } // reset hand highlighting
                 } // end legality check
             } // gameStage check
-            else {displayTextBox.setText("You can't Chow right now!");} // if invalid gameStage, let player know
+            else {
+                displayTextBox.setText("You can't Chow right now!");
+            } // if invalid gameStage, let player know
         } // end chowButton
 
         // for pong button
         if (v == pongButton) {
             // gameStage check
-            if (state.getGameStage() != (this.playerNum+1)*2 &&
+            if (state.getGameStage() != (this.playerNum + 1) * 2 &&
                     state.getGameStage() % 2 == 0) {
                 ArrayList<Tile> tiles = new ArrayList<>(0);  // initialize referential ArrayList
 
@@ -1132,18 +1138,19 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     displayTextBox.setText("Invalid Pong!");
                     return;
                 }
-                 // legality check
+                // legality check
                 else if (tiles.get(0).isEqualTo(tiles.get(1)) &&
-                        tiles.get(1).isEqualTo(state.getCurrDiscard()))
-                {
+                        tiles.get(1).isEqualTo(state.getCurrDiscard())) {
                     // all checks passed, create pong action
                     action = new Pong(this, playerNum, tiles.get(0), tiles.get(1), state.getCurrDiscard());
 
                     displayTextBox.setText("Nice Pong!"); // congratulate user for simple game action
 
-                    for (int i = 0; i < tilePressed.length; i++){tilePressed[i] = false;} // reset highlighting
+                    for (int i = 0; i < tilePressed.length; i++) {
+                        tilePressed[i] = false;
+                    } // reset highlighting
                 } // end legality check
-                   
+
                 else { // if illegal move
                     displayTextBox.setText("Invalid Pong!");
                     return;
@@ -1179,8 +1186,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 // legality check
                 else if (tiles.get(0).isEqualTo(tiles.get(1)) &&
                         tiles.get(1).isEqualTo(state.getCurrDiscard()) &&
-                        state.getCurrDiscard().isEqualTo(tiles.get(2)))
-                {
+                        state.getCurrDiscard().isEqualTo(tiles.get(2))) {
                     // confirm Kong action
                     action = new Kong(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2), state.getCurrDiscard());
 
@@ -1188,7 +1194,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     displayTextBox.setText("Nice Kong!");
 
                     // reset hand highlighting
-                    for (int i = 0; i < tilePressed.length; i++){tilePressed[i] = false;}
+                    for (int i = 0; i < tilePressed.length; i++) {
+                        tilePressed[i] = false;
+                    }
 
                 } // end legality check
                 else { // if move didn't complete legality check
@@ -1197,22 +1205,24 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 }
             } // end gameStage check
 
-            else{ // if move didn't pass gameStage test
+            else { // if move didn't pass gameStage test
                 displayTextBox.setText("You can't Kong right now!");
             }
         }
 
         // for pass button press
-        if (v == passButton){
+        if (v == passButton) {
             // gamestage check
-            if(state.getGameStage() % 2 == 0) {
+            if (state.getGameStage() % 2 == 0) {
                 action = new Pass(this, this.playerNum);
                 displayTextBox.setText("Passed");
             } // end gameStage check
-            else{displayTextBox.setText("Invalid Move!");}
+            else {
+                displayTextBox.setText("Invalid Move!");
+            }
         }
 
-        if (v == sortButton){
+        if (v == sortButton) {
             Sort s = new Sort(this, this.playerNum);
             action = s;
         }
@@ -1223,8 +1233,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
          }
          */
         if (v == discardButton) {
-            if (!(state.getGameStage() == (this.playerNum+1)*2 -1)) {displayTextBox.setText("You can't Discard right now!");}
-            else{
+            if (!(state.getGameStage() == (this.playerNum + 1) * 2 - 1)) {
+                displayTextBox.setText("You can't Discard right now!");
+            } else {
                 int counter = 0;
                 Tile tile = null;
                 int pos = 0;
@@ -1247,24 +1258,17 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
         }
 
-        if (v == mahJongButton){
-            if ((state.getGameStage() % 2) == 0 || (state.getGameStage()) == ((this.playerNum + 1) * 2 - 1)){
-                int[] hand;
-                hand = state.getWholeClosedHand(this.playerNum);
-                if(state.getGameStage() % 2 == 0){hand[hand.length-1] = state.getCurrDiscard().getDeckPos();}
-                if(state.hasMahJong(hand, true)){
-                        action = new MahJong(this, playerNum);
-                        displayTextBox.setText("You Win!");
-                }
-                else{
-                    displayTextBox.setText("You don't have a MahJong!");}
-
+        if (v == mahJongButton) {
+            if (state.hasMahJong(state.getWholeClosedHand(this.playerNum), true)) {
+                action = new MahJong(this, playerNum);
+                displayTextBox.setText("You Win!");
             }
-            else
-            {
+            else {
                 displayTextBox.setText("You don't have a MahJong!");
             }
         }
+
+
 
         if (v == quitButton){
             System.exit(0);

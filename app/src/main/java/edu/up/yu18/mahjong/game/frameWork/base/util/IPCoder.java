@@ -1,5 +1,6 @@
 package edu.up.yu18.mahjong.game.frameWork.base.util;
 
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -15,7 +16,8 @@ import android.util.Log;
  * @version July 2013
  *
  */
-public class IPCoder {
+public class IPCoder implements Serializable{
+	private static final long serialVersionUID = 7216523812323454L;
 	
 	/**
 	 * gets the IP address of the current device

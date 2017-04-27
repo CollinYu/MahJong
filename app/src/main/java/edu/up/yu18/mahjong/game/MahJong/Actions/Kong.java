@@ -9,6 +9,7 @@ import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
 
 public class Kong extends Pong {
     private Tile tile4;
+    private static final long serialVersionUID = 13221523096954L;
 
     public Kong(GamePlayer player, int pID, Tile t1, Tile t2, Tile t3, Tile t4){
         super(player, pID, t1,t2,t3);

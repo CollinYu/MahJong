@@ -1,5 +1,7 @@
 package edu.up.yu18.mahjong.game.frameWork.base.game;
 
+import java.io.Serializable;
+
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 
 

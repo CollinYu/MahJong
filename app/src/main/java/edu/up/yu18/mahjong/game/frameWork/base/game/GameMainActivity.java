@@ -23,6 +23,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.up.yu18.mahjong.game.frameWork.base.config.GameConfig;
@@ -42,7 +43,7 @@ import edu.up.yu18.mahjong.R;
  * @date Version 2013
  */
 public abstract class GameMainActivity extends Activity implements
-View.OnClickListener {
+View.OnClickListener, Serializable {
 
 	/*
 	 * ====================================================================
@@ -71,6 +72,8 @@ View.OnClickListener {
 	// whether the game is in the "configuration" stage, before the actual game
 	// has started
 	private boolean doingConfiguration = true;
+
+	private static final long serialVersionUID = 28873878192189L;
 
 	/**
 	 * contains the game configuration this activity will be used to initialize

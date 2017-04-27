@@ -1,14 +1,16 @@
 package edu.up.yu18.mahjong.game.MahJong.Objects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
  * Created by boylan19 on 3/8/2017.
  */
-public class Deck {
+public class Deck implements Serializable{
 
     private ArrayList<Tile> deckTiles;
+    private static final long serialVersionUID = 176982812323454L;
 
     public Deck(){
         deckTiles = new ArrayList<Tile>();

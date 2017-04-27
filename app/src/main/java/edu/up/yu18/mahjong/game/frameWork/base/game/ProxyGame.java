@@ -1,5 +1,6 @@
 package edu.up.yu18.mahjong.game.frameWork.base.game;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Queue;
 import android.util.Log;
@@ -19,7 +20,8 @@ import edu.up.yu18.mahjong.game.frameWork.base.util.NetworkObjectPasser;
  * @author Steven R. Vegdahl
  * @version July 2013
  */
-public class ProxyGame implements Game {
+public class ProxyGame implements Game, Serializable {
+	private static final long serialVersionUID = 92382812323454L;
 
     // the player associated with this game
     private GamePlayer player;

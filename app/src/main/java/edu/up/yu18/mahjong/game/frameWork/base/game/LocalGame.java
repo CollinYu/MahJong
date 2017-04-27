@@ -18,6 +18,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
+import java.io.Serializable;
+
 /**
  * A class that knows how to play the game. The data in this class represent the
  * state of a game. The state represented by an instance of this class can be a
@@ -31,7 +33,9 @@ import android.util.Log;
  * @author Andrew Nuxoll
  * @version July 2013
  */
-public abstract class LocalGame implements Game, Tickable {
+public abstract class LocalGame implements Game, Tickable, Serializable {
+
+	private static final long serialVersionUID = 923827213454L;
 	
 	// the stage that the game is in
 	private GameStage gameStage = GameStage.BEFORE_GAME;

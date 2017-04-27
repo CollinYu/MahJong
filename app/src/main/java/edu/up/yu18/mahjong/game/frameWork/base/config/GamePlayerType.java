@@ -1,5 +1,7 @@
 package edu.up.yu18.mahjong.game.frameWork.base.config;
 
+import java.io.Serializable;
+
 import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
 
 /**
@@ -14,10 +16,10 @@ import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
  * @see GameConfig
  */
 
-public abstract class GamePlayerType implements Cloneable /*, Serializable*/ {
+public abstract class GamePlayerType implements Cloneable , Serializable {
 
 //	/** satisfy the Serializable interface */
-//	private static final long serialVersionUID = 01072013L;
+	private static final long serialVersionUID = 01072013L;
 
 	/**
 	 * this is a short description of the player type used in GUI widgets

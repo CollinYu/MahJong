@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.content.Context;
@@ -30,7 +31,9 @@ import edu.up.yu18.mahjong.game.frameWork.base.game.ProxyPlayer;
  * @version July 2013
  * @see GameMainActivity
  */
-public class GameConfig {
+public class GameConfig implements Serializable{
+
+	private static final long serialVersionUID = 1762912542323454L;
 
 	/** a list of all valid player types that the user chooses */
 	private GamePlayerType[] availTypes;

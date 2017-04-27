@@ -10,6 +10,9 @@ import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
 
 
 public class Discard extends GameAction {
+
+
+    private static final long serialVersionUID = 132127523136954L;
     // Instance Variables
     private Tile tile;
     private int playerID;

@@ -19,6 +19,8 @@ public class MahJongDumbPlayer extends GameComputerPlayer {
 
     private MahJongGameState state;
 
+    private static final long serialVersionUID = 130987464333136954L;
+
     public MahJongDumbPlayer(String name){
         super(name);
     }

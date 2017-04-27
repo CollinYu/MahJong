@@ -9,6 +9,7 @@ import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
 
 public class MahJong extends GameAction {
     private int pID;
+    private static final long serialVersionUID = 1322128667123454L;
 
     public MahJong(GamePlayer gp, int pID){
         super(gp);

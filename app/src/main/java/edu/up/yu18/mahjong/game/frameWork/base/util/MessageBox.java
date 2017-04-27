@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface.OnClickListener;
 
+import java.io.Serializable;
+
 /**
  * Helper-class for showing dialog boxes
  * @author Andrew M. Nuxoll
@@ -11,7 +13,8 @@ import android.content.DialogInterface.OnClickListener;
  * @version July 2013
  *
  */
-public class MessageBox {
+public class MessageBox implements Serializable {
+	private static final long serialVersionUID = 42382812721654L;
 	/**
 	 * popUpMessage, a handy method for putting a message box on the screen.
 	 * 
