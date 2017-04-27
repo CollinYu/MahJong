@@ -1,4 +1,5 @@
 package edu.up.yu18.mahjong.game.MahJong.game;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -129,6 +130,7 @@ public class MahJongGameState extends GameState {
     public String getPlayerName(int player) {
         return this.playerNames[player];
     }
+    public int[] getWholeOpenHand(int player){return this.playerOpenHands[player];}
     public int getPlayerOpenHands(int player, int pos){return (this.playerOpenHands[player][pos]);}
     public void setPlayerClosedHandTile(int player, int tile, int pos) {this.playerClosedHands[player][pos] = tile;}
     public Tile getPlayerClosedHandTile(int player, int pos) {return deck.get(this.playerClosedHands[player][pos]);}
@@ -144,6 +146,47 @@ public class MahJongGameState extends GameState {
     public int getGameStage() {return this.gameStage;}
     public boolean hasPassed(int pID) {return passingPlayers[pID];}
     public boolean isOutOfCards(){return this.outOfCards;}
+    /**
+     * makeSubHand
+     *
+     * removes 3 tiles from a given hand and returns the result. given
+     hand is unmodified
+     */
+    public int[] makeSubHand(int[] hand, int x, int y, int z)
+    {
+        int[] newHand = new int[hand.length - 3];
+        int index = 0;
+        for(int i = 0; i < hand.length; ++i)
+        {
+            if ((i != x) && (i != y) && (i != z))
+            {
+                newHand[index] = hand[i];
+                index++;
+            }
+        }
+
+        return newHand;
+    }
+
+    /**
+     * getIndexOfAbove
+     *
+     * finds the first tile above a given time starting at a given
+     index in a
+     * given hand
+     */
+    public int getIndexOfAbove(int[] hand, int belowTileIndex)
+    {
+        for(int i = belowTileIndex + 1; i < hand.length; ++i)
+        {
+            if (deck.get(hand[i]).isAbove(deck.get(hand[belowTileIndex])))
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
 
     /**
      * @Collin_Yu
@@ -193,6 +236,7 @@ public class MahJongGameState extends GameState {
         for(int g = 0; g < 4; g++){
             sort(g);
         }
+        deckPosition = game.deckPosition;
         gameStage = game.gameStage; // pretty obvious how this one works
 
     }
@@ -279,7 +323,7 @@ public class MahJongGameState extends GameState {
      * changes this in response to the Pong action previously checked and handled by MahJongLocalGame
      */
     public void Pong(Pong p) {
-        if (p.getTile1().isEqualto(p.getTile2()) && p.getTile2().isEqualto(p.getTile3())) {
+        if (p.getTile1().isEqualTo(p.getTile2()) && p.getTile2().isEqualTo(p.getTile3())) {
             // Set next open openhand slot to Tile 1
             for (int i = 0; i < playerOpenHands[p.getPlayerID()].length; i++) {
                 if (this.playerOpenHands[p.getPlayerID()][i] == 136) {
@@ -342,7 +386,7 @@ public class MahJongGameState extends GameState {
      */
     public void Kong(Kong k) {
         // Check Legality
-        if (k.getTile1().isEqualto(k.getTile2()) && k.getTile2().isEqualto(k.getTile3()) && k.getTile3().isEqualto(k.getTile4())) {
+        if (k.getTile1().isEqualTo(k.getTile2()) && k.getTile2().isEqualTo(k.getTile3()) && k.getTile3().isEqualTo(k.getTile4())) {
 
 
             // Set 1st open slot to Tile 1
@@ -392,6 +436,13 @@ public class MahJongGameState extends GameState {
             for (int i = 0; i < playerOpenHands[k.getPlayerID()].length; i++) {
                 if (this.playerOpenHands[k.getPlayerID()][i] == 136) {
                     setPlayerOpenHandTile(k.getPlayerID(), k.getTile4().getDeckPos(), i);
+                    break;
+                }
+            }
+            // Find the tile in your hand, and remove it
+            for (int i = 0; i < playerClosedHands[k.getPlayerID()].length; i++) {
+                if (this.playerClosedHands[k.getPlayerID()][i] == k.getTile4().getDeckPos()) {
+                    setPlayerClosedHandTile(k.getPlayerID(), 136, i);
                     break;
                 }
             }
@@ -458,7 +509,6 @@ public class MahJongGameState extends GameState {
 
                 // loop through to find the first blank tile
                 for (int i = 0; i < discardPile.length; i++) {
-
                     // upon encountering the first blank tile
                     if (discardPile[i] == 136) {
 
@@ -529,8 +579,13 @@ public class MahJongGameState extends GameState {
      */
     public void draw(int pID){
         // search hand
+        if(deckPosition > 135){
+            outOfCards = true;
+            return;
+        }
         for(int i= 0; i < playerClosedHands[pID].length; i++){
 
+            if(deckPosition > 135){outOfCards = true;}
             // if blank tile
             if(playerClosedHands[pID][i] == 136){
 
@@ -538,8 +593,8 @@ public class MahJongGameState extends GameState {
                 playerClosedHands[pID][i] = this.deckPosition;
 
                 // increment deckPosition accordingly
-                if(deckPosition == 136){outOfCards = true;}
                 this.deckPosition++;
+                if(deckPosition > 135){outOfCards = true;}
 
                 // automatically sort their hand
                 sort(pID);
@@ -549,7 +604,44 @@ public class MahJongGameState extends GameState {
             }
         }
     }
+    boolean hasMahJong(int[] hand)
+    {
+        Arrays.sort(hand);
+        //base case, two tiles must be a pair
+        if (hand.length == 2)
+        {
+            return (deck.get(hand[0]).isEqualTo(deck.get(hand[1])));
+        }
 
+        //check for pongs
+        for(int i = 0; i < hand.length-2; ++i)
+        {
+            if ( (deck.get(hand[i]).isEqualTo(deck.get(hand[i+1])))
+                    && (deck.get(hand[i]).isEqualTo(deck.get(hand[i+2]))) )
+            {
+                int[] newHand = makeSubHand(hand, i, i+1, i+2);
+                if (hasMahJong(newHand)) return true;
+            }
+        }
+
+        //check for chows
+        for(int i = 0; i < hand.length-2; ++i)
+        {
+
+            int second = getIndexOfAbove(hand, i);
+            if (second != -1)
+            {
+                int third = getIndexOfAbove(hand, second);
+                if (third != -1)
+                {
+                    int[] newHand = makeSubHand(hand, i, second, third);
+                    if (hasMahJong(newHand)) return true;
+                }
+            }
+        }
+
+        return false;
+    }//isMahjong
 
     /**
      * @Collin_Yu
@@ -563,7 +655,7 @@ public class MahJongGameState extends GameState {
      * Unfortunately, since three of a kinds are one of the patterns, which include in and of themselves 3 distinct pair groupings
      * This method first "eliminates" each potential pair by recreating the hand without the pair in it, resulting in a hand of
      * size 0 mod 3, then it examines
-     */
+
         public boolean hasMahJong(int pID){
             // temporary int array (initialized at the player's current hand size)
             int[] arbitraryHand = new int[14 - playerMJProg[pID]*3];
@@ -572,6 +664,23 @@ public class MahJongGameState extends GameState {
             for(int q = 0; q< arbitraryHand.length; q++){
                 arbitraryHand[q] = playerClosedHands[pID][q];
             }
+            // if it is not your turn, then add the currDiscard into the mix
+            if(this.gameStage != (pID +1)*2 -1) {
+                arbitraryHand[arbitraryHand.length - 1] = currDiscard.getDeckPos();
+                // sort the arbitrary hand for the currDiscard addition(code assumes sorted hand)
+                int temp;
+                for (int i = 0; i < arbitraryHand.length - 1; i++) {
+                    for (int j = i + 1; j < arbitraryHand.length; j++) {
+                        if (deck.get(arbitraryHand[i]).getID() > deck.get(arbitraryHand[j]).getID()) {
+                            temp = arbitraryHand[j];
+                            arbitraryHand[j] = arbitraryHand[i];
+                            arbitraryHand[i] = temp;
+                        }
+                    }
+                }
+            }
+
+
 
             ArrayList<boolean[] > usedTiles = new ArrayList<>(0);
             ArrayList<int[]> pairlessHands = new ArrayList<>(0);
@@ -581,7 +690,7 @@ public class MahJongGameState extends GameState {
                 // loop through all tiles above the 'i' tile
                  for(int l = i + 1; l < arbitraryHand.length; l++) {
                      // if they're a pair
-                     if (i != l && deck.get(arbitraryHand[i]).isEqualto(deck.get(arbitraryHand[i + 1])))
+                     if (i != l && deck.get(arbitraryHand[i]).isEqualTo(deck.get(arbitraryHand[l])))
                          {
                              // make a new int[] to represent the hand without this pair
                              int k = 0; // counts elements in the old hand
@@ -613,16 +722,18 @@ public class MahJongGameState extends GameState {
             for (int j = 0; j < pairlessHands.size(); j++){ // loop through all of the hands with the pairs taken out
                 int[] pHOfJ = pairlessHands.get(j); // to make life easier
                 int g = 0; // initialize for while loop
-                while (g < pHOfJ.length){
+                while (g < pHOfJ.length - 2){
                     boolean doneWithLoop = false; // to potentially cut off unecessary code later
+                    boolean doneWithSubLoop1 = false; // cause break calls it on the outermost loop, sigh
+                    boolean doneWithSubLoop2 = false; // cause break calls it on the outermost loop, sigh
                     if(!usedTiles.get(j)[g]) { // make sure this tile isn't 'used' (already part of a combo of 3)
-                        for(int b = g + 1; b < g + 3 || b < pHOfJ.length; b++){ // look at the next two tiles
+                        for(int b = g + 1; (b < g + 3 && b < pHOfJ.length && !doneWithSubLoop1); b++){ // look at the next two tiles
                             if(!usedTiles.get(j)[b] &&
-                               deck.get(pHOfJ[g]).isEqualto(deck.get(pHOfJ[b]))){ // if the tile fulfills the criteria #1
+                               deck.get(pHOfJ[g]).isEqualTo(deck.get(pHOfJ[b]))){ // if the tile fulfills the criteria #1
 
-                                for(int m = b + 1; m < b + 3 || b < pHOfJ.length; b++){ // check the next two cards after that
+                                for(int m = b + 1; m < b + 3 && b < pHOfJ.length; b++){ // check the next two cards after that
                                     if(!usedTiles.get(j)[m] &&
-                                            deck.get(pHOfJ[m]).isEqualto(deck.get(pHOfJ[b]))){ // if the tile fulfills the criteria #2
+                                            deck.get(pHOfJ[m]).isEqualTo(deck.get(pHOfJ[b]))){ // if the tile fulfills the criteria #2
 
                                         // lock pieces of pong
                                         usedTiles.get(j)[g] = true;
@@ -634,13 +745,14 @@ public class MahJongGameState extends GameState {
                                     } // end criteria check 2
                                 } // end 'm' loop
                                 } // end criteria check 1
-                            break; // prevent loop from overshooting
+                            g++;
+                            doneWithSubLoop1 = true;
                         } // end 'b' loop
 
                         if (!doneWithLoop) { // make sure this tile hasnt already been used
-                            for (int f = g + 1; f < g + 5 || f < pHOfJ.length; f++) { // look for second part of potential chow
+                            for (int f = g + 1; f < g + 5 && f < pHOfJ.length && !doneWithSubLoop2; f++) { // look for second part of potential chow
                                 if (deck.get(pHOfJ[g]).isBelow(deck.get(pHOfJ[f]))) { // if second part of chow
-                                    for (int v = f + 1; v < f + 5 || f < pHOfJ.length; v++) { // look for third part of potential chow
+                                    for (int v = f + 1; v < f + 5 && f < pHOfJ.length; v++) { // look for third part of potential chow
                                         if (deck.get(pHOfJ[f]).isBelow(deck.get(pHOfJ[v]))) { // if third part found
 
                                             // lock pieces of the chow
@@ -651,8 +763,9 @@ public class MahJongGameState extends GameState {
                                             break; // prevent loop from overshooting
                                         }
                                     } // end 'v' loop
-                                    break; // prevent loop from overshooting
                                 }
+                                g++;
+                                doneWithSubLoop2 = true; // prevent loop from overshooting
                             } // end 'f' loop
                         }
                     }
@@ -672,9 +785,6 @@ public class MahJongGameState extends GameState {
             }// end pairlessHands loop
 
             return false; // if none were of the pattern, return false
-
-        }
-
-
+        } */
     }
 

@@ -169,7 +169,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="[Player4 Name]: 0 Points"
-            android:id="@+id/Player4Name"
+            android:id="@+id/TurnIndicator"
             android:layout_weight="1"
             android:gravity="top|center|"
             android:textSize="16sp"/>
@@ -1394,7 +1394,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile85"
-                            android:background=""
+                            android:background="#1e771e"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -1403,7 +1403,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile86"
-                            android:background=""
+                            android:background="#1e771e"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -1412,7 +1412,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile87"
-                            android:background=""
+                            android:background="#1e771e"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
 
@@ -1421,7 +1421,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:id="@+id/Discard1Tile88"
-                            android:background=""
+                            android:background="#1e771e"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp" />
                     </LinearLayout>

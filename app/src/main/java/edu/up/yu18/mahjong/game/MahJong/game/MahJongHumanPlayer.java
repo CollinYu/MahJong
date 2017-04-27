@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.up.yu18.mahjong.R;
+import edu.up.yu18.mahjong.game.MahJong.Actions.MahJong;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Pass;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Chow;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
@@ -22,7 +23,6 @@ import edu.up.yu18.mahjong.game.MahJong.Objects.Tile;
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameHumanPlayer;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
-import edu.up.yu18.mahjong.game.frameWork.base.game.LocalGame;
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 
 /**
@@ -34,12 +34,15 @@ import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
 
 public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
     private Button passButton;
+    private Button mahJongButton;
+    private Button quitButton;
     private ImageButton[] myTiles = new ImageButton[14];
     private boolean[] tilePressed = new boolean[14];
     private ImageView[][] playerClosedHand = new ImageView[3][14];
     private ImageView[][] playerOpenHand = new ImageView[1][14];
     private ImageButton[] discard = new ImageButton[88];
     private TextView displayTextBox;
+    private TextView turnIndicator;
     private Button chowButton;
     private Button pongButton;
     private Button kongButton;
@@ -65,7 +68,12 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
      * This is where we manipulate the gui objects in response to the gamestate having changed
      */
     public void updateDisplay() {
-
+        if (state.getGameStage() % 2 ==0){
+            turnIndicator.setText("Player " + state.getGameStage()/2 + "'s Post-Discard Phase!");
+        }
+        else {
+            turnIndicator.setText("It is Player " + (state.getGameStage() + 1) / 2  + "'s Turn!");
+        }
         for(int q = 0; q < 14; q++) {
             if (tilePressed[q]){
                 myTiles[q].setBackgroundTintMode(PorterDuff.Mode.SRC_ATOP);
@@ -828,6 +836,10 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         //sortButton.setOnClickListener(this);
         chowButton = (Button) activity.findViewById(R.id.chowButton);
         chowButton.setOnClickListener(this);
+        turnIndicator = (TextView) activity.findViewById(R.id.TurnIndicator);
+        turnIndicator.setOnClickListener(this);
+        quitButton = (Button) activity.findViewById(R.id.quitButton);
+        quitButton.setOnClickListener(this);
         pongButton = (Button) activity.findViewById(R.id.pongButton);
         pongButton.setOnClickListener(this);
         kongButton = (Button) activity.findViewById(R.id.kongButton);
@@ -836,6 +848,8 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         discardButton.setOnClickListener(this);
         passButton = (Button) activity.findViewById((R.id.PassButton));
         passButton.setOnClickListener(this);
+        mahJongButton = (Button) activity.findViewById((R.id.mahjongButton));
+        mahJongButton.setOnClickListener(this);
         /**
          *
         emoteButton = (Button) activity.findViewById(R.id.emoteButton);
@@ -927,8 +941,8 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     return;
                 }
                  // legality check
-                else if (tiles.get(0).isEqualto(tiles.get(1)) &&
-                        tiles.get(1).isEqualto(state.getCurrDiscard()))
+                else if (tiles.get(0).isEqualTo(tiles.get(1)) &&
+                        tiles.get(1).isEqualTo(state.getCurrDiscard()))
                 {
                     // all checks passed, create pong action
                     action = new Pong(this, playerNum, tiles.get(0), tiles.get(1), state.getCurrDiscard());
@@ -971,9 +985,9 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     return;
                 }
                 // legality check
-                else if (tiles.get(0).isEqualto(tiles.get(1)) &&
-                        tiles.get(1).isEqualto(state.getCurrDiscard()) &&
-                        state.getCurrDiscard().isEqualto(tiles.get(2)))
+                else if (tiles.get(0).isEqualTo(tiles.get(1)) &&
+                        tiles.get(1).isEqualTo(state.getCurrDiscard()) &&
+                        state.getCurrDiscard().isEqualTo(tiles.get(2)))
                 {
                     // confirm Kong action
                     action = new Kong(this, playerNum, tiles.get(0), tiles.get(1), tiles.get(2), state.getCurrDiscard());
@@ -1041,6 +1055,26 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
 
         }
 
+        if (v == mahJongButton){
+            if ((state.getGameStage() % 2) == 0 || (state.getGameStage()) == (this.playerNum*2 - 1)){
+                int[] hand;
+                hand = state.getWholeOpenHand(this.playerNum);
+                if(state.getGameStage() % 2 == 0){hand[hand.length-1] = state.getCurrDiscard().getDeckPos();}
+                if(state.hasMahJong(hand)){
+                        action = new MahJong(this, playerNum);
+                        displayTextBox.setText("You Win!");
+                }
+
+            }
+            else
+            {
+                displayTextBox.setText("You don't have a MahJong!");
+            }
+        }
+
+        if (v == quitButton){
+            System.exit(0);
+        }
         // for selecting a Tile in hand
         for (int i = 0; i < myTiles.length; i++) {
             if (v == myTiles[i]) {

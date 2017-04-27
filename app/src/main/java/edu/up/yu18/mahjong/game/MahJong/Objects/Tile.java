@@ -42,7 +42,7 @@ public class Tile {
     }
 
     // Checks if this tile is the same as another tile
-    public boolean isEqualto(Tile t){
+    public boolean isEqualTo(Tile t){
         if (this.suit == t.suit){
             if(this.val == t.val){
                 return true;

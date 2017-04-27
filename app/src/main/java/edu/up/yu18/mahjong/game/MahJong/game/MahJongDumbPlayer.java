@@ -34,7 +34,12 @@ public class MahJongDumbPlayer extends GameComputerPlayer {
 
         // if it's this' turn, discards the first card in its hand
         if(state.getGameStage() == (this.playerNum+1)*2-1){
-            Discard disc = new Discard(this, playerNum, state.getPlayerClosedHandTile(playerNum,0));
+            double d = (double) state.getPlayerClosedHandLength(this.playerNum) - 1;
+            double r = Math.random();
+            double q = r*d;
+            int h = (int) q;
+
+            Discard disc = new Discard(this, playerNum, state.getPlayerClosedHandTile(playerNum,h));
             game.sendAction(disc);
         }
 

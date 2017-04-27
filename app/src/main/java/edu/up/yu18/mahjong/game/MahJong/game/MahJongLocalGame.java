@@ -3,11 +3,11 @@ package edu.up.yu18.mahjong.game.MahJong.game;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Chow;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Discard;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Kong;
+import edu.up.yu18.mahjong.game.MahJong.Actions.MahJong;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Pass;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Pong;
 import edu.up.yu18.mahjong.game.MahJong.Actions.Sort;
 import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
-import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.TimerAction;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GamePlayer;
 import edu.up.yu18.mahjong.game.frameWork.base.game.LocalGame;
 import edu.up.yu18.mahjong.game.frameWork.base.util.GameTimer;
@@ -20,6 +20,7 @@ import edu.up.yu18.mahjong.game.frameWork.base.util.GameTimer;
 
 public class MahJongLocalGame extends LocalGame {
 
+    private boolean gameOverPrompt = false;
     private MahJongGameState state;
     private GameTimer timer;
     /**
@@ -73,10 +74,12 @@ public class MahJongLocalGame extends LocalGame {
             String victoryMsg = "The Deck has run out of cards! Everyone wins! yay...";
             return victoryMsg;
         }
-        for(int i = 0; i < 4; i++){
-            if(state.hasMahJong(i)){
-                String victoryMsg = "Player " + i+1 + " has won the game!";
-                return victoryMsg;
+        if(gameOverPrompt) {
+            for (int i = 0; i < 4; i++) {
+                if (state.hasMahJong(state.getWholeOpenHand(i))) {
+                    String victoryMsg = "Player " + i + 1 + " has won the game!";
+                    return victoryMsg;
+                }
             }
         }
         return null;
@@ -96,6 +99,18 @@ public class MahJongLocalGame extends LocalGame {
         if (action instanceof Chow){
             Chow c = (Chow) action;
             state.Chow(c);
+            return true;
+        }
+
+        if (action instanceof MahJong){
+            MahJong mj = (MahJong) action;
+            int[] hand;
+            hand = state.getWholeOpenHand(mj.getPlayerID());
+            if(state.getGameStage() % 2 == 0){hand[hand.length-1] = state.getCurrDiscard().getDeckPos();}
+            if(state.hasMahJong(hand)){
+                this.gameOverPrompt = true;
+                this.checkIfGameOver();
+            }
             return true;
         }
 

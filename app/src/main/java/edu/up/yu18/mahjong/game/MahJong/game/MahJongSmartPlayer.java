@@ -43,7 +43,7 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
             //sets the initial value to the AI of his current hand
             for(int i = 0;i < state.getPlayerClosedHandLength(playerNum)-1;i++){
                 for(int j = i+1;j < state.getPlayerClosedHandLength(playerNum);j++){
-                    if(state.getPlayerClosedHandTile(playerNum,i).isEqualto(state.getPlayerClosedHandTile(playerNum,j))){
+                    if(state.getPlayerClosedHandTile(playerNum,i).isEqualTo(state.getPlayerClosedHandTile(playerNum,j))){
                         hand[i]+= 2;
                         hand[j]+= 2;
                     }
@@ -56,15 +56,15 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
             isFirstTurn = false;
         }
 
-        if(state.getGameStage()%2 == 0)
+        if(state.getGameStage()%2 == 0 && !state.hasPassed(this.playerNum))
         {
             GameAction action = new Pass(this,playerNum);
             for (int i =0;i < state.getPlayerClosedHandLength(playerNum)-1;i++){
-                if(state.getPlayerClosedHandTile(playerNum,i).isEqualto(state.getCurrDiscard())) {
+                if(state.getPlayerClosedHandTile(playerNum,i).isEqualTo(state.getCurrDiscard())) {
                     if ((state.getPlayerClosedHandTile(playerNum, i + 1)) != null) {
-                        if (state.getPlayerClosedHandTile(playerNum, i).isEqualto(state.getPlayerClosedHandTile(playerNum, i + 1))) {
+                        if (state.getPlayerClosedHandTile(playerNum, i).isEqualTo(state.getPlayerClosedHandTile(playerNum, i + 1))) {
                             if (state.getPlayerClosedHandTile(playerNum, i + 2) != null) {
-                                if (state.getPlayerClosedHandTile(playerNum,i).isEqualto(state.getPlayerClosedHandTile(playerNum,i+2))){
+                                if (state.getPlayerClosedHandTile(playerNum,i).isEqualTo(state.getPlayerClosedHandTile(playerNum,i+2))){
                                     action = new Kong(this,playerNum,state.getPlayerClosedHandTile(playerNum,i),state.getPlayerClosedHandTile(playerNum,i+1),state.getPlayerClosedHandTile(playerNum,i+2),state.getCurrDiscard());
                                 }
                             }
@@ -76,9 +76,15 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
                     }
                 }
             }
+
+            int[] hand;
+            hand = state.getWholeOpenHand(this.playerNum);
+            if(state.getGameStage() % 2 == 0){hand[hand.length-1] = state.getCurrDiscard().getDeckPos();}
+            //CHOWWWWW
+
             if(action instanceof Pass) {
                 for (int i = 0; i < state.getPlayerClosedHandLength(playerNum); i++) {
-                    if (state.getCurrDiscard().isEqualto(state.getPlayerClosedHandTile(playerNum, i))) {
+                    if (state.getCurrDiscard().isEqualTo(state.getPlayerClosedHandTile(playerNum, i))) {
                         hand[i] -= 2;
                     }
                     if (state.getCurrDiscard().isAbove(state.getPlayerClosedHandTile(playerNum, i))) {
