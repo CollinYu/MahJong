@@ -72,7 +72,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
      */
     public void updateDisplay() {
         if (state != null) {
-            if (state.getGameStage() % 2 == 0) {
+            if (state.getGameStage() % 2 == 0 && state.getCurrDiscard() != null) {
                 String soot = null;
                 boolean numbered = false;
                 String modifier = null;
@@ -1272,7 +1272,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         // for selecting a Tile in hand
         for (int i = 0; i < myTiles.length; i++) {
             if (v == myTiles[i]) {
-                if (!tilePressed[i]) {
+                if (!tilePressed[i] && state.getPlayerClosedHandTile(playerNum,i).getDeckPos() != 136) {
                     tilePressed[i] = true;
                     updateDisplay();
                 } else {
