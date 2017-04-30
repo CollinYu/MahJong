@@ -106,27 +106,27 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
                 }
                 //CHOWWWWW
                 if(state.getGameStage() == (this.playerNum)*2 || (this.playerNum == 0 && state.getGameStage() == 8)) {
-                    for (int i = 0; i < hand.length - 1; i++) {
-                        if (state.deckGet(hand[i]).isAbove(curPlay)) {
-                            for (int j = i; j < hand.length; j++) {
-                                if (state.deckGet(hand[j]).isAbove(state.deckGet(hand[i]))) {
-                                    action = new Chow(this, this.playerNum, state.deckGet(hand[i])
-                                            , state.deckGet(hand[j]), curPlay);
+                    for (int i = 0; i < myHand.length - 1; i++) {
+                        if (state.deckGet(myHand[i]).isAbove(curPlay)) {
+                            for (int j = i; j < myHand.length; j++) {
+                                if (state.deckGet(myHand[j]).isAbove(state.deckGet(myHand[i]))) {
+                                    action = new Chow(this, this.playerNum, state.deckGet(myHand[i])
+                                            , state.deckGet(myHand[j]), curPlay);
                                 }
 
                             }
                             for (int j = i; j > -1; j--) {
-                                if (state.deckGet(hand[j]).isBelow(state.deckGet(hand[i]))) {
-                                    action = new Chow(this, this.playerNum, state.deckGet(hand[i])
-                                            , state.deckGet(hand[j]), curPlay);
+                                if (state.deckGet(myHand[j]).isBelow(state.deckGet(myHand[i]))) {
+                                    action = new Chow(this, this.playerNum, state.deckGet(myHand[i])
+                                            , state.deckGet(myHand[j]), curPlay);
                                 }
 
                             }
-                        } else if (state.deckGet(hand[i]).isBelow(curPlay)) {
+                        } else if (state.deckGet(myHand[i]).isBelow(curPlay)) {
                             for (int j = 0; j < i; j++) {
-                                if (state.deckGet(hand[j]).isBelow(state.deckGet(hand[i]))) {
-                                    action = new Chow(this, this.playerNum, state.deckGet(hand[i])
-                                            , state.deckGet(hand[j]), curPlay);
+                                if (state.deckGet(myHand[j]).isBelow(state.deckGet(myHand[i]))) {
+                                    action = new Chow(this, this.playerNum, state.deckGet(myHand[i])
+                                            , state.deckGet(myHand[j]), curPlay);
                                 }
 
                             }
