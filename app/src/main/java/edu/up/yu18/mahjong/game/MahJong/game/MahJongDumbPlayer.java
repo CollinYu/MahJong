@@ -36,6 +36,8 @@ public class MahJongDumbPlayer extends GameComputerPlayer {
 
         // if it's this' turn, discards the first card in its hand
         if(state.getGameStage() == (this.playerNum+1)*2-1){
+            long waitTime = 1500+ (long)(Math.random()*1000);
+            try{Thread.sleep(waitTime);}catch(InterruptedException ie){}
             double d = (double) state.getPlayerClosedHandLength(this.playerNum) - 1;
             double r = Math.random();
             double q = r*d;
