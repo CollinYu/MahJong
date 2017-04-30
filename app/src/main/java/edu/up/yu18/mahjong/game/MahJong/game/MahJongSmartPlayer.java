@@ -69,7 +69,10 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
                     if (state.getPlayerClosedHandTile(playerNum, j).isEqualTo(state.getCurrDiscard())) {
                         if ((state.getPlayerClosedHandTile(playerNum, j + 1)) != null) {
                             if (state.getPlayerClosedHandTile(playerNum, j).isEqualTo(state.getPlayerClosedHandTile(playerNum, j + 1))) {
-                                if (state.getPlayerClosedHandTile(playerNum, j + 2) != null) {
+                                boolean tryPassed = true;
+                                try{state.getPlayerClosedHandTile(playerNum, j + 2);}
+                                catch(NullPointerException npe){tryPassed = false;}
+                                    if(tryPassed){
                                     if (state.getPlayerClosedHandTile(playerNum, j).isEqualTo(state.getPlayerClosedHandTile(playerNum, j + 2))) {
                                         action = new Kong(this, this.playerNum, state.getPlayerClosedHandTile(playerNum, j), state.getPlayerClosedHandTile(playerNum, j + 1), state.getPlayerClosedHandTile(playerNum, j + 2), state.getCurrDiscard());
                                     }
@@ -82,22 +85,22 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
                     }
                 }
 
-                int[] hand;
+                int[] myHand;
                 Tile curPlay = state.getCurrDiscard();
-                hand = state.getWholeClosedHand(this.playerNum);
+                myHand = state.getWholeClosedHand(this.playerNum);
                 if (state.getGameStage() % 2 == 0) {
-                    hand = state.addCurrDiscard(hand);
+                    myHand = state.addCurrDiscard(myHand);
                 }
                 int temp;
 
-                hand = state.removeNull(hand);
+                myHand = state.removeNull(myHand);
                 // ID of the tiles was made for easy sorting
-                for (int i = 0; i < hand.length - 1; i++) {
-                    for (int j = i + 1; j < hand.length; j++) {
-                        if (state.deckGet(hand[i]).getID() > state.deckGet(hand[j]).getID()) {
-                            temp = hand[j];
-                            hand[j] = hand[i];
-                            hand[i] = temp;
+                for (int i = 0; i < myHand.length - 1; i++) {
+                    for (int j = i + 1; j < myHand.length; j++) {
+                        if (state.deckGet(myHand[i]).getID() > state.deckGet(myHand[j]).getID()) {
+                            temp = myHand[j];
+                            myHand[j] = myHand[i];
+                            myHand[i] = temp;
                         }
                     }
                 }
@@ -131,6 +134,7 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
                     }
                 }
 
+
                 if (action instanceof Pass) {
                     for (int i = 0; i < state.getPlayerClosedHandLength(this.playerNum); i++) {
                         if (state.getCurrDiscard().isEqualTo(state.getPlayerClosedHandTile(this.playerNum, i))) {
@@ -152,7 +156,14 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
 
             int lowest = 0;
             for (int q = 1; q < hand.length; q++){
-                if (hand[q] < hand[lowest]){lowest = q;}
+                if (hand[q] < hand[lowest]){
+                    lowest = q;
+                }
+                else if(hand[q] == hand[lowest]){
+                    if (Math.random() < 0.5){
+                        lowest = q;
+                    }
+                }
             }
             action = new Discard(this, this.playerNum, state.getPlayerClosedHandTile(this.playerNum,lowest));
         }

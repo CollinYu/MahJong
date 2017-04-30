@@ -477,7 +477,6 @@ public class MahJongGameState extends GameState {
             // Find the tile in your hand, and remove it
             for (int i = 0; i < playerClosedHands[k.getPlayerID()].length; i++) {
                 if (this.playerClosedHands[k.getPlayerID()][i] == k.getTile2().getDeckPos()) {
-                    setPlayerClosedHandTile(k.getPlayerID(), 136, i);
                     break;
                 }
             }

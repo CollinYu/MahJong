@@ -115,6 +115,13 @@ public class MahJongLocalGame extends LocalGame implements  Serializable{
             return true;
         }
 
+        // if it's a Kong, Kong
+        if (action instanceof Kong){
+            Kong k = (Kong) action;
+            state.Kong(k);
+            return true;
+        }
+
         // if it's a Pong, Pong
         if (action instanceof Pong){
             Pong p = (Pong) action;
@@ -122,12 +129,6 @@ public class MahJongLocalGame extends LocalGame implements  Serializable{
             return true;
         }
 
-        // if it's a Kong, Kong
-        if (action instanceof Kong){
-            Kong k = (Kong) action;
-            state.Kong(k);
-            return true;
-        }
 
         // if it's a Discard, Discard
         if (action instanceof Discard){
