@@ -102,37 +102,34 @@ public class MahJongSmartPlayer extends GameComputerPlayer {
                     }
                 }
                 //CHOWWWWW
-                if(state.getGameStage() == (this.playerNum)*2 || (this.playerNum == 0 && state.getGameStage() == 8)){
-                    for (int i = 0; i < hand.length - 2; i++) {
-                        if (state.deckGet(hand[i]) == curPlay) {
-                            if (state.deckGet(hand[i + 1]).isAbove(curPlay)
-                                    && state.deckGet(hand[i + 2]).isAbove(state.deckGet(hand[ i + 1]))) {
-                                action = new Chow(this, this.playerNum, state.deckGet(hand[ i + 1])
-                                        , state.deckGet(hand[ i + 2]), curPlay);
-                                break;
-                            }
-                            else if (i > 0) {
-                                if (state.deckGet(hand[ i + 1]).isAbove(curPlay)
-                                        && state.deckGet(hand[ i - 1]).isBelow(curPlay)) {
-                                    action = new Chow(this, this.playerNum, state.deckGet(hand[ i + 1])
-                                            , state.deckGet(hand[ i - 1]), curPlay);
-                                    break;
-
+                if(state.getGameStage() == (this.playerNum)*2 || (this.playerNum == 0 && state.getGameStage() == 8)) {
+                    for (int i = 0; i < hand.length - 1; i++) {
+                        if (state.deckGet(hand[i]).isAbove(curPlay)) {
+                            for (int j = i; j < hand.length; j++) {
+                                if (state.deckGet(hand[j]).isAbove(state.deckGet(hand[i]))) {
+                                    action = new Chow(this, this.playerNum, state.deckGet(hand[i])
+                                            , state.deckGet(hand[j]), curPlay);
                                 }
-                            }
-                            else if (i > 1) {
-                                if (state.deckGet(hand[ i - 1]).isBelow(curPlay)
-                                        && state.deckGet(hand[ i - 2]).isBelow(curPlay)) {
-                                    action = new Chow(this, this.playerNum, state.deckGet(hand[ i - 1])
-                                            , state.deckGet(hand[ i - 2]), curPlay);
-                                    break;
-                                }
-                            }
 
+                            }
+                            for (int j = i; j > -1; j--) {
+                                if (state.deckGet(hand[j]).isBelow(state.deckGet(hand[i]))) {
+                                    action = new Chow(this, this.playerNum, state.deckGet(hand[i])
+                                            , state.deckGet(hand[j]), curPlay);
+                                }
+
+                            }
+                        } else if (state.deckGet(hand[i]).isBelow(curPlay)) {
+                            for (int j = 0; j < i; j++) {
+                                if (state.deckGet(hand[j]).isBelow(state.deckGet(hand[i]))) {
+                                    action = new Chow(this, this.playerNum, state.deckGet(hand[i])
+                                            , state.deckGet(hand[j]), curPlay);
+                                }
+
+                            }
                         }
                     }
                 }
-
 
                 if (action instanceof Pass) {
                     for (int i = 0; i < state.getPlayerClosedHandLength(this.playerNum); i++) {
