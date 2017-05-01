@@ -99,6 +99,12 @@ public class MahJongLocalGame extends LocalGame implements  Serializable{
     @Override
     protected boolean makeMove(GameAction action){
 
+        // if it's a Kong, Kong
+        if (action instanceof Kong){
+            Kong k = (Kong) action;
+            state.Kong(k);
+            return true;
+        }
         // if it's Chow, Chow
         if (action instanceof Chow){
             Chow c = (Chow) action;
@@ -115,12 +121,6 @@ public class MahJongLocalGame extends LocalGame implements  Serializable{
             return true;
         }
 
-        // if it's a Kong, Kong
-        if (action instanceof Kong){
-            Kong k = (Kong) action;
-            state.Kong(k);
-            return true;
-        }
 
         // if it's a Pong, Pong
         if (action instanceof Pong){

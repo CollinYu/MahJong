@@ -712,8 +712,8 @@
 
                         <ImageButton
                             android:layout_width="0dp"
-                            android:layout_height="212dp"
-                            android:layout_weight="4.09"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:id="@+id/Discard1Tile17"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp"

@@ -26,6 +26,8 @@ import edu.up.yu18.mahjong.game.frameWork.base.actionMessage.GameAction;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameHumanPlayer;
 import edu.up.yu18.mahjong.game.frameWork.base.game.GameMainActivity;
 import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
+import edu.up.yu18.mahjong.game.frameWork.base.util.GameTimer;
+import edu.up.yu18.mahjong.game.frameWork.base.util.Tickable;
 
 /**
  * @Collin_Yu
@@ -34,7 +36,7 @@ import edu.up.yu18.mahjong.game.frameWork.base.infoMsg.GameInfo;
  * TODO: make discard work doh
  */
 
-public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
+public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickListener, Tickable {
 
     private static final long serialVersionUID = 13781238536954L;
     private Button passButton;
@@ -45,6 +47,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
     private ImageView[][] playerClosedHand = new ImageView[3][14];
     private ImageView[][] playerOpenHand = new ImageView[1][14];
     private ImageButton[] discard = new ImageButton[88];
+    private TextView passedPlayers;
     private TextView displayTextBox;
     private TextView turnIndicator;
     private TextView infoDisplay;
@@ -68,18 +71,53 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         return null;
     }
 
-
+    @Override
+    public void timerTicked(){
+        displayTextBox.setText("");
+        getTimer().stop();
+    }
     /**
      * @Tristan_Boylan This is where we manipulate the gui objects in response to the gamestate having changed
      */
     public void updateDisplay() {
-
         if (state != null) { // Catches null pointer for if the user calls the on-click method before the gamestate has loaded (network play error only)
             // setup for infoDisplay: a text description of the most recently discarded tile for user QOL
+            String arrow = "";
+            int whoseTurn = (state.getGameStage() + 1)/2 -1;
+            int order[] = new int[3];
+            if(this.playerNum == 0) {
+                order[0] = 1;
+                order[1] = 2;
+                order[2] = 3;
+            }
+
+            else if(this.playerNum == 1) {
+                order[0] = 2;
+                order[1] = 3;
+                order[2] = 0;
+            }
+            else if(this.playerNum == 2) {
+                order[0] = 3;
+                order[1] = 0;
+                order[2] = 1;
+            }
+            else {
+                order[0] = 0;
+                order[1] = 1;
+                order[2] = 2;
+            }
+            for(int i  = 0; i < 3; i++){
+                if(order[i] == whoseTurn){
+                    if (i == 0){arrow = "<-";}
+                    else if (i == 1){arrow = "^";}
+                    else if (i == 2){arrow = "->";}
+                }
+            }
             if (state.getGameStage() % 2 == 0 && state.getCurrDiscard() != null) {
                 String soot = null;
                 boolean numbered = false;
                 String modifier = null;
+
                 if (state.getCurrDiscard() != null) {
                     if (state.getCurrDiscard().getSuit() == 0) {
                         soot = "Dots";
@@ -130,11 +168,18 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     }
                     // setUp for turnIndicator: a text description of whose turn it is
                 }
-                turnIndicator.setText("Player " + state.getGameStage() / 2 + "'s Post-Discard Phase!");
+                turnIndicator.setText("Player " + state.getGameStage() / 2 + "'s Post-Discard Phase!" + arrow);
             } else {
-                turnIndicator.setText("It is Player " + (state.getGameStage() + 1) / 2 + "'s Turn!");
+                turnIndicator.setText("It is Player " + (state.getGameStage() + 1) / 2 + "'s Turn! " + arrow);
             }
 
+            int passCount = 0;
+            for(int i = 0; i < 4; i++){
+                if(state.hasPassed(i)){passCount++;}
+            }
+
+            passedPlayers.setText("Players Passed: " + passCount);
+            
             //sets the human player on the tablets closed hand - the hand only they can see
             for (int k = 0; k < 4; k++) {
                 for (int i = 0; i < 14; i++) {
@@ -288,28 +333,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 }
             }
             //order based on gui player's playerNum
-            int order[] = new int[3];
-            if(this.playerNum == 0) {
-                order[0] = 1;
-                order[1] = 2;
-                order[2] = 3;
-            }
 
-            else if(this.playerNum == 1) {
-                order[0] = 2;
-                order[1] = 3;
-                order[2] = 0;
-            }
-            else if(this.playerNum == 2) {
-                order[0] = 3;
-                order[1] = 0;
-                order[2] = 1;
-            }
-            else {
-                order[0] = 0;
-                order[1] = 1;
-                order[2] = 2;
-            }
             int doubleCount = 0;
             //display the AI/Network player's open hand- that is the hand everyone can see
             for (int b = 0; doubleCount < 3; b++) {
@@ -700,6 +724,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
     public void setAsGui(GameMainActivity activity) {
 
         // remember the activity
+        getTimer().setInterval(2000);
         myActivity = activity;
 
         // Load the layout resource for our GUI
@@ -772,54 +797,6 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         playerOpenHand[0][11] = (ImageView) activity.findViewById(R.id.openTile12);
         playerOpenHand[0][12] = (ImageView) activity.findViewById(R.id.openTile13);
         playerOpenHand[0][13] = (ImageView) activity.findViewById(R.id.openTile14);
-
-        /**
-         playerOpenHand[1][0] = (ImageView) activity.findViewById(R.id.player2Tile1);
-         playerOpenHand[1][1] = (ImageView) activity.findViewById(R.id.player2Tile2);
-         playerOpenHand[1][2] = (ImageView) activity.findViewById(R.id.player2Tile3);
-         playerOpenHand[1][3] = (ImageView) activity.findViewById(R.id.player2Tile4);
-         playerOpenHand[1][4] = (ImageView) activity.findViewById(R.id.player2Tile5);
-         playerOpenHand[1][5] = (ImageView) activity.findViewById(R.id.player2Tile6);
-         playerOpenHand[1][6] = (ImageView) activity.findViewById(R.id.player2Tile7);
-         playerOpenHand[1][7] = (ImageView) activity.findViewById(R.id.player2Tile8);
-         playerOpenHand[1][8] = (ImageView) activity.findViewById(R.id.player2Tile9);
-         playerOpenHand[1][9] = (ImageView) activity.findViewById(R.id.player2Tile10);
-         playerOpenHand[1][10] = (ImageView) activity.findViewById(R.id.player2Tile11);
-         playerOpenHand[1][11] = (ImageView) activity.findViewById(R.id.player2Tile12);
-         playerOpenHand[1][12] = (ImageView) activity.findViewById(R.id.player2Tile13);
-         playerOpenHand[1][13] = (ImageView) activity.findViewById(R.id.player2Tile14);
-
-
-         playerOpenHand[2][0] = (ImageView) activity.findViewById(R.id.player3Tile1);
-         playerOpenHand[2][1] = (ImageView) activity.findViewById(R.id.player3Tile2);
-         playerOpenHand[2][2] = (ImageView) activity.findViewById(R.id.player3Tile3);
-         playerOpenHand[2][3] = (ImageView) activity.findViewById(R.id.player3Tile4);
-         playerOpenHand[2][4] = (ImageView) activity.findViewById(R.id.player3Tile5);
-         playerOpenHand[2][5] = (ImageView) activity.findViewById(R.id.player3Tile6);
-         playerOpenHand[2][6] = (ImageView) activity.findViewById(R.id.player3Tile7);
-         playerOpenHand[2][7] = (ImageView) activity.findViewById(R.id.player3Tile8);
-         playerOpenHand[2][8] = (ImageView) activity.findViewById(R.id.player3Tile9);
-         playerOpenHand[2][9] = (ImageView) activity.findViewById(R.id.player3Tile10);
-         playerOpenHand[2][10] = (ImageView) activity.findViewById(R.id.player3Tile11);
-         playerOpenHand[2][11] = (ImageView) activity.findViewById(R.id.player3Tile12);
-         playerOpenHand[2][12] = (ImageView) activity.findViewById(R.id.player3Tile13);
-         playerOpenHand[2][13] = (ImageView) activity.findViewById(R.id.player3Tile14);
-
-         playerOpenHand[3][0] = (ImageView) activity.findViewById(R.id.player4Tile1);
-         playerOpenHand[3][1] = (ImageView) activity.findViewById(R.id.player4Tile2);
-         playerOpenHand[3][2] = (ImageView) activity.findViewById(R.id.player4Tile3);
-         playerOpenHand[3][3] = (ImageView) activity.findViewById(R.id.player4Tile4);
-         playerOpenHand[3][4] = (ImageView) activity.findViewById(R.id.player4Tile5);
-         playerOpenHand[3][5] = (ImageView) activity.findViewById(R.id.player4Tile6);
-         playerOpenHand[3][6] = (ImageView) activity.findViewById(R.id.player4Tile7);
-         playerOpenHand[3][7] = (ImageView) activity.findViewById(R.id.player4Tile8);
-         playerOpenHand[3][8] = (ImageView) activity.findViewById(R.id.player4Tile9);
-         playerOpenHand[3][9] = (ImageView) activity.findViewById(R.id.player4Tile10);
-         playerOpenHand[3][10] = (ImageView) activity.findViewById(R.id.player4Tile11);
-         playerOpenHand[3][11] = (ImageView) activity.findViewById(R.id.player4Tile12);
-         playerOpenHand[3][12] = (ImageView) activity.findViewById(R.id.player4Tile13);
-         playerOpenHand[3][13] = (ImageView) activity.findViewById(R.id.player4Tile14);
-         */
 
 
         myTiles[0] = (ImageButton) activity.findViewById(R.id.tile1);
@@ -941,6 +918,8 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
         chowButton.setOnClickListener(this);
         turnIndicator = (TextView) activity.findViewById(R.id.TurnIndicator);
         turnIndicator.setOnClickListener(this);
+        passedPlayers = (TextView) activity.findViewById(R.id.PlayersPassed);
+        passedPlayers.setOnClickListener(this);
         infoDisplay = (TextView) activity.findViewById(R.id.InfoDisplay);
         infoDisplay.setOnClickListener(this);
         quitButton = (Button) activity.findViewById(R.id.quitButton);
@@ -1197,6 +1176,7 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                 return;
             }
         }
+            getTimer().start();
             game.sendAction(action);
             updateDisplay();
     }
