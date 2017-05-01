@@ -122,11 +122,11 @@ public class MahJongHumanPlayer extends GameHumanPlayer implements View.OnClickL
                     }
 
                     if (numbered) {
-                        infoDisplay.setText("Player " + state.getGameStage() / 2 + " has discarded a "
-                                + (state.getCurrDiscard().getVal() + 1) + " of " + soot + " tile.");
+                        infoDisplay.setText("Player " + state.getGameStage() / 2 + " Discarded "
+                                + (state.getCurrDiscard().getVal() + 1) + " of " + soot);
                     } else {
-                        infoDisplay.setText("Player " + state.getGameStage() / 2 + " has discarded a "
-                                + modifier + " " + soot + " tile.");
+                        infoDisplay.setText("Player " + state.getGameStage() / 2 + " Discarded "
+                                + modifier + " " + soot);
                     }
                     // setUp for turnIndicator: a text description of whose turn it is
                 }

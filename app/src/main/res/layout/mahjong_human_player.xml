@@ -157,22 +157,33 @@
         android:layout_weight="5">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/InfoDisplay"
-            android:layout_weight="1.38"
-            android:textSize="20sp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:textColor="#ffffff"
-            android:gravity="left|center" />
+            android:gravity="left|center"
+            android:text="Player 1 Discarded 3 of Bamboo" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="[Player4 Name]: 0 Points"
+            android:id="@+id/PlayersPassed"
+            android:layout_weight="1.18"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:text="Players Passed: 3" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Player 1&apos;s Post-Discard Phase!"
             android:id="@+id/TurnIndicator"
-            android:layout_weight="1"
-            android:textSize="20sp"
+            android:layout_weight="1.40"
+            android:textSize="18dp"
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:gravity="center|right" />
@@ -701,8 +712,8 @@
 
                         <ImageButton
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_height="212dp"
+                            android:layout_weight="4.09"
                             android:id="@+id/Discard1Tile17"
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="4dp"
